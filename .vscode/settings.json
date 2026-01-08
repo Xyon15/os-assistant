@@ -3,5 +3,5 @@
   "python.analysis.typeCheckingMode": "basic",
   "editor.formatOnSave": true,
   "files.autoSave": "onFocusChange",
-  "terminal.integrated.defaultProfile.windows": "Command Prompt"
+  "terminal.integrated.defaultProfile.windows": null
 }
