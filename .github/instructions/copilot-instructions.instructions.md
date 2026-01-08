@@ -124,7 +124,30 @@ docs/
 □ docs/session_N/ mis à jour
 □ scripts/ dans la session contient les fichiers finaux
 □ Tests (pytest) passés si applicables
+□ Instructions Copilot mises à jour (.github/instructions/)
+□ Commit Git créé avec message Conventional Commits
 ```
+
+---
+
+## 🔄 Procédure de fin de session (OBLIGATOIRE)
+
+**À la fin de CHAQUE session, TOUJOURS suivre ces étapes dans cet ordre :**
+
+1. **Vérifier la checklist complète** (ci-dessus)
+2. **Mettre à jour les instructions Copilot** :
+   - Ajouter observations/apprentissages de la session
+   - Mettre à jour exemples si nécessaire
+   - Ajouter patterns récurrents identifiés
+3. **Créer un commit Git** :
+   ```
+   git add .
+   git commit -m "docs(sessionN): <description>"
+   ```
+   - Exemple : `git commit -m "docs(session1): add Pydantic validation + docs"`
+4. **Proposer à l'utilisateur** : continuer ou faire une pause
+
+**⚠️ NE JAMAIS dire "Terminé" sans avoir fait ces 3 étapes !**
 
 ---
 
@@ -235,6 +258,34 @@ uvicorn backend.main:app --reload --port 8000
 - Aime avoir une **vue d'ensemble claire** avant de commencer
 - Préfère **avancer étape par étape** avec validations
 - Apprécie les **explications ligne par ligne** après avoir écrit le code
+
+### 🎯 Observations après Session 1 (2026-01-08)
+
+**Réussites de la session :**
+
+- ✅ A **écrit le code lui-même** avec guidage (pseudo-code → code)
+- ✅ A compris la différence `=` vs `:` après explication
+- ✅ A réussi à corriger ses propres erreurs avec aide
+- ✅ A testé de manière autonome les 3 cas (succès, défaut, validation)
+
+**Patterns d'apprentissage confirmés :**
+
+- **Analogie "aéroport/agent de sécurité"** : très efficace pour Pydantic
+- **Questions de compréhension** (3 mini-questions) : excellente méthode
+- **Laisser coder d'abord** puis corriger : préféré à donner code complet
+- **Documentation ultra-détaillée** : absolument essentiel pour cet utilisateur
+
+**Points d'attention :**
+
+- Ne pas oublier le **commit Git** à chaque fin de session
+- Ne pas oublier de **mettre à jour les instructions** après chaque session
+- Toujours **célébrer les réussites** même petites (maintient motivation)
+
+**Ajustements pour prochaines sessions :**
+
+- Continuer le pattern : **concept → questions → pseudo-code → coder soi-même → corriger**
+- Toujours utiliser des **analogies concrètes** pour nouveaux concepts
+- Garder les snippets **≤60 lignes** et **très commentés**
 
 ---
 

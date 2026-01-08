@@ -32,6 +32,19 @@ Cette documentation suit ton apprentissage **session par session**. Chaque sessi
 
 ---
 
+### Session 1 — Validation avec Pydantic
+
+**Objectifs :**
+
+- Comprendre Pydantic et la validation automatique
+- Créer un modèle de données `Message`
+- Créer un endpoint POST `/message`
+- Valider les entrées utilisateur automatiquement
+
+👉 [Accéder à la Session 1](sessions/session_1_pydantic/README.md)
+
+---
+
 ## 🧭 Comment utiliser cette doc
 
 1. **Lis dans l'ordre des sessions** si tu débutes
@@ -42,4 +55,4 @@ Cette documentation suit ton apprentissage **session par session**. Chaque sessi
 
 ---
 
-_Dernière mise à jour : 2026-01-08_
+_Dernière mise à jour : 2026-01-08 (Session 1)_
