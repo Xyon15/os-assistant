@@ -45,6 +45,19 @@ Cette documentation suit ton apprentissage **session par session**. Chaque sessi
 
 ---
 
+### Session 2 — Persistance avec SQLite
+
+**Objectifs :**
+
+- Comprendre SQLite (base de données persistante)
+- Créer un module `memory.py` pour gérer la DB
+- Sauvegarder et récupérer des messages
+- Intégrer SQLite dans FastAPI avec lifespan
+
+👉 [Accéder à la Session 2](sessions/session_2_sqlite/README.md)
+
+---
+
 ## 🧭 Comment utiliser cette doc
 
 1. **Lis dans l'ordre des sessions** si tu débutes
@@ -55,4 +68,4 @@ Cette documentation suit ton apprentissage **session par session**. Chaque sessi
 
 ---
 
-_Dernière mise à jour : 2026-01-08 (Session 1)_
+_Dernière mise à jour : 2026-01-08 (Session 2)_

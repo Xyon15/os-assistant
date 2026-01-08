@@ -287,6 +287,52 @@ uvicorn backend.main:app --reload --port 8000
 - Toujours utiliser des **analogies concrètes** pour nouveaux concepts
 - Garder les snippets **≤60 lignes** et **très commentés**
 
+### 🎯 Observations après Session 2 (2026-01-08)
+
+**Réussites majeures de la session :**
+
+- ✅ A **écrit 90% du code SQLite lui-même** (initialiser_db, sauvegarder_message, recuperer_messages)
+- ✅ A **demandé à commenter le code** avant de continuer (excellent réflexe de développeur)
+- ✅ A compris la différence tuple vs liste après explication
+- ✅ A identifié warning Pylance et demandé explication (autonomie croissante)
+- ✅ A testé systématiquement avec Swagger (préféré à PowerShell)
+
+**Concepts maîtrisés :**
+
+- ✅ **SQLite = Excel persistant** : analogie très bien comprise
+- ✅ **Boucles `for`** pour transformer tuples en dictionnaires
+- ✅ **Placeholders `?`** pour sécurité SQL
+- ✅ **Lifespan FastAPI** : comprend `yield` et cycle de vie
+- ✅ **`Optional[str]`** : types optionnels Python
+
+**Erreurs communes rencontrées (et corrigées rapidement) :**
+
+- ⚠️ Oublié `.close()` et `()` pour `commit()` → corrigé facilement
+- ⚠️ Confusion UNE ligne vs PLUSIEURS lignes (fetchall) → bien expliqué avec tableau Excel
+- ⚠️ Commentaires `#` dans requête SQL → appris que SQL utilise `--`
+
+**Évolution notable depuis Session 1 :**
+
+- **Plus autonome** : écrit le code en entier avant de demander validation
+- **Meilleur réflexe documentation** : demande à commenter avant de continuer
+- **Comprend mieux les erreurs** : identifie warnings Pylance
+- **Teste mieux** : préfère Swagger à PowerShell curl (bon choix)
+
+**Points forts confirmés :**
+
+- **Très motivé** par la progression visible (messages qui persistent)
+- **Aime les analogies** : "classeur Excel", "restaurant qui ouvre/ferme"
+- **Documentation impeccable** : respecte strictement les règles docs/
+- **Capable de débogage** : teste, identifie erreurs, demande aide ciblée
+
+**Recommandations pour Session 3 (LLM API) :**
+
+- Introduire **`try/except`** (gestion d'erreurs pour API externes)
+- Montrer **`.env`** et `os.getenv()` pour clés API (sécurité)
+- Expliquer **requêtes HTTP** avec `requests` ou `httpx`
+- Utiliser analogie **"appeler un ami expert"** pour LLM
+- Garder snippets ≤60 lignes, très commentés
+
 ---
 
 ## ✅ Rappel final (à chaque interaction avec Copilot)

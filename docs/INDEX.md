@@ -8,6 +8,7 @@
 
 - [Session 0 — Setup & Premier serveur FastAPI](sessions/session_0_setup/README.md) ✅
 - [Session 1 — Validation avec Pydantic](sessions/session_1_pydantic/README.md) ✅
+- [Session 2 — Persistance avec SQLite](sessions/session_2_sqlite/README.md) ✅
 
 ---
 
@@ -25,6 +26,7 @@
 | ------- | ---------- | ------------------------ | ---------- |
 | 0       | 2026-01-08 | Setup & /ping endpoint   | ✅ Terminé |
 | 1       | 2026-01-08 | Validation avec Pydantic | ✅ Terminé |
+| 2       | 2026-01-08 | Persistance avec SQLite  | ✅ Terminé |
 
 ---
 
@@ -45,6 +47,16 @@
 - Modèles de données (classes)
 - Champs obligatoires et facultatifs
 - Endpoint POST avec validation
+
+### Session 2
+
+- SQLite et bases de données relationnelles
+- Persistance des données (fichier memory.db)
+- SQL : CREATE TABLE, INSERT INTO, SELECT
+- Sécurité avec placeholders `?`
+- Lifespan FastAPI (@asynccontextmanager)
+- Transformation tuples → dictionnaires
+- Endpoint GET /messages
 
 ---
 
