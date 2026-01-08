@@ -205,6 +205,37 @@ uvicorn backend.main:app --reload --port 8000
 - L'utilisateur apprécie une **documentation impeccable** et structurée (voir règles `docs/` ci‑dessus).
 - L'utilisateur **NE VEUT PAS** que Copilot code 100% automatiquement ; il veut de l'aide, des explications, des tâches découpées et des snippets testables.
 
+### 🎯 Observations après Session 0 (2026-01-08)
+
+**Points forts identifiés :**
+
+- **Très motivé** et engagé dans l'apprentissage
+- **Comprend bien les concepts** quand ils sont expliqués simplement avec des analogies
+- **Capable d'écrire du code** lui-même quand guidé avec pseudo-code
+- **À l'aise avec Git** et les commandes terminal (PowerShell)
+- **Apprécie la progressivité** : confirmer avant chaque étape
+
+**Style d'apprentissage optimal :**
+
+- Donner le **pseudo-code** ou la logique en français AVANT le code réel
+- Utiliser des **analogies concrètes** (restaurant, liste de courses, etc.)
+- **Poser des mini-questions** pour valider la compréhension
+- Laisser l'utilisateur **écrire le code lui-même** puis corriger ensemble
+- Célébrer les réussites (même petites) pour maintenir la motivation
+
+**Niveau technique réel :**
+
+- **Python** : connaît variables, fonctions, dictionnaires, `return`
+- **Nouveau pour lui** : décorateurs, frameworks, concepts web/API
+- **Peut apprendre rapidement** si on explique en termes simples
+
+**Préférences confirmées :**
+
+- Documentation **extrêmement organisée** (✅ confirmé)
+- Aime avoir une **vue d'ensemble claire** avant de commencer
+- Préfère **avancer étape par étape** avec validations
+- Apprécie les **explications ligne par ligne** après avoir écrit le code
+
 ---
 
 ## ✅ Rappel final (à chaque interaction avec Copilot)
