@@ -156,6 +156,7 @@ docs/
 - **Conventional Commits** obligatoires : `feat:`, `fix:`, `docs:`, `test:`, `refactor:`, `chore:`.
 - Message de commit : impératif, descriptif, mentionner docs modifiées.
 - **TOUJOURS inclure** le numéro de chat et session dans le message de commit pour traçabilité.
+- **Préférence utilisateur :** utiliser commandes Git classiques dans PowerShell (`git add .`, `git commit -m`) plutôt que outils MCP GitKraken.
 
 **Format recommandé :**
 
@@ -181,6 +182,12 @@ git commit -m "fix(api): correct role default value [Chat4/Session3]"
 
 # Documentation seule
 git commit -m "docs(session3): add technical guide [Chat4/Session3]"
+```
+
+**Commandes Git à utiliser :**
+```powershell
+git add .
+git commit -m "type(scope): description [ChatN/SessionX]"
 ```
 
 **Template PR (exemple)**
