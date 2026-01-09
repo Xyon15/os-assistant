@@ -65,16 +65,39 @@ Toute la documentation est dans [`docs/`](docs/README.md)
 - [Session 0 — Setup & Premier serveur FastAPI](docs/sessions/session_0_setup/README.md) ✅
 - [Session 1 — Validation avec Pydantic](docs/sessions/session_1_pydantic/README.md) ✅
 - [Session 2 — Persistance avec SQLite](docs/sessions/session_2_sqlite/README.md) ✅
+- [Session 3 — Intégration LLM API](docs/sessions/session_3_llm/README.md) ✅
 
 ### Guides spécifiques
 
 - [Guide technique Session 0](docs/sessions/session_0_setup/GUIDE_TECHNIQUE.md)
 - [Guide technique Session 1](docs/sessions/session_1_pydantic/GUIDE_TECHNIQUE.md)
 - [Guide technique Session 2](docs/sessions/session_2_sqlite/GUIDE_TECHNIQUE.md)
+- [Guide technique Session 3](docs/sessions/session_3_llm/GUIDE_TECHNIQUE.md)
 
 ---
 
 ## 📝 Changelog
+
+### [Session 3] - 2026-01-09
+
+**Ajouté**
+
+- Module `backend/ai.py` pour appeler GitHub Models (GPT-4o)
+- Fichier `.env` pour stocker secrets (GITHUB_TOKEN)
+- Endpoint POST `/chat` pour conversation avec LLM
+- Support des rôles (user/assistant) dans `memory.py`
+- Colonne `role` ajoutée à la table SQLite
+- Bibliothèques : `python-dotenv`, `requests`
+- Documentation complète Session 3
+
+**Concepts appris**
+
+- API LLM et appels HTTP avec `requests`
+- Gestion secrets avec `.env` et `python-dotenv`
+- `try/except` et pattern de réessai (3 tentatives)
+- Rôles conversationnels (user/assistant)
+- Headers HTTP (Authorization, Content-Type)
+- Extraction JSON : `resultat["choices"][0]["message"]["content"]`
 
 ### [Session 2] - 2026-01-08
 
@@ -103,11 +126,15 @@ Toute la documentation est dans [`docs/`](docs/README.md)
 - Endpoint POST `/message` avec validation des entrées
 - Champs obligatoires et facultatifs
 - Tests de validation (champs manquants, types incorrects)
-- Documentation complète Session 1 (sauvegarde dans SQLite)
-- ✅ Endpoint GET `/messages` fonctionnel (récupère depuis SQLite)
-- ✅ Base de données SQLite avec persistance
-- ✅ Documentation structurée (Sessions 0, 1 et 2)
-- 🔜 Prochaine étape : Intégration LLM API
+- Documentation complète Session 1
+
+**Concepts appris**
+
+- Pydantic et BaseModel
+- Validation automatique des données
+- Champs Optional[str]
+
+### [Session 0] - 2026-01-08
 
 **Ajouté**
 
@@ -117,6 +144,12 @@ Toute la documentation est dans [`docs/`](docs/README.md)
 - Documentation automatique `/docs`
 - Structure complète `docs/`
 
+**Concepts appris**
+
+- API REST et modèle client/serveur
+- FastAPI et décorateurs Python
+- Dictionnaires Python et JSON
+
 ---
 
 ## ✅ Status final
@@ -125,5 +158,9 @@ Toute la documentation est dans [`docs/`](docs/README.md)
 - ✅ Endpoint `/ping` fonctionnel
 - ✅ Modèle Pydantic `Message` avec validation
 - ✅ Endpoint POST `/message` fonctionnel
-- ✅ Documentation structurée (Session 0 & 1)
-- 🔜 Prochaine étape : Persistance SQLite
+- ✅ Endpoint GET `/messages` fonctionnel (récupère depuis SQLite)
+- ✅ Base de données SQLite avec persistance
+- ✅ Module `ai.py` pour appeler GitHub Models (GPT-4o)
+- ✅ Endpoint POST `/chat` pour conversation avec LLM
+- ✅ Documentation structurée (Sessions 0, 1, 2 et 3)
+- 🔜 Prochaine étape : Frontend interactif

@@ -155,15 +155,42 @@ docs/
 
 - **Conventional Commits** obligatoires : `feat:`, `fix:`, `docs:`, `test:`, `refactor:`, `chore:`.
 - Message de commit : impératif, descriptif, mentionner docs modifiées.
+- **TOUJOURS inclure** le numéro de chat et session dans le message de commit pour traçabilité.
+
+**Format recommandé :**
+
+```
+type(scope): description [ChatN/SessionX]
+
+Corps du message avec détails
+```
+
+**Exemples :**
+
+```bash
+# Session complète
+git commit -m "feat(llm): add GPT-4o integration [Chat4/Session3]
+
+- Add backend/ai.py for GitHub Models API
+- Add POST /chat endpoint
+- Modify memory.py to support roles
+- Complete Session 3 documentation"
+
+# Correctif mineur
+git commit -m "fix(api): correct role default value [Chat4/Session3]"
+
+# Documentation seule
+git commit -m "docs(session3): add technical guide [Chat4/Session3]"
+```
 
 **Template PR (exemple)**
 
 ```
-Titre : feat(api): add /ping endpoint (FastAPI)
+Titre : feat(api): add /ping endpoint (FastAPI) [Chat1/Session0]
 Description :
 - Ajoute endpoint GET /ping -> {"status":"ok"}
 - Commande test : `uvicorn backend.main:app --reload` puis `curl http://127.0.0.1:8000/ping`
-- Docs : mise à jour docs/sessions/session_1_setup/
+- Docs : mise à jour docs/sessions/session_0_setup/
 ```
 
 ---
@@ -332,6 +359,67 @@ uvicorn backend.main:app --reload --port 8000
 - Expliquer **requêtes HTTP** avec `requests` ou `httpx`
 - Utiliser analogie **"appeler un ami expert"** pour LLM
 - Garder snippets ≤60 lignes, très commentés
+
+### 🎯 Observations après Session 3 (2026-01-09)
+
+**Réussites majeures de la session :**
+
+- ✅ A **écrit 100% du code** de `ai.py` lui-même (~50 lignes avec tous les TODO)
+- ✅ A **parfaitement compris** l'analogie "appeler un ami expert" pour LLM
+- ✅ A choisi **option intelligente** pour gestion erreur (réessayer 3 fois + message poli)
+- ✅ A **testé méthodiquement** : module seul → endpoint → persistance
+- ✅ A **compris sécurité** `.env` et pourquoi ne pas committer secrets
+
+**Concepts maîtrisés :**
+
+- ✅ **API LLM** = service distant qui génère texte intelligent
+- ✅ **`try/except`** : pattern gestion d'erreurs robuste
+- ✅ **Boucle réessai** avec `time.sleep(2)` entre tentatives
+- ✅ **`requests.post()`** : requêtes HTTP (headers, JSON, status codes)
+- ✅ **`.env` + `python-dotenv`** : stocker/lire secrets
+- ✅ **Rôles conversationnels** : user vs assistant
+- ✅ **Navigation dictionnaires imbriqués** : `resultat["choices"][0]["message"]["content"]`
+
+**Décisions techniques judicieuses :**
+
+- ✅ Choix **GPT-4o** pour assistant OS (meilleure connaissance PowerShell/Windows)
+- ✅ **GitHub Models** plutôt qu'Ollama (gratuit sans consommer PC)
+- ✅ **Réessayer 3 fois** puis message poli (UX professionnelle)
+
+**Erreurs corrigées rapidement :**
+
+- ⚠️ Ajout `message` dans classe `Message` au lieu de créer `ChatMessage` séparée
+- ✅ Correction immédiate : séparation modèles Pydantic (principe SOLID)
+
+**Évolution notable depuis Session 2 :**
+
+- **Encore plus autonome** : écrit fonctions ~50 lignes sans aide
+- **Comprend HTTP** : POST, headers, JSON, status codes
+- **Réflexes sécurité** : comprend `.env` et `.gitignore`
+- **Tests professionnels** : isole chaque composant avant intégration
+
+**Points forts confirmés :**
+
+- **Très motivé** : réponse GPT-4o "waouh" maintient engagement
+- **Aime tester** : préfère Swagger (visuel) à PowerShell
+- **Documentation impeccable** : respecte strictement règles (checklist)
+- **Apprend vite** : nouveaux concepts (try/except, API) maîtrisés en 1 session
+
+**Patterns d'apprentissage validés :**
+
+- ✅ **Analogies concrètes** : "ami au téléphone" = très efficace
+- ✅ **Mini-questions 3 points** : excellente validation compréhension
+- ✅ **Pseudo-code → code** : pattern optimal pour cet utilisateur
+- ✅ **Célébrer succès** : "BRAVO !", "PARFAIT !" maintient motivation
+
+**Recommandations pour Session 4 (Frontend) :**
+
+- Introduire **`fetch()` JavaScript** (similaire à `requests.post()` Python)
+- Montrer **DOM** : `document.getElementById()`, `textContent`
+- Expliquer **événements** : `addEventListener("click", ...)`
+- Utiliser analogie **"formulaire papier → formulaire web"**
+- CSS simple : Flexbox pour layout chat
+- Garder HTML/JS/CSS séparés et bien commentés
 
 ---
 

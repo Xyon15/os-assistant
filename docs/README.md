@@ -58,6 +58,21 @@ Cette documentation suit ton apprentissage **session par session**. Chaque sessi
 
 ---
 
+### Session 3 — Intégration LLM API
+
+**Objectifs :**
+
+- Comprendre ce qu'est une API LLM
+- Créer un module `ai.py` pour appeler GitHub Models (GPT-4o)
+- Gérer les secrets avec `.env` et `python-dotenv`
+- Créer un endpoint POST `/chat` pour discuter avec le LLM
+- Modifier `memory.py` pour supporter les rôles (user/assistant)
+- Sauvegarder les conversations dans SQLite
+
+👉 [Accéder à la Session 3](sessions/session_3_llm/README.md)
+
+---
+
 ## 🧭 Comment utiliser cette doc
 
 1. **Lis dans l'ordre des sessions** si tu débutes
@@ -68,4 +83,4 @@ Cette documentation suit ton apprentissage **session par session**. Chaque sessi
 
 ---
 
-_Dernière mise à jour : 2026-01-08 (Session 2)_
+_Dernière mise à jour : 2026-01-09 (Session 3)_

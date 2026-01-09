@@ -9,6 +9,7 @@
 - [Session 0 — Setup & Premier serveur FastAPI](sessions/session_0_setup/README.md) ✅
 - [Session 1 — Validation avec Pydantic](sessions/session_1_pydantic/README.md) ✅
 - [Session 2 — Persistance avec SQLite](sessions/session_2_sqlite/README.md) ✅
+- [Session 3 — Intégration LLM API](sessions/session_3_llm/README.md) ✅
 
 ---
 
@@ -27,6 +28,7 @@
 | 0       | 2026-01-08 | Setup & /ping endpoint   | ✅ Terminé |
 | 1       | 2026-01-08 | Validation avec Pydantic | ✅ Terminé |
 | 2       | 2026-01-08 | Persistance avec SQLite  | ✅ Terminé |
+| 3       | 2026-01-09 | Intégration LLM API      | ✅ Terminé |
 
 ---
 
@@ -58,6 +60,17 @@
 - Transformation tuples → dictionnaires
 - Endpoint GET /messages
 
+### Session 3
+
+- API LLM et appels HTTP avec `requests`
+- GitHub Models (GPT-4o gratuit pour étudiants)
+- Fichier `.env` et gestion des secrets
+- `python-dotenv` pour variables d'environnement
+- `try/except` et gestion d'erreurs robuste
+- Pattern de réessai avec `time.sleep()`
+- Rôles conversationnels (user/assistant)
+- Endpoint POST /chat
+
 ---
 
-_Dernière mise à jour : 2026-01-08_
+_Dernière mise à jour : 2026-01-09_
