@@ -66,6 +66,7 @@ Toute la documentation est dans [`docs/`](docs/README.md)
 - [Session 1 — Validation avec Pydantic](docs/sessions/session_1_pydantic/README.md) ✅
 - [Session 2 — Persistance avec SQLite](docs/sessions/session_2_sqlite/README.md) ✅
 - [Session 3 — Intégration LLM API](docs/sessions/session_3_llm/README.md) ✅
+- [Session 4 — Frontend Interactif](docs/sessions/session_4_frontend/README.md) ✅
 
 ### Guides spécifiques
 
@@ -73,10 +74,32 @@ Toute la documentation est dans [`docs/`](docs/README.md)
 - [Guide technique Session 1](docs/sessions/session_1_pydantic/GUIDE_TECHNIQUE.md)
 - [Guide technique Session 2](docs/sessions/session_2_sqlite/GUIDE_TECHNIQUE.md)
 - [Guide technique Session 3](docs/sessions/session_3_llm/GUIDE_TECHNIQUE.md)
+- [Guide technique Session 4](docs/sessions/session_4_frontend/GUIDE_TECHNIQUE.md)
 
 ---
 
 ## 📝 Changelog
+
+### [Session 4] - 2026-01-09
+
+**Ajouté**
+
+- Frontend HTML/JavaScript (`frontend/index.html`, `frontend/app.js`)
+- Middleware CORS dans `backend/main.py`
+- Interface chat interactive (input + bouton)
+- Envoi messages avec bouton ou touche Entrée
+- Message de chargement pendant réflexion LLM
+- Documentation complète Session 4
+
+**Concepts appris**
+
+- `fetch()` JavaScript pour requêtes HTTP
+- `addEventListener()` pour événements (clic, touche)
+- `innerHTML` pour modifier le DOM
+- Promesses JavaScript et `.then()`
+- CORS (Cross-Origin Resource Sharing)
+- Middleware FastAPI
+- Séparation HTML / JavaScript
 
 ### [Session 3] - 2026-01-09
 
@@ -162,5 +185,8 @@ Toute la documentation est dans [`docs/`](docs/README.md)
 - ✅ Base de données SQLite avec persistance
 - ✅ Module `ai.py` pour appeler GitHub Models (GPT-4o)
 - ✅ Endpoint POST `/chat` pour conversation avec LLM
-- ✅ Documentation structurée (Sessions 0, 1, 2 et 3)
-- 🔜 Prochaine étape : Frontend interactif
+- ✅ Frontend HTML/JavaScript interactif
+- ✅ Communication frontend ↔ backend ↔ LLM opérationnelle
+- ✅ Documentation structurée (Sessions 0, 1, 2, 3 et 4)
+- 🎉 **MVP fonctionnel complet !**
+- 🔜 Prochaine étape optionnelle : CSS et amélioration UX

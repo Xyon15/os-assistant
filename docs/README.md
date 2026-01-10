@@ -73,6 +73,20 @@ Cette documentation suit ton apprentissage **session par session**. Chaque sessi
 
 ---
 
+### Session 4 — Frontend Interactif
+
+**Objectifs :**
+
+- Comprendre `fetch()` en JavaScript
+- Créer une interface HTML simple (input + bouton)
+- Gérer les événements (clic, touche Entrée)
+- Afficher la conversation en temps réel
+- Configurer CORS dans FastAPI
+
+👉 [Accéder à la Session 4](sessions/session_4_frontend/README.md)
+
+---
+
 ## 🧭 Comment utiliser cette doc
 
 1. **Lis dans l'ordre des sessions** si tu débutes
@@ -83,4 +97,4 @@ Cette documentation suit ton apprentissage **session par session**. Chaque sessi
 
 ---
 
-_Dernière mise à jour : 2026-01-09 (Session 3)_
+_Dernière mise à jour : 2026-01-09 (Session 4)_

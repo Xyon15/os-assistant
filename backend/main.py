@@ -13,6 +13,7 @@ Endpoints disponibles :
 from contextlib import asynccontextmanager  # Pour gérer le cycle de vie de l'app
 from typing import Optional  # Pour déclarer des types optionnels (peut être None)
 from fastapi import FastAPI  # Framework web pour créer l'API
+from fastapi.middleware.cors import CORSMiddleware  # Pour autoriser les requêtes depuis le navigateur
 from pydantic import BaseModel  # Pour valider les données reçues
 from backend.memory import initialiser_db, sauvegarder_message, recuperer_messages
 from backend.ai import demander_llm
@@ -27,6 +28,16 @@ async def lifespan(app: FastAPI):
 
 # Créer l'application FastAPI avec le gestionnaire de cycle de vie
 app = FastAPI(lifespan=lifespan)
+
+# Configurer CORS : autoriser toutes les origines (pour le développement)
+# Permet au navigateur d'envoyer des requêtes depuis file:// ou localhost
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # "*" = autoriser TOUTES les origines (OK pour dev local)
+    allow_credentials=True,  # Autoriser l'envoi de cookies/authentification
+    allow_methods=["*"],  # Autoriser toutes les méthodes (GET, POST, OPTIONS...)
+    allow_headers=["*"],  # Autoriser tous les headers HTTP
+)
 
 # Endpoint GET /ping : vérifier que le serveur fonctionne
 @app.get("/ping")

@@ -10,6 +10,7 @@
 - [Session 1 — Validation avec Pydantic](sessions/session_1_pydantic/README.md) ✅
 - [Session 2 — Persistance avec SQLite](sessions/session_2_sqlite/README.md) ✅
 - [Session 3 — Intégration LLM API](sessions/session_3_llm/README.md) ✅
+- [Session 4 — Frontend Interactif](sessions/session_4_frontend/README.md) ✅
 
 ---
 
@@ -29,6 +30,7 @@
 | 1       | 2026-01-08 | Validation avec Pydantic | ✅ Terminé |
 | 2       | 2026-01-08 | Persistance avec SQLite  | ✅ Terminé |
 | 3       | 2026-01-09 | Intégration LLM API      | ✅ Terminé |
+| 4       | 2026-01-09 | Frontend Interactif      | ✅ Terminé |
 
 ---
 
@@ -70,6 +72,17 @@
 - Pattern de réessai avec `time.sleep()`
 - Rôles conversationnels (user/assistant)
 - Endpoint POST /chat
+
+### Session 4
+
+- `fetch()` JavaScript pour requêtes HTTP
+- `addEventListener()` pour événements (clic, touche)
+- `innerHTML` pour modifier le DOM
+- Promesses JavaScript et `.then()`
+- CORS (Cross-Origin Resource Sharing)
+- Middleware FastAPI
+- Séparation HTML / JavaScript (bonnes pratiques)
+- Gestion événements navigateur
 
 ---
 
