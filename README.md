@@ -20,7 +20,7 @@ Construire un assistant personnel avec :
 - **Backend :** Python 3.10+ / FastAPI / Uvicorn
 - **Base de données :** SQLite
 - **Frontend :** HTML / CSS / JavaScript
-- **API IA :** (à venir)
+- **API IA :** Github models (Temporaire)
 
 ---
 
@@ -71,6 +71,7 @@ Toute la documentation est dans [`docs/`](docs/README.md)
 
 ### Guides spécifiques
 
+- [Guide Git Workflow](docs/GIT_WORKFLOW.md) 🌿
 - [Guide technique Session 0](docs/sessions/session_0_setup/GUIDE_TECHNIQUE.md)
 - [Guide technique Session 1](docs/sessions/session_1_pydantic/GUIDE_TECHNIQUE.md)
 - [Guide technique Session 2](docs/sessions/session_2_sqlite/GUIDE_TECHNIQUE.md)

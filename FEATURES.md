@@ -2,8 +2,8 @@
 
 > Liste des fonctionnalités futures pour OS Assistant
 
-**Status actuel :** v0.1.0-mvp ✅  
-**Date :** 2026-01-10
+**Status actuel :** v0.2.0 (Session 5 terminée) ✅  
+**Date :** 2026-01-13
 
 ---
 
@@ -15,48 +15,103 @@
 
 ---
 
-## 🎨 Session 5 — Design & UX (CSS)
+## 🎨 Session 5 — Design & UX (CSS) ✅
 
 **Priorité :** 🔴 Haute  
-**Branche :** `feature/session5-css`
+**Branche :** `feature/session5-css` (mergée dans main)  
+**Status :** ✅ **TERMINÉ** (2026-01-13)
 
 ### Objectifs
 
-- Ajouter un design moderne et professionnel
-- Améliorer la lisibilité de la conversation
-- Rendre l'interface plus agréable visuellement
+- ✅ Ajouter un design moderne et professionnel
+- ✅ Améliorer la lisibilité de la conversation
+- ✅ Rendre l'interface plus agréable visuellement
 
 ### Fonctionnalités
 
-- [ ] Créer `frontend/style.css`
-- [ ] Bulles de chat (comme WhatsApp/Messenger)
+- ✅ Créer `frontend/style.css` (~120 lignes)
+- ✅ Bulles de chat (comme WhatsApp/Messenger)
   - User : bulles bleues alignées à droite
   - Assistant : bulles grises alignées à gauche
-- [ ] Couleurs et typographie
-  - Police moderne (ex: Inter, Roboto)
-  - Palette de couleurs cohérente
-- [ ] Layout avec Flexbox
+- ✅ Couleurs et typographie
+  - Police Arial/sans-serif
+  - Palette de couleurs cohérente (bleu #3498db, gris #ecf0f1)
+- ✅ Layout avec Flexbox
   - Zone conversation scrollable
   - Input + bouton toujours visibles en bas
-- [ ] Animations subtiles
-  - Transition apparition messages
-  - Hover sur bouton
-- [ ] Responsive design (optionnel)
-  - Fonctionne bien sur mobile/tablette
+- ✅ Animations subtiles
+  - Transition apparition messages (fadeIn)
+  - Hover sur bouton et bulles
+- ⏸️ Responsive design (optionnel) — Report à Session 6+
+  - Fonctionne bien sur desktop
 
 ### Fichiers à modifier
 
-- `frontend/style.css` (nouveau)
-- `frontend/index.html` (ajouter `<link rel="stylesheet" href="style.css">`)
+- ✅ `frontend/style.css` (nouveau — 124 lignes)
+- ✅ `frontend/index.html` (ajout `<link rel="stylesheet" href="style.css">`)
+- ✅ `frontend/app.js` (remplacement `innerHTML +=` par `createElement()`)
+- ✅ Documentation complète (GUIDE_TECHNIQUE + README + CURRENT_STATE)
 
-### Estimation
+### Résultat
 
-**Temps :** 1-2 heures  
-**Difficulté :** 🟢 Facile (CSS pur, pas de logique)
+✅ **Succès total !** Interface de chat moderne et professionnelle comparable aux applications commerciales.
 
 ---
 
-## 📜 Chargement de l'historique au démarrage
+## 🎯 Prochaines sessions suggérées
+
+### Session 6 — Améliorations UX (optionnel)
+
+**Priorité :** 🟡 Moyenne  
+**Durée estimée :** 1-2 heures
+
+**Fonctionnalités :**
+
+- [ ] Auto-scroll automatique vers dernier message
+- [ ] Chargement historique au démarrage de la page
+- [ ] Bouton "🗑️ Effacer la conversation"
+- [ ] Gestion d'erreurs améliorée (messages user-friendly)
+- [ ] Indicateur visuel pendant l'envoi
+
+### Session 7 — Dark Mode (optionnel)
+
+**Priorité :** 🟢 Basse  
+**Durée estimée :** 2-3 heures
+
+**Fonctionnalités :**
+
+- [ ] Variables CSS pour thèmes (`:root`)
+- [ ] Switch pour basculer clair/sombre
+- [ ] Persistance préférence utilisateur (localStorage)
+- [ ] Couleurs adaptées pour chaque thème
+
+### Session 8 — Tests automatisés
+
+**Priorité :** 🟡 Moyenne  
+**Durée estimée :** 3-4 heures
+
+**Fonctionnalités :**
+
+- [ ] Tests pytest pour backend (endpoints, mémoire, LLM)
+- [ ] Tests Selenium pour frontend (interface, interactions)
+- [ ] CI/CD GitHub Actions (optionnel)
+
+### Session 9 — Déploiement
+
+**Priorité :** 🔴 Haute (quand prêt à partager)  
+**Durée estimée :** 4-6 heures
+
+**Fonctionnalités :**
+
+- [ ] Backend sur Render ou Railway
+- [ ] Frontend sur GitHub Pages ou Vercel
+- [ ] Migration SQLite → PostgreSQL
+- [ ] Variables d'environnement production
+- [ ] CORS configuré pour domaine production
+
+---
+
+## 📜 Auto-scroll automatique
 
 **Priorité :** 🔴 Haute  
 **Branche :** `feature/historique-loading`
@@ -500,30 +555,29 @@ function lireMessage(texte) {
 
 ## 🎯 Roadmap suggérée
 
-### Phase 1 — Améliorations essentielles (v0.2.0)
+### Phase 1 — Améliorations essentielles (v0.2.0) ✅
 
-1. ✅ Session 5 — CSS & Design
-2. ✅ Chargement historique au démarrage
-3. ✅ Gestion erreurs améliorée
-4. ✅ Auto-scroll
+1. ✅ **Session 5 — CSS & Design** (TERMINÉ 2026-01-13)
+2. ⏸️ Chargement historique au démarrage (optionnel)
+3. ⏸️ Gestion erreurs améliorée (optionnel)
+4. ⏸️ Auto-scroll (optionnel)
 
-**Estimation :** 3-4 heures  
-**Résultat :** Application beaucoup plus agréable à utiliser
+**Résultat :** ✅ Application moderne et professionnelle
 
 ### Phase 2 — Fonctionnalités avancées (v0.3.0)
 
-1. ✅ Bouton "Effacer"
-2. ✅ Sécurité & Validation
-3. ✅ Reconnaissance vocale (optionnel)
+1. ⏸️ Bouton "Effacer"
+2. ⏸️ Sécurité & Validation
+3. ⏸️ Reconnaissance vocale (optionnel)
 
 **Estimation :** 3-4 heures  
 **Résultat :** Application plus robuste et polyvalente
 
 ### Phase 3 — Déploiement (v1.0.0)
 
-1. ✅ Déploiement en ligne
-2. ✅ PostgreSQL (au lieu de SQLite)
-3. ✅ Configuration production
+1. ⏸️ Déploiement en ligne
+2. ⏸️ PostgreSQL (au lieu de SQLite)
+3. ⏸️ Configuration production
 
 **Estimation :** 4-6 heures  
 **Résultat :** Application accessible publiquement
