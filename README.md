@@ -67,6 +67,7 @@ Toute la documentation est dans [`docs/`](docs/README.md)
 - [Session 2 — Persistance avec SQLite](docs/sessions/session_2_sqlite/README.md) ✅
 - [Session 3 — Intégration LLM API](docs/sessions/session_3_llm/README.md) ✅
 - [Session 4 — Frontend Interactif](docs/sessions/session_4_frontend/README.md) ✅
+- [Session 5 — CSS & Design Moderne](docs/sessions/session_5_css/README.md) ✅
 
 ### Guides spécifiques
 
@@ -75,10 +76,39 @@ Toute la documentation est dans [`docs/`](docs/README.md)
 - [Guide technique Session 2](docs/sessions/session_2_sqlite/GUIDE_TECHNIQUE.md)
 - [Guide technique Session 3](docs/sessions/session_3_llm/GUIDE_TECHNIQUE.md)
 - [Guide technique Session 4](docs/sessions/session_4_frontend/GUIDE_TECHNIQUE.md)
+- [Guide technique Session 5](docs/sessions/session_5_css/GUIDE_TECHNIQUE.md)
 
 ---
 
 ## 📝 Changelog
+
+### [Session 5] - 2026-01-13
+
+**Ajouté**
+
+- Fichier CSS `frontend/style.css` (~120 lignes) avec design moderne
+- Layout Flexbox vertical (body) et horizontal (#inputZone)
+- Bulles de messages stylisées (user bleue droite, assistant grise gauche)
+- Animations CSS (fadeIn apparition + hover scale)
+- Commentaires détaillés sur tous les fichiers frontend
+- `id="inputZone"` dans HTML pour sélecteur CSS
+- Documentation complète Session 5
+
+**Modifié**
+
+- `frontend/app.js` : Remplacement `innerHTML +=` par `createElement()` + `appendChild()`
+- `frontend/app.js` : Ajout `setTimeout(400ms)` pour délai naturel avant "est en train d'écrire..."
+- `frontend/index.html` : Suppression `<p>Interface prête</p>`, ajout commentaires HTML
+- Performance améliorée : animations uniquement sur nouveaux messages
+
+**Concepts appris**
+
+- Flexbox CSS (`display: flex`, `flex-direction`, `justify-content`, `align-items`)
+- Animations CSS (`@keyframes`, `animation`, `transition`)
+- Pseudo-classes (`:hover`)
+- `createElement()` et `appendChild()` (DOM moderne)
+- `setTimeout()` pour délais naturels
+- Bulles de chat (border-radius, box-shadow, max-width)
 
 ### [Session 4] - 2026-01-09
 
@@ -187,6 +217,9 @@ Toute la documentation est dans [`docs/`](docs/README.md)
 - ✅ Endpoint POST `/chat` pour conversation avec LLM
 - ✅ Frontend HTML/JavaScript interactif
 - ✅ Communication frontend ↔ backend ↔ LLM opérationnelle
-- ✅ Documentation structurée (Sessions 0, 1, 2, 3 et 4)
-- 🎉 **MVP fonctionnel complet !**
-- 🔜 Prochaine étape optionnelle : CSS et amélioration UX
+- ✅ Design CSS moderne avec Flexbox et animations
+- ✅ Bulles de chat stylisées (user/assistant)
+- ✅ Code entièrement commenté (frontend)
+- ✅ Documentation structurée (Sessions 0 à 5)
+- 🎉 **Application complète et professionnelle !**
+- 🔜 Prochaines étapes optionnelles : Auto-scroll, Dark mode, Tests, Déploiement

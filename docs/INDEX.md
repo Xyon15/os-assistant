@@ -11,6 +11,7 @@
 - [Session 2 — Persistance avec SQLite](sessions/session_2_sqlite/README.md) ✅
 - [Session 3 — Intégration LLM API](sessions/session_3_llm/README.md) ✅
 - [Session 4 — Frontend Interactif](sessions/session_4_frontend/README.md) ✅
+- [Session 5 — CSS & Design Moderne](sessions/session_5_css/README.md) ✅
 
 ---
 
@@ -31,6 +32,7 @@
 | 2       | 2026-01-08 | Persistance avec SQLite  | ✅ Terminé |
 | 3       | 2026-01-09 | Intégration LLM API      | ✅ Terminé |
 | 4       | 2026-01-09 | Frontend Interactif      | ✅ Terminé |
+| 5       | 2026-01-13 | CSS & Design Moderne     | ✅ Terminé |
 
 ---
 
@@ -84,6 +86,16 @@
 - Séparation HTML / JavaScript (bonnes pratiques)
 - Gestion événements navigateur
 
+### Session 5
+
+- Flexbox CSS (`display: flex`, `flex-direction`, `justify-content`, `align-items`)
+- Animations CSS (`@keyframes`, `animation`, `transition`)
+- Pseudo-classes (`:hover`)
+- `createElement()` et `appendChild()` (DOM moderne)
+- `setTimeout()` pour délais naturels
+- Bulles de chat stylisées (alignment, border-radius, box-shadow)
+- Code commenté professionnellement
+
 ---
 
-_Dernière mise à jour : 2026-01-09_
+_Dernière mise à jour : 2026-01-13_
