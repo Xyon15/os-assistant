@@ -87,6 +87,20 @@ Cette documentation suit ton apprentissage **session par session**. Chaque sessi
 
 ---
 
+### Session 5 — CSS & Design Moderne
+
+**Objectifs :**
+
+- Comprendre Flexbox (layout moderne)
+- Créer des bulles de messages stylisées (user/assistant)
+- Ajouter des animations CSS (apparition, hover)
+- Optimiser le JavaScript avec `createElement()`
+- Ajouter des délais naturels avec `setTimeout()`
+
+👉 [Accéder à la Session 5](sessions/session_5_css/README.md)
+
+---
+
 ## 🧭 Comment utiliser cette doc
 
 1. **Lis dans l'ordre des sessions** si tu débutes
@@ -97,4 +111,4 @@ Cette documentation suit ton apprentissage **session par session**. Chaque sessi
 
 ---
 
-_Dernière mise à jour : 2026-01-09 (Session 4)_
+_Dernière mise à jour : 2026-01-13 (Session 5)_
