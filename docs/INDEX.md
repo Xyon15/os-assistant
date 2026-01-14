@@ -12,6 +12,7 @@
 - [Session 3 — Intégration LLM API](sessions/session_3_llm/README.md) ✅
 - [Session 4 — Frontend Interactif](sessions/session_4_frontend/README.md) ✅
 - [Session 5 — CSS & Design Moderne](sessions/session_5_css/README.md) ✅
+- [Session 6 — Améliorations UX](sessions/session_6_ux/README.md) ✅
 
 ---
 
@@ -33,6 +34,7 @@
 | 3       | 2026-01-09 | Intégration LLM API      | ✅ Terminé |
 | 4       | 2026-01-09 | Frontend Interactif      | ✅ Terminé |
 | 5       | 2026-01-13 | CSS & Design Moderne     | ✅ Terminé |
+| 6       | 2026-01-14 | Améliorations UX         | ✅ Terminé |
 
 ---
 
@@ -96,6 +98,17 @@
 - Bulles de chat stylisées (alignment, border-radius, box-shadow)
 - Code commenté professionnellement
 
+### Session 6
+
+- Auto-scroll JavaScript (`scrollTop`, `scrollHeight`)
+- Gestion erreurs Promesses (`.catch()`)
+- Messages d'erreur utilisateur polis
+- Manipulation DOM (`innerHTML = ""`)
+- Désactivation boutons (`disabled`)
+- Pseudo-classe CSS (`:disabled`)
+- Flexbox avancé (`justify-content: space-between`, `flex: 1`)
+- Pattern UX : Désactiver → Traiter → Réactiver
+
 ---
 
-_Dernière mise à jour : 2026-01-13_
+_Dernière mise à jour : 2026-01-14_
