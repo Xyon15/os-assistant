@@ -101,6 +101,20 @@ Cette documentation suit ton apprentissage **session par session**. Chaque sessi
 
 ---
 
+### Session 6 — Améliorations UX
+
+**Objectifs :**
+
+- Ajouter auto-scroll automatique vers nouveaux messages
+- Gérer les erreurs avec messages polis
+- Créer un bouton Clear pour vider la conversation
+- Désactiver le bouton pendant traitement
+- Améliorer l'expérience utilisateur globale
+
+👉 [Accéder à la Session 6](sessions/session_6_ux/README.md)
+
+---
+
 ## 🧭 Comment utiliser cette doc
 
 1. **Lis dans l'ordre des sessions** si tu débutes

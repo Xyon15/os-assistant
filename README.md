@@ -68,6 +68,7 @@ Toute la documentation est dans [`docs/`](docs/README.md)
 - [Session 3 — Intégration LLM API](docs/sessions/session_3_llm/README.md) ✅
 - [Session 4 — Frontend Interactif](docs/sessions/session_4_frontend/README.md) ✅
 - [Session 5 — CSS & Design Moderne](docs/sessions/session_5_css/README.md) ✅
+- [Session 6 — Améliorations UX](docs/sessions/session_6_ux/README.md) ✅
 
 ### Guides spécifiques
 
@@ -78,10 +79,40 @@ Toute la documentation est dans [`docs/`](docs/README.md)
 - [Guide technique Session 3](docs/sessions/session_3_llm/GUIDE_TECHNIQUE.md)
 - [Guide technique Session 4](docs/sessions/session_4_frontend/GUIDE_TECHNIQUE.md)
 - [Guide technique Session 5](docs/sessions/session_5_css/GUIDE_TECHNIQUE.md)
+- [Guide technique Session 6](docs/sessions/session_6_ux/GUIDE_TECHNIQUE.md)
 
 ---
 
 ## 📝 Changelog
+
+### [Session 6] - 2026-01-14
+
+**Ajouté**
+
+- Auto-scroll automatique vers nouveaux messages (`scrollTop = scrollHeight`)
+- Gestion erreurs avec `.catch()` et message poli
+- Bouton Clear "🗑️ Effacer conversation" dans header
+- Désactivation bouton pendant traitement (`disabled`)
+- Style CSS pour message d'erreur (`.message-error`, `.bulle-error`)
+- Style CSS pour bouton désactivé (`#envoyerBtn:disabled`)
+- Style CSS header Flexbox (`#headerBar`)
+- Fonction `effacerConversation()` dans JavaScript
+- Documentation complète Session 6
+
+**Modifié**
+
+- `frontend/index.html` : Header Flexbox avec titre + bouton Clear
+- `frontend/app.js` : Ajout 3x auto-scroll, bloc `.catch()`, désactivation/réactivation bouton
+- `frontend/style.css` : Styles pour header, bouton Clear, message erreur, bouton désactivé
+
+**Concepts appris**
+
+- Auto-scroll JavaScript (`scrollTop`, `scrollHeight`)
+- Gestion erreurs Promesses (`.catch()`)
+- Manipulation DOM (`innerHTML = ""`, `disabled`)
+- Pseudo-classe CSS (`:disabled`)
+- Flexbox avancé (`justify-content: space-between`, `flex: 1`)
+- Pattern UX : Désactiver → Traiter → Réactiver
 
 ### [Session 5] - 2026-01-13
 
@@ -221,6 +252,10 @@ Toute la documentation est dans [`docs/`](docs/README.md)
 - ✅ Design CSS moderne avec Flexbox et animations
 - ✅ Bulles de chat stylisées (user/assistant)
 - ✅ Code entièrement commenté (frontend)
-- ✅ Documentation structurée (Sessions 0 à 5)
+- ✅ Auto-scroll automatique vers nouveaux messages
+- ✅ Gestion des erreurs avec messages polis
+- ✅ Bouton Clear pour vider conversation
+- ✅ Désactivation bouton pendant traitement
+- ✅ Documentation structurée (Sessions 0 à 6)
 - 🎉 **Application complète et professionnelle !**
-- 🔜 Prochaines étapes optionnelles : Auto-scroll, Dark mode, Tests, Déploiement
+- 🔜 Prochaines étapes optionnelles : Dark mode, Tests, Déploiement
