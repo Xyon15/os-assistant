@@ -35,6 +35,8 @@ function envoyerMessage() {
     messageUser.appendChild(bulleUser);
     conversation.appendChild(messageUser);
     
+    conversation.scrollTop = conversation.scrollHeight;
+    
     // Vider l'input immédiatement
     input.value = "";
     
@@ -51,6 +53,7 @@ function envoyerMessage() {
         bulleChargement.appendChild(texteChargement);
         messageChargement.appendChild(bulleChargement);
         conversation.appendChild(messageChargement);
+        conversation.scrollTop = conversation.scrollHeight;
         
         // --- Envoyer requête POST au backend ---
         fetch("http://127.0.0.1:8000/chat", {
@@ -74,6 +77,7 @@ function envoyerMessage() {
             bulleAssistant.textContent = donnees.reponse;
             messageAssistant.appendChild(bulleAssistant);
             conversation.appendChild(messageAssistant);
+            conversation.scrollTop = conversation.scrollHeight;
         });
     }, 400); // Délai de 400ms pour effet naturel
 }
