@@ -115,6 +115,20 @@ Cette documentation suit ton apprentissage **session par session**. Chaque sessi
 
 ---
 
+### Session 7 — Dark Mode
+
+**Objectifs :**
+
+- Créer variables CSS réutilisables
+- Implémenter un switch dark mode avec animation
+- Sauvegarder préférence utilisateur avec localStorage
+- Adapter toutes les couleurs aux 2 thèmes
+- Améliorer accessibilité et confort visuel
+
+👉 [Accéder à la Session 7](sessions/session_7_darkmode/README.md)
+
+---
+
 ## 🧭 Comment utiliser cette doc
 
 1. **Lis dans l'ordre des sessions** si tu débutes
@@ -125,4 +139,4 @@ Cette documentation suit ton apprentissage **session par session**. Chaque sessi
 
 ---
 
-_Dernière mise à jour : 2026-01-13 (Session 5)_
+_Dernière mise à jour : 2026-01-16 (Session 7)_

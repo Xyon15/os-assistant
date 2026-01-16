@@ -300,4 +300,65 @@
 
 ---
 
-_Dernière mise à jour : 2026-01-14 (Archive créée lors de la restructuration des instructions)_
+## 🎯 Observations après Session 6 (2026-01-14)
+
+**Réussites majeures de la session :**
+
+- ✅ A **écrit 100% du code auto-scroll** lui-même (3 lignes aux bons endroits)
+- ✅ A **parfaitement compris** `.catch()` après analogie "commander une pizza (Plan A/B)"
+- ✅ A **réagi avec autonomie** : "j'aurais pu le faire tout seul ça" (excellent réflexe !)
+- ✅ A **choisi CSS séparé** au lieu de styles inline (bon réflexe professionnel)
+- ✅ A **identifié oubli** : "tu oublies beaucoup de choses aujourd'hui" (vigilance accrue)
+
+**Concepts maîtrisés :**
+
+- ✅ **Auto-scroll** : `scrollTop`, `scrollHeight` (analogie "ascenseur" très efficace)
+- ✅ **Gestion erreurs** : `.catch(erreur => ...)`, messages utilisateur polis vs console technique
+- ✅ **Manipulation DOM** : `innerHTML = ""`, `disabled`, `textContent`
+- ✅ **Pseudo-classe CSS** : `:disabled` (opacity, cursor, background-color)
+- ✅ **Flexbox avancé** : `justify-content: space-between`, `flex: 1` pour header
+- ✅ **Pattern UX** : Désactiver → Traiter → Réactiver (dans `.then()` ET `.catch()`)
+
+**Évolution notable depuis Session 5 :**
+
+- **Encore plus autonome** : Identifie quand il peut coder seul ("j'aurais pu faire ça")
+- **Vigilance accrue** : Repère oublis de Copilot ("tu oublies beaucoup de choses")
+- **Réflexes professionnels** : Choix CSS séparé, demande commentaires
+- **Niveau intermédiaire** : Capable d'écrire ~30-50 lignes de code fonctionnel sans aide
+
+**Points forts confirmés :**
+
+- **Très motivé** : "Super trop bien !!!!!" maintient engagement
+- **Aime les analogies** : "ascenseur", "pizza par téléphone" = très efficaces
+- **Documentation impeccable** : respecte strictement règles (checklist)
+- **Apprend vite** : 4 améliorations UX maîtrisées en 1 session
+
+**Patterns d'apprentissage validés :**
+
+- ✅ **Mini-questions 3 points** : toujours efficace pour validation compréhension
+- ✅ **Pseudo-code → code** : pattern optimal (mais souvent non nécessaire maintenant)
+- ✅ **Analogies concrètes** : "ascenseur", "pizza", "tableau noir", "ascenseur en maintenance"
+- ✅ **Célébrer succès** : "BRAVO !", "EXCELLENT !" maintient motivation
+
+**Nouveaux patterns identifiés :**
+
+- **Demande autonomie** : "Je dois faire moi-même les choses que je sais faire !!!!! 😡" (excellente prise de conscience)
+- **Identifie erreurs Copilot** : Vigilance accrue sur oublis/erreurs (maturité croissante)
+- **Exige précision** : Demande valeurs exactes quand manquantes
+
+**Analogies efficaces (Session 6) :**
+
+- **scrollTop/scrollHeight** : "Ascenseur dans un immeuble" (étage actuel vs nombre d'étages)
+- **`.catch()`** : "Commander une pizza par téléphone (Plan A si ça répond / Plan B si personne répond)"
+- **Bouton Clear** : "Grosse éponge qui efface le tableau noir"
+- **Bouton disabled** : "Ascenseur en maintenance (bouton grisé jusqu'à réparation terminée)"
+
+**Recommandations pour Session 7+ :**
+
+- **Dark mode** : Variables CSS + switch + localStorage
+- **Tests** : pytest backend + Selenium frontend
+- **Déploiement** : Render/Railway (backend) + GitHub Pages/Vercel (frontend)
+
+---
+
+_Dernière mise à jour : 2026-01-16 (Archive complétée avec Session 6)_
