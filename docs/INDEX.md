@@ -13,6 +13,7 @@
 - [Session 4 — Frontend Interactif](sessions/session_4_frontend/README.md) ✅
 - [Session 5 — CSS & Design Moderne](sessions/session_5_css/README.md) ✅
 - [Session 6 — Améliorations UX](sessions/session_6_ux/README.md) ✅
+- [Session 7 — Dark Mode](sessions/session_7_darkmode/README.md) ✅
 
 ---
 
@@ -35,6 +36,7 @@
 | 4       | 2026-01-09 | Frontend Interactif      | ✅ Terminé |
 | 5       | 2026-01-13 | CSS & Design Moderne     | ✅ Terminé |
 | 6       | 2026-01-14 | Améliorations UX         | ✅ Terminé |
+| 7       | 2026-01-15 | Dark Mode                | ✅ Terminé |
 
 ---
 
@@ -109,6 +111,16 @@
 - Flexbox avancé (`justify-content: space-between`, `flex: 1`)
 - Pattern UX : Désactiver → Traiter → Réactiver
 
+### Session 7
+
+- Variables CSS (`:root`, `var()`)
+- Classes conditionnelles (`.dark-mode`)
+- localStorage (`setItem()`, `getItem()`)
+- Toggle classes JavaScript (`classList.toggle()`)
+- Event listeners (`change`)
+- Switch personnalisé CSS
+- Persistance préférences utilisateur
+
 ---
 
-_Dernière mise à jour : 2026-01-14_
+_Dernière mise à jour : 2026-01-16_

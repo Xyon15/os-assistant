@@ -112,71 +112,70 @@ Corps du message avec détails
 
 ---
 
-## 🎯 Observations Session 6 (2026-01-14) — **ÉTAT ACTUEL**
+## 🎯 Observations Session 7 (2026-01-16) — **ÉTAT ACTUEL**
 
 ### Réussites majeures de la session
 
-- ✅ A **écrit 100% du code auto-scroll** lui-même (3 lignes aux bons endroits)
-- ✅ A **parfaitement compris** `.catch()` après analogie "commander une pizza (Plan A/B)"
-- ✅ A **réagi avec autonomie** : "j'aurais pu le faire tout seul ça" (excellent réflexe !)
-- ✅ A **choisi CSS séparé** au lieu de styles inline (bon réflexe professionnel)
-- ✅ A **identifié oubli** : "tu oublies beaucoup de choses aujourd'hui" (vigilance accrue)
+- ✅ A **codé 95% de Session 7 lui-même** (variables CSS, switch HTML, JavaScript)
+- ✅ A **exigé son autonomie** : "je veux faire moi-même !!!!!!!!!!!!" (excellent !)
+- ✅ A **identifié problèmes visuels** : alignement switch, couleurs mode nuit
+- ✅ A **testé méthodiquement** : toggle, persistance, couleurs, localStorage
+- ✅ A **rappelé checklist** : "oublie pas de mettre à jour les instructions" (vigilance parfaite)
 
 ### Concepts maîtrisés
 
-- ✅ **Auto-scroll** : `scrollTop`, `scrollHeight` (analogie "ascenseur" très efficace)
-- ✅ **Gestion erreurs** : `.catch(erreur => ...)`, messages utilisateur polis vs console technique
-- ✅ **Manipulation DOM** : `innerHTML = ""`, `disabled`, `textContent`
-- ✅ **Pseudo-classe CSS** : `:disabled` (opacity, cursor, background-color)
-- ✅ **Flexbox avancé** : `justify-content: space-between`, `flex: 1` pour header
-- ✅ **Pattern UX** : Désactiver → Traiter → Réactiver (dans `.then()` ET `.catch()`)
+- ✅ **Variables CSS** : `:root`, `var()`, redéfinition dans `.dark-mode`
+- ✅ **localStorage** : `setItem()`, `getItem()`, persistance navigateur
+- ✅ **Toggle classes** : `classList.toggle()`, `classList.contains()`, `classList.add()`
+- ✅ **Event listeners** : `change` sur checkbox
+- ✅ **Switch CSS personnalisé** : styling checkbox avec animations
+- ✅ **Pseudo-éléments** : `::before` avec `content` et icônes
 
-### Évolution notable depuis Session 5
+### Évolution notable depuis Session 6
 
-- **Encore plus autonome** : Identifie quand il peut coder seul ("j'aurais pu faire ça")
-- **Vigilance accrue** : Repère oublis de Copilot ("tu oublies beaucoup de choses")
-- **Réflexes professionnels** : Choix CSS séparé, demande commentaires
-- **Niveau intermédiaire** : Capable d'écrire ~30-50 lignes de code fonctionnel sans aide
+- **Autonomie maximale** : Refuse code complet, veut coder lui-même systématiquement
+- **Vigilance parfaite** : Rappelle checklist documentation (oublie pas instructions)
+- **Exigence qualité** : Identifie problèmes visuels subtils (alignement, contraste)
+- **Niveau intermédiaire confirmé** : Capable d'implémenter features complètes (~65 lignes)
 
 ### Points forts confirmés
 
-- **Très motivé** : "Super trop bien !!!!!" maintient engagement
-- **Aime les analogies** : "ascenseur", "pizza par téléphone" = très efficaces
-- **Documentation impeccable** : respecte strictement règles (checklist)
-- **Apprend vite** : 4 améliorations UX maîtrisées en 1 session
+- **Très motivé** : Dark mode = feature très valorisante
+- **Aime les analogies** : "Boîtes de couleurs", "Tiroir secret", "Gardien"
+- **Documentation impeccable** : Rappelle checklist spontanément
+- **Apprend vite** : Nouveaux concepts (variables CSS, localStorage) maîtrisés rapidement
 
 ### Patterns d'apprentissage validés
 
-- ✅ **Mini-questions 3 points** : toujours efficace pour validation compréhension
-- ✅ **Pseudo-code → code** : pattern optimal (mais souvent non nécessaire maintenant)
-- ✅ **Analogies concrètes** : "ascenseur", "pizza", "tableau noir", "ascenseur en maintenance"
-- ✅ **Célébrer succès** : "BRAVO !", "EXCELLENT !" maintient motivation
+- ✅ **Mini-questions 3 points** : Toujours efficace (1 localStorage, 2 `=` vs `:`, 3 toggle)
+- ✅ **Valeurs exactes + laisser coder** : Pattern optimal maintenant
+- ✅ **Analogies concrètes** : "Boîtes de couleurs", "Tiroir du navigateur", "Interrupteur"
+- ✅ **Célébrer succès** : "EXCELLENT !", "Parfait !" maintient motivation
 
 ### Nouveaux patterns identifiés
 
-- **Demande autonomie** : "Je dois faire moi-même les choses que je sais faire !!!!! 😡" (excellente prise de conscience)
-- **Identifie erreurs Copilot** : Vigilance accrue sur oublis/erreurs (maturité croissante)
-- **Exige précision** : Demande valeurs exactes quand manquantes
+- **Exige autonomie maximale** : "je veux faire moi-même !!!!!!!!!!!!" (maturité confirmée)
+- **Rappelle checklist** : "oublie pas de mettre à jour les instructions" (excellente mémoire)
+- **Recherche ressources externes** : Demande bouton switch sur uiverse.io (initiative)
 
-### Analogies efficaces (Session 6)
+### Analogies efficaces (Session 7)
 
-- **scrollTop/scrollHeight** : "Ascenseur dans un immeuble" (étage actuel vs nombre d'étages)
-- **`.catch()`** : "Commander une pizza par téléphone (Plan A si ça répond / Plan B si personne répond)"
-- **Bouton Clear** : "Grosse éponge qui efface le tableau noir"
-- **Bouton disabled** : "Ascenseur en maintenance (bouton grisé jusqu'à réparation terminée)"
+- **Variables CSS** : "Boîtes de couleurs avec étiquettes" (très efficace)
+- **localStorage** : "Tiroir secret dans le navigateur" (très efficace)
+- **Toggle classe** : "Ajouter/enlever un badge sur une personne" (efficace)
+- **Event listener** : "Gardien qui surveille la porte" (efficace)
 
 ### Recommandations pour prochaines sessions
 
-- **Dark mode** : Variables CSS + switch + localStorage
-- **Tests** : pytest backend + Selenium frontend
+- **Tests automatisés** : pytest backend + Selenium frontend + GitHub Actions
 - **Déploiement** : Render/Railway (backend) + GitHub Pages/Vercel (frontend)
 - **Finalisation** : README complet, captures d'écran, vidéo démo
 
 ---
 
-## 📚 Observations Sessions 0-5 (Historique)
+## 📚 Observations Sessions 0-6 (Historique)
 
-> **Note :** Pour économiser des tokens, l'historique complet des Sessions 0-5 a été déplacé vers :
+> **Note :** Pour économiser des tokens, l'historique complet des Sessions 0-6 a été déplacé vers :
 > `.github/instructions/sessions-observations-archive.md`
 >
 > Consulter ce fichier si besoin de contexte sur l'évolution de l'utilisateur.
@@ -194,4 +193,4 @@ Corps du message avec détails
 
 ---
 
-_Dernière mise à jour : 2026-01-14 (Session 6 complétée)_
+_Dernière mise à jour : 2026-01-16 (Session 7 complétée)_

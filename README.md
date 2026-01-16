@@ -69,6 +69,7 @@ Toute la documentation est dans [`docs/`](docs/README.md)
 - [Session 4 — Frontend Interactif](docs/sessions/session_4_frontend/README.md) ✅
 - [Session 5 — CSS & Design Moderne](docs/sessions/session_5_css/README.md) ✅
 - [Session 6 — Améliorations UX](docs/sessions/session_6_ux/README.md) ✅
+- [Session 7 — Dark Mode](docs/sessions/session_7_darkmode/README.md) ✅
 
 ### Guides spécifiques
 
@@ -80,10 +81,41 @@ Toute la documentation est dans [`docs/`](docs/README.md)
 - [Guide technique Session 4](docs/sessions/session_4_frontend/GUIDE_TECHNIQUE.md)
 - [Guide technique Session 5](docs/sessions/session_5_css/GUIDE_TECHNIQUE.md)
 - [Guide technique Session 6](docs/sessions/session_6_ux/GUIDE_TECHNIQUE.md)
+- [Guide technique Session 7](docs/sessions/session_7_darkmode/GUIDE_TECHNIQUE.md)
 
 ---
 
 ## 📝 Changelog
+
+### [Session 7] - 2026-01-16
+
+**Ajouté**
+
+- Variables CSS pour mode clair et mode sombre (`:root`, `.dark-mode`)
+- Switch dark mode animé dans header (icônes ☀️/🌙)
+- Persistance préférence utilisateur avec localStorage
+- 17 variables CSS pour couleurs réutilisables
+- Fonction `toggleDarkMode()` en JavaScript
+- Détection et application automatique du thème au chargement
+- Documentation complète Session 7
+
+**Modifié**
+
+- `frontend/style.css` : Ajout variables CSS (~50 lignes) + switch (~40 lignes)
+- `frontend/index.html` : Ajout switch dans header (~4 lignes)
+- `frontend/app.js` : Ajout gestion dark mode (~20 lignes)
+- Toutes les couleurs fixes remplacées par variables CSS
+- Couleurs adaptées pour excellent contraste en mode sombre
+
+**Concepts appris**
+
+- Variables CSS (`:root`, `var()`, redéfinition)
+- Classes conditionnelles (`.dark-mode` sur body)
+- localStorage (`setItem()`, `getItem()`)
+- Toggle classes JavaScript (`classList.toggle()`, `classList.contains()`)
+- Event listeners (`change` sur checkbox)
+- Switch CSS personnalisé (styling checkbox)
+- Persistance préférences navigateur
 
 ### [Session 6] - 2026-01-14
 
@@ -256,6 +288,8 @@ Toute la documentation est dans [`docs/`](docs/README.md)
 - ✅ Gestion des erreurs avec messages polis
 - ✅ Bouton Clear pour vider conversation
 - ✅ Désactivation bouton pendant traitement
-- ✅ Documentation structurée (Sessions 0 à 6)
+- ✅ Dark mode avec switch et localStorage
+- ✅ Variables CSS pour thèmes clair/sombre
+- ✅ Documentation structurée (Sessions 0 à 7)
 - 🎉 **Application complète et professionnelle !**
-- 🔜 Prochaines étapes optionnelles : Dark mode, Tests, Déploiement
+- 🔜 Prochaines étapes optionnelles : Tests, Déploiement
