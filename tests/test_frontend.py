@@ -14,14 +14,21 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 
 # Fonction pour créer et configurer le driver Chrome
+
 def setup_driver():
     service = Service(ChromeDriverManager().install())
-    driver = webdriver.Chrome(service=service)
+    options = Options()
+    # Active headless seulement si variable CI présente (GitHub Actions)
+    if os.environ.get("CI") == "true":
+        options.add_argument("--headless")
+        options.add_argument("--no-sandbox")
+        options.add_argument("--disable-dev-shm-usage")
+    driver = webdriver.Chrome(service=service, options=options)
     return driver
-
 
 # Test 1 : Vérifier que la page HTML s'ouvre correctement
 def test_open_page():
