@@ -12,6 +12,10 @@ from fastapi.testclient import TestClient
 import sys
 import os
 
+# Inisialiser la db pour les tests
+from backend.memory import initialiser_db
+initialiser_db()
+
 # Ajouter backend/ au chemin Python pour importer main.py
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'backend'))
 
