@@ -16,7 +16,7 @@ import os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'backend'))
 
 # Importer l'application FastAPI depuis backend/main.py
-from main import app
+from main import app  # type: ignore
 
 # Créer un client de test (simule des requêtes HTTP sans lancer uvicorn)
 client = TestClient(app)
