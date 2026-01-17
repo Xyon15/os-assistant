@@ -4,6 +4,8 @@
 
 ---
 
+![Tests](https://github.com/Xyon15/os-assistant/actions/workflows/tests.yml/badge.svg)
+
 ## 🎯 Vision
 
 Construire un assistant personnel avec :
