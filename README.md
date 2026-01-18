@@ -4,6 +4,8 @@
 
 ---
 
+![Tests](https://github.com/Xyon15/os-assistant/actions/workflows/tests.yml/badge.svg)
+
 ## 🎯 Vision
 
 Construire un assistant personnel avec :
@@ -70,6 +72,7 @@ Toute la documentation est dans [`docs/`](docs/README.md)
 - [Session 5 — CSS & Design Moderne](docs/sessions/session_5_css/README.md) ✅
 - [Session 6 — Améliorations UX](docs/sessions/session_6_ux/README.md) ✅
 - [Session 7 — Dark Mode](docs/sessions/session_7_darkmode/README.md) ✅
+- [Session 8 — Tests automatisés & CI/CD](docs/sessions/session_8_tests/README.md) ✅
 
 ### Guides spécifiques
 
@@ -82,10 +85,47 @@ Toute la documentation est dans [`docs/`](docs/README.md)
 - [Guide technique Session 5](docs/sessions/session_5_css/GUIDE_TECHNIQUE.md)
 - [Guide technique Session 6](docs/sessions/session_6_ux/GUIDE_TECHNIQUE.md)
 - [Guide technique Session 7](docs/sessions/session_7_darkmode/GUIDE_TECHNIQUE.md)
+- [Guide technique Session 8](docs/sessions/session_8_tests/GUIDE_TECHNIQUE.md)
 
 ---
 
 ## 📝 Changelog
+
+### [Session 8] - 2026-01-17
+
+**Ajouté**
+
+- Tests pytest backend (4 tests : ping, message, get_messages, validation)
+- Tests Selenium frontend (3 tests : open_page, send_message, dark_mode_toggle)
+- GitHub Actions workflow CI/CD (.github/workflows/tests.yml)
+- Badge status tests dans README.md
+- Initialisation DB automatique dans tests (`initialiser_db()`)
+- Mode headless Chrome pour CI (détection variable CI)
+- Job backend séparé (Python + pytest)
+- Job frontend séparé (Chrome + Selenium + pytest)
+- Documentation complète Session 8
+
+**Modifié**
+
+- `tests/test_backend.py` : 4 tests avec TestClient FastAPI (~70 lignes)
+- `tests/test_frontend.py` : 3 tests avec Selenium WebDriver (~110 lignes)
+- `.github/workflows/tests.yml` : Workflow avec 2 jobs (~55 lignes)
+- Installation dépendances spécifiques (pas pywin32 pour Linux)
+- Sélecteurs CSS corrigés (#messageInput, #envoyerBtn, #dark-mode-switch)
+- Timeout WebDriverWait 30s pour réponses LLM
+
+**Concepts appris**
+
+- pytest (framework tests Python)
+- TestClient FastAPI (simulation requêtes HTTP sans serveur)
+- Assertions et pattern AAA (Arrange-Act-Assert)
+- Selenium WebDriver (automatisation navigateur)
+- ChromeDriver et mode headless
+- Sélecteurs CSS (#id, .class, tag)
+- WebDriverWait (attentes explicites)
+- GitHub Actions (CI/CD automatique)
+- Workflows YAML (jobs, steps, runners Ubuntu)
+- Badge status tests
 
 ### [Session 7] - 2026-01-16
 
@@ -290,6 +330,10 @@ Toute la documentation est dans [`docs/`](docs/README.md)
 - ✅ Désactivation bouton pendant traitement
 - ✅ Dark mode avec switch et localStorage
 - ✅ Variables CSS pour thèmes clair/sombre
-- ✅ Documentation structurée (Sessions 0 à 7)
-- 🎉 **Application complète et professionnelle !**
-- 🔜 Prochaines étapes optionnelles : Tests, Déploiement
+- ✅ Tests pytest backend (4 tests endpoints)
+- ✅ Tests Selenium frontend (3 tests UI)
+- ✅ GitHub Actions CI/CD opérationnel
+- ✅ Badge status tests dans README
+- ✅ Documentation structurée (Sessions 0 à 8)
+- 🎉 **Application complète, testée et professionnelle !**
+- 🔜 Prochaine étape : Déploiement (Render + GitHub Pages)
