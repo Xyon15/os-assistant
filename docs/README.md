@@ -129,6 +129,20 @@ Cette documentation suit ton apprentissage **session par session**. Chaque sessi
 
 ---
 
+### Session 8 — Tests automatisés & CI/CD
+
+**Objectifs :**
+
+- Créer tests pytest pour backend (4 tests endpoints)
+- Créer tests Selenium pour frontend (3 tests UI)
+- Mettre en place GitHub Actions pour CI/CD
+- Configurer badge status dans README
+- Automatiser tests à chaque push
+
+👉 [Accéder à la Session 8](sessions/session_8_tests/README.md)
+
+---
+
 ## 🧭 Comment utiliser cette doc
 
 1. **Lis dans l'ordre des sessions** si tu débutes

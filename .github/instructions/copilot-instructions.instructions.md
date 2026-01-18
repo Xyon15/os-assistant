@@ -112,70 +112,75 @@ Corps du message avec détails
 
 ---
 
-## 🎯 Observations Session 7 (2026-01-16) — **ÉTAT ACTUEL**
+## 🎯 Observations Session 8 (2026-01-17) — **ÉTAT ACTUEL**
 
 ### Réussites majeures de la session
 
-- ✅ A **codé 95% de Session 7 lui-même** (variables CSS, switch HTML, JavaScript)
-- ✅ A **exigé son autonomie** : "je veux faire moi-même !!!!!!!!!!!!" (excellent !)
-- ✅ A **identifié problèmes visuels** : alignement switch, couleurs mode nuit
-- ✅ A **testé méthodiquement** : toggle, persistance, couleurs, localStorage
-- ✅ A **rappelé checklist** : "oublie pas de mettre à jour les instructions" (vigilance parfaite)
+- ✅ A **compris concepts tests automatisés** (pytest backend, Selenium frontend, CI/CD)
+- ✅ A **codé tests lui-même** avec valeurs exactes fournies (4 tests backend + 3 frontend)
+- ✅ A **débuggé problèmes complexes** : pywin32 Linux, SQLite init, Chrome crash, sélecteurs CSS
+- ✅ A **configuré GitHub Actions** : workflow YAML avec 2 jobs séparés
+- ✅ A **validé tests en CI/CD** : 7/7 tests passent automatiquement sur GitHub Actions
+- ✅ A **demandé doc complète** : "vasy fait la doc" (rappelle checklist systématiquement)
 
 ### Concepts maîtrisés
 
-- ✅ **Variables CSS** : `:root`, `var()`, redéfinition dans `.dark-mode`
-- ✅ **localStorage** : `setItem()`, `getItem()`, persistance navigateur
-- ✅ **Toggle classes** : `classList.toggle()`, `classList.contains()`, `classList.add()`
-- ✅ **Event listeners** : `change` sur checkbox
-- ✅ **Switch CSS personnalisé** : styling checkbox avec animations
-- ✅ **Pseudo-éléments** : `::before` avec `content` et icônes
+- ✅ **pytest** : Framework test Python, TestClient FastAPI, assertions, pattern AAA
+- ✅ **Selenium** : WebDriver, ChromeDriver, sélecteurs CSS, WebDriverWait, mode headless
+- ✅ **GitHub Actions** : Workflows YAML, jobs, steps, runners Ubuntu, badge status
+- ✅ **TestClient** : Simulation requêtes HTTP sans serveur externe
+- ✅ **Mode headless** : Chrome sans interface (détection CI via variable environnement)
+- ✅ **Timeout explicites** : WebDriverWait 30s pour réponses LLM
+- ✅ **Initialisation DB** : Appel `initialiser_db()` avant tests
 
-### Évolution notable depuis Session 6
+### Évolution notable depuis Session 7
 
-- **Autonomie maximale** : Refuse code complet, veut coder lui-même systématiquement
-- **Vigilance parfaite** : Rappelle checklist documentation (oublie pas instructions)
-- **Exigence qualité** : Identifie problèmes visuels subtils (alignement, contraste)
-- **Niveau intermédiaire confirmé** : Capable d'implémenter features complètes (~65 lignes)
+- **Complexité technique supérieure** : Tests automatisés + CI/CD = niveau avancé
+- **Débogage autonome** : Identifie problèmes (sélecteurs CSS, flags Chrome Linux)
+- **Méthodologie mature** : Pattern AAA compris et appliqué spontanément
+- **Vigilance checklist** : Rappelle documentation à chaque fin de session
 
 ### Points forts confirmés
 
-- **Très motivé** : Dark mode = feature très valorisante
-- **Aime les analogies** : "Boîtes de couleurs", "Tiroir secret", "Gardien"
-- **Documentation impeccable** : Rappelle checklist spontanément
-- **Apprend vite** : Nouveaux concepts (variables CSS, localStorage) maîtrisés rapidement
+- **Motivation élevée** : Tests automatisés = feature pro très valorisante
+- **Aime les analogies** : "Gardien qui surveille", "Robot testeur", "Vérification automatique"
+- **Documentation systématique** : Rappelle checklist même en fin de session complexe
+- **Apprend vite** : Concepts avancés (CI/CD, headless, YAML) maîtrisés rapidement
 
 ### Patterns d'apprentissage validés
 
-- ✅ **Mini-questions 3 points** : Toujours efficace (1 localStorage, 2 `=` vs `:`, 3 toggle)
-- ✅ **Valeurs exactes + laisser coder** : Pattern optimal maintenant
-- ✅ **Analogies concrètes** : "Boîtes de couleurs", "Tiroir du navigateur", "Interrupteur"
-- ✅ **Célébrer succès** : "EXCELLENT !", "Parfait !" maintient motivation
+- ✅ **Mini-questions 3 points** : Toujours efficace (1 TestClient, 2 Assertions, 3 Selenium)
+- ✅ **Valeurs exactes + laisser coder** : Pattern optimal confirmé (sélecteurs, timeouts, flags)
+- ✅ **Analogies concrètes** : "Robot testeur", "Gardien automatique", "Vérification usine"
+- ✅ **Débogage guidé** : Proposer 3 hypothèses → tester première → itérer
 
 ### Nouveaux patterns identifiés
 
-- **Exige autonomie maximale** : "je veux faire moi-même !!!!!!!!!!!!" (maturité confirmée)
-- **Rappelle checklist** : "oublie pas de mettre à jour les instructions" (excellente mémoire)
-- **Recherche ressources externes** : Demande bouton switch sur uiverse.io (initiative)
+- **Comprend systèmes complexes** : GitHub Actions (jobs, runners, YAML) maîtrisé rapidement
+- **Débogage multi-contexte** : Local Windows vs CI/CD Linux (pywin32, flags Chrome)
+- **Cherche qualité code** : Tests automatiques = confiance déploiement
+- **Demande doc complète** : "vasy fait la doc" en fin de session (excellente mémoire)
 
-### Analogies efficaces (Session 7)
+### Analogies efficaces (Session 8)
 
-- **Variables CSS** : "Boîtes de couleurs avec étiquettes" (très efficace)
-- **localStorage** : "Tiroir secret dans le navigateur" (très efficace)
-- **Toggle classe** : "Ajouter/enlever un badge sur une personne" (efficace)
-- **Event listener** : "Gardien qui surveille la porte" (efficace)
+- **pytest** : "Robot qui vérifie automatiquement ton code" (très efficace)
+- **TestClient** : "Faux client qui simule des visiteurs" (très efficace)
+- **Selenium** : "Robot qui clique et tape comme un vrai utilisateur" (très efficace)
+- **GitHub Actions** : "Usine automatique qui teste ton code à chaque push" (efficace)
+- **Mode headless** : "Chrome invisible qui teste sans fenêtre" (efficace)
 
 ### Recommandations pour prochaines sessions
 
-- **Tests automatisés** : pytest backend + Selenium frontend + GitHub Actions
-- **Déploiement** : Render/Railway (backend) + GitHub Pages/Vercel (frontend)
-- **Finalisation** : README complet, captures d'écran, vidéo démo
+- **Session 9 : Déploiement** : Render/Railway (backend) + GitHub Pages/Vercel (frontend)
+- **Session 10 : Monitoring** : Logs production, alertes erreurs, charge utilisateurs
+- **Session 11 : DB cloud** : Migration SQLite → PostgreSQL (Render/Supabase)
+- **Session 12 : Auth** : Login/logout, sessions utilisateurs, JWT tokens
 
 ---
 
-## 📚 Observations Sessions 0-6 (Historique)
+## 📚 Observations Sessions 0-7 (Historique)
 
-> **Note :** Pour économiser des tokens, l'historique complet des Sessions 0-6 a été déplacé vers :
+> **Note :** Pour économiser des tokens, l'historique complet des Sessions 0-7 a été déplacé vers :
 > `.github/instructions/sessions-observations-archive.md`
 >
 > Consulter ce fichier si besoin de contexte sur l'évolution de l'utilisateur.
@@ -193,4 +198,4 @@ Corps du message avec détails
 
 ---
 
-_Dernière mise à jour : 2026-01-16 (Session 7 complétée)_
+_Dernière mise à jour : 2026-01-17 (Session 8 complétée)_

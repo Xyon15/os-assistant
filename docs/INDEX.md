@@ -14,6 +14,7 @@
 - [Session 5 — CSS & Design Moderne](sessions/session_5_css/README.md) ✅
 - [Session 6 — Améliorations UX](sessions/session_6_ux/README.md) ✅
 - [Session 7 — Dark Mode](sessions/session_7_darkmode/README.md) ✅
+- [Session 8 — Tests automatisés & CI/CD](sessions/session_8_tests/README.md) ✅
 
 ---
 
@@ -27,16 +28,17 @@
 
 ## 📅 Historique
 
-| Session | Date       | Sujet                    | Status     |
-| ------- | ---------- | ------------------------ | ---------- |
-| 0       | 2026-01-08 | Setup & /ping endpoint   | ✅ Terminé |
-| 1       | 2026-01-08 | Validation avec Pydantic | ✅ Terminé |
-| 2       | 2026-01-08 | Persistance avec SQLite  | ✅ Terminé |
-| 3       | 2026-01-09 | Intégration LLM API      | ✅ Terminé |
-| 4       | 2026-01-09 | Frontend Interactif      | ✅ Terminé |
-| 5       | 2026-01-13 | CSS & Design Moderne     | ✅ Terminé |
-| 6       | 2026-01-14 | Améliorations UX         | ✅ Terminé |
-| 7       | 2026-01-15 | Dark Mode                | ✅ Terminé |
+| Session | Date       | Sujet                     | Status     |
+| ------- | ---------- | ------------------------- | ---------- |
+| 0       | 2026-01-08 | Setup & /ping endpoint    | ✅ Terminé |
+| 1       | 2026-01-08 | Validation avec Pydantic  | ✅ Terminé |
+| 2       | 2026-01-08 | Persistance avec SQLite   | ✅ Terminé |
+| 3       | 2026-01-09 | Intégration LLM API       | ✅ Terminé |
+| 4       | 2026-01-09 | Frontend Interactif       | ✅ Terminé |
+| 5       | 2026-01-13 | CSS & Design Moderne      | ✅ Terminé |
+| 6       | 2026-01-14 | Améliorations UX          | ✅ Terminé |
+| 7       | 2026-01-15 | Dark Mode                 | ✅ Terminé |
+| 8       | 2026-01-17 | Tests automatisés & CI/CD | ✅ Terminé |
 
 ---
 
@@ -121,6 +123,19 @@
 - Switch personnalisé CSS
 - Persistance préférences utilisateur
 
+### Session 8
+
+- pytest (framework tests Python)
+- TestClient FastAPI (simulation requêtes HTTP)
+- Assertions et pattern AAA (Arrange-Act-Assert)
+- Selenium WebDriver (automatisation navigateur)
+- ChromeDriver et mode headless
+- Sélecteurs CSS (`#id`, `.class`, `tag`)
+- WebDriverWait (attentes explicites)
+- GitHub Actions (CI/CD automatique)
+- Workflows YAML (jobs, steps, runners)
+- Badge status tests
+
 ---
 
-_Dernière mise à jour : 2026-01-16_
+_Dernière mise à jour : 2026-01-17_
