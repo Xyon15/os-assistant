@@ -43,8 +43,16 @@ def demander_llm(prompt: str) -> str:
     }
     
     # Préparer les données JSON (body de la requête)
+    # Récupérer le modèle depuis .env
+    model_name = os.getenv("MODEL_NAME")
+    
+    # Vérifier que le modèle existe
+    if not model_name:
+        return "Erreur : MODEL_NAME manquant dans .env"
+    
+    # Préparer les données JSON (body de la requête)
     donnees = {
-        "model": os.getenv("MODEL_NAME", "gpt-4o"),
+        "model": model_name,
         "messages": [
             {"role": "user", "content": prompt}
         ]
