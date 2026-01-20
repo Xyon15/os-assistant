@@ -10,6 +10,15 @@
  * ========================================
  */
 
+// === CONFIGURATION BACKEND ===
+// Détecte automatiquement si on est en local ou en production
+const BACKEND_URL = window.location.hostname === "xyon15.github.io" // Fonctione que pour github pages (à changer si on veut changer d'hébergeur)
+    ? "https://os-assistant-backend.onrender.com"  // Production
+    : "http://localhost:8000";  // Local dev
+
+console.log("Backend utilisé:", BACKEND_URL);
+
+// === FONCTIONS ===
 // === 1. RÉCUPÉRATION DES ÉLÉMENTS HTML ===
 const bouton = document.getElementById("envoyerBtn");
 const input = document.getElementById("messageInput");
@@ -64,7 +73,7 @@ function envoyerMessage() {
         conversation.scrollTop = conversation.scrollHeight;
         
         // --- Envoyer requête POST au backend ---
-        fetch("http://127.0.0.1:8000/chat", {
+        fetch(BACKEND_URL + "/chat", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({message: texte})

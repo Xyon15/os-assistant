@@ -90,7 +90,7 @@ def chat(msg: ChatMessage):
     reponse_llm = demander_llm(msg.message)
     
     # Sauvegarder la réponse du LLM avec role="assistant"
-    sauvegarder_message(reponse_llm, "Assistant", role="assistant")
+    # sauvegarder_message(reponse_llm, "Assistant", role="assistant")
     
     # Retourner la réponse au frontend
     return {"reponse": reponse_llm}
