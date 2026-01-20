@@ -22,7 +22,7 @@ from backend.ai import demander_llm
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Code exécuté AU DÉMARRAGE du serveur
-    initialiser_db()  # Créer la table "messages" si elle n'existe pas
+    # initialiser_db()  # Créer la table "messages" si elle n'existe pas
     yield  # Le serveur tourne (traite les requêtes)
     # Code exécuté À L'ARRÊT du serveur (si besoin, actuellement rien)
 
@@ -69,21 +69,22 @@ class ChatMessage(BaseModel):
 def recevoir_message(msg: Message):
     # Pydantic vérifie automatiquement que "texte" est présent
     # Si nom_utilisateur est None, on utilise "Anonyme"
-    sauvegarder_message(msg.texte, msg.nom_utilisateur or "Anonyme")
+    # sauvegarder_message(msg.texte, msg.nom_utilisateur or "Anonyme") # Mémoire désactivée
     return {"recu": True}
 
 # Endpoint GET /messages : récupérer tous les messages sauvegardés
 @app.get("/messages")
 def lire_messages():
     # Appeler la fonction pour récupérer tous les messages de la DB
-    messages = recuperer_messages()
-    return {"messages": messages, "total": len(messages)}
+    # messages = recuperer_messages()
+    # return {"messages": [messages], "total": len(messages)}
+    return {"messages": [], "total": 0}
 
 # Endpoint POST /chat : conversation avec le LLM
 @app.post("/chat")
 def chat(msg: ChatMessage):
     # Sauvegarder le message utilisateur avec role="user"
-    sauvegarder_message(msg.message, "Utilisateur", role="user")
+    # sauvegarder_message(msg.message, "Utilisateur", role="user")
     
     # Appeler le LLM pour obtenir une réponse
     reponse_llm = demander_llm(msg.message)
