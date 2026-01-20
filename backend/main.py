@@ -26,14 +26,24 @@ async def lifespan(app: FastAPI):
     yield  # Le serveur tourne (traite les requêtes)
     # Code exécuté À L'ARRÊT du serveur (si besoin, actuellement rien)
 
+# Liste des origines autorisées (frontend)
+ALLOWED_ORIGINS = [
+    "http://localhost:8000",  # Local dev
+    "http://127.0.0.1:8000",  # Local dev
+    "http://localhost:5500",  # Live Server VS Code
+    "http://127.0.0.1:5500",  # Live Server VS Code
+    "null",  # file:// protocol (ouverture directe HTML)
+    "https://xyon15.github.io",  # GitHub Pages production
+]
+
 # Créer l'application FastAPI avec le gestionnaire de cycle de vie
 app = FastAPI(lifespan=lifespan)
 
-# Configurer CORS : autoriser toutes les origines (pour le développement)
+# Configurer CORS : autoriser origines
 # Permet au navigateur d'envoyer des requêtes depuis file:// ou localhost
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # "*" = autoriser TOUTES les origines (OK pour dev local)
+    allow_origins =ALLOWED_ORIGINS,
     allow_credentials=True,  # Autoriser l'envoi de cookies/authentification
     allow_methods=["*"],  # Autoriser toutes les méthodes (GET, POST, OPTIONS...)
     allow_headers=["*"],  # Autoriser tous les headers HTTP
