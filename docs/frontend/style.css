@@ -1,0 +1,282 @@
+/*
+ * ========================================
+ * STYLE.CSS — ASSISTANT IA
+ * ========================================
+ * Styles pour interface de chat moderne
+ * - Layout Flexbox (colonnes verticales)
+ * - Bulles de messages (user/assistant)
+ * - Animations douces (fadeIn + hover)
+ * ========================================
+ */
+
+/* ========================================
+   VARIABLES CSS (Mode clair + Mode sombre)
+   ======================================== */
+
+/* Mode clair (par défaut) */
+:root {
+  --couleur-fond: #f5f5f5;
+  --couleur-texte: #333333;
+  --couleur-header: #2c3e50;
+  --couleur-titre: #ffffff;  /* Blanc pour titre sur header sombre */
+  --couleur-bordure: #ddd;  /* Bordure gris clair */
+  --couleur-user: #007bff;
+  --couleur-user-texte: #ffffff;
+  --couleur-assistant: #e0e0e0;
+  --couleur-assistant-texte: #000000;
+  --couleur-input: #ffffff;
+  --couleur-input-texte: #333333;  /* Texte input noir */
+  --couleur-bouton: #007bff;
+  --couleur-bouton-hover: #0056b3;
+  --couleur-clear: #dc3545;
+  --couleur-clear-hover: #c82333;
+}
+
+/* Mode sombre */
+.dark-mode {
+  --couleur-fond: #1a1a1a;
+  --couleur-texte: #e0e0e0;
+  --couleur-header: #0d1117;
+  --couleur-titre: #e0e0e0;  /* Gris clair pour titre en mode sombre */
+  --couleur-bordure: #4a4a4a;  /* Bordure gris foncé */
+  --couleur-user: #1f6feb;
+  --couleur-user-texte: #ffffff;
+  --couleur-assistant: #2d333b;
+  --couleur-assistant-texte: #e0e0e0;
+  --couleur-input: #0d1117;  /* Fond plus foncé pour meilleur contraste */
+  --couleur-input-texte: #e0e0e0;  /* Texte gris clair */
+  --couleur-bouton: #1f6feb;
+  --couleur-bouton-hover: #1a5cd8;
+  --couleur-clear: #da3633;
+  --couleur-clear-hover: #b52a27;
+}
+
+
+/* ========================================
+   SWITCH DARK MODE  STYLE
+   ======================================== */
+
+.switch {
+    font-size: 20px;  /* Plus grand */
+    position: relative;
+    display: inline-block;
+    width: 4em;
+    height: 2em;
+}
+
+.switch input {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--couleur-assistant);  /* Adapté au thème */
+    transition: 0.3s;
+    border-radius: 34px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.slider:before {
+    position: absolute;
+    content: "☀️";  /* Icône soleil */
+    font-size: 1.2em;
+    height: 1.6em;
+    width: 1.6em;
+    border-radius: 50%;
+    top: 50%;  /* Centrer verticalement */
+    transform: translateY(-50%);  /* Ajustement précis */
+    background-color: var(--couleur-input);
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Quand le switch est activé (dark mode ON) */
+input:checked + .slider::before {
+    content: "🌙";  /* Icône lune */
+    background-color: var(--couleur-header);
+    transform: translateX(1.79em) translateY(-50%); /* Déplacement à droite */
+}
+
+input:checked + .slider {
+    background-color: var(--couleur-user);  /* Bleu du thème */
+}
+
+.slider:hover {
+    opacity: 0.9;
+}
+
+
+/* === BLOC 1 : LAYOUT GLOBAL === */
+/* Configure la page en Flexbox vertical */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--couleur-fond);
+}
+
+/* Barre de titre en haut (fond bleu foncé, texte centré blanc) */
+#headerBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 20px;
+    background-color: var(--couleur-header);
+}
+
+/*
+#headerBar::before {  Espace vide à gauche pour centrer le titre
+    content: "";
+    width: 180px;  — Même largeur que le bouton Clear
+}
+*/
+
+#headerBar h1 {
+    color: var(--couleur-titre);
+    margin: 0;
+    flex: 1;
+    text-align: center;
+}
+
+#clearBtn {
+    padding: 10px 20px;
+    background-color: var(--couleur-clear);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#clearBtn:hover {
+    background-color: var(--couleur-clear-hover);
+}
+
+/* Zone de conversation : prend tout l'espace disponible, scroll si trop de messages */
+#conversation {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    background-color: var(--couleur-fond);
+}
+
+/* === BLOC 2 : ZONE INPUT + BOUTON === */
+/* Conteneur Flexbox horizontal : input à gauche (flex:1) + bouton à droite (taille fixe) */
+
+#inputZone {
+    display: flex;
+    flex-direction: row;
+    padding: 15px;
+    background-color: var(--couleur-input);
+    gap: 10px;
+}
+
+#messageInput {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid var(--couleur-bordure);
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    background-color: var(--couleur-input);
+    color: var(--couleur-input-texte);
+}
+
+#envoyerBtn {
+    padding: 12px 24px;
+    background-color: var(--couleur-bouton);
+    color: var(--couleur-user-texte);
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#envoyerBtn:hover {
+    background-color: var(--couleur-bouton-hover);
+}
+
+#envoyerBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: #95a5a6;
+}
+
+/* === BLOC 3 : BULLES DE MESSAGES === */
+/* Chaque message = <p> Flexbox + <span> bulle stylée (user à droite bleu, assistant à gauche gris) */
+
+#conversation p {
+    display: flex;
+    margin: 10px 0;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.message-user {
+    justify-content: flex-end;
+}
+
+.message-assistant {
+    justify-content: flex-start;
+}
+
+.bulle-user{
+    background-color: var(--couleur-user);
+    color: var(--couleur-user-texte);
+    padding: 12px 16px;
+    border-radius: 18px;
+    max-width: 70%;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.bulle-assistant {
+    background-color: var(--couleur-assistant);
+    color: var(--couleur-assistant-texte);
+    padding: 12px 16px;
+    border-radius: 18px;
+    max-width: 70%;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+/* === BLOC 4 : ANIMATIONS === */
+/* fadeIn : apparition douce des messages (opacité + décalage vertical) */
+/* hover : effet d'agrandissement léger au survol des bulles */
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0);}
+}
+
+.bulle-user:hover, .bulle-assistant:hover {
+    transform: scale(1.02);
+}
+
+/* === BLOC 5 : MESSAGE D'ERREUR === */
+
+.message-error{
+    justify-content: center;
+}
+
+.bulle-error {
+    background-color: #e74c3c;
+    color: white;
+    padding: 12px 16px;
+    border-radius: 18px;
+    max-width: 80%;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    font-weight: bold;
+}
