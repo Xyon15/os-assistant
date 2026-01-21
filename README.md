@@ -6,6 +6,9 @@
 
 ![Tests](https://github.com/Xyon15/os-assistant/actions/workflows/tests.yml/badge.svg)
 
+[![Backend](https://img.shields.io/badge/backend-live-brightgreen?logo=fastapi)](https://os-assistant-backend.onrender.com)
+[![Frontend](https://img.shields.io/badge/frontend-GitHub%20Pages-blue?logo=github)](https://xyon15.github.io/os-assistant/)
+
 ## 🎯 Vision
 
 Construire un assistant personnel avec :
@@ -73,6 +76,7 @@ Toute la documentation est dans [`docs/`](docs/README.md)
 - [Session 6 — Améliorations UX](docs/sessions/session_6_ux/README.md) ✅
 - [Session 7 — Dark Mode](docs/sessions/session_7_darkmode/README.md) ✅
 - [Session 8 — Tests automatisés & CI/CD](docs/sessions/session_8_tests/README.md) ✅
+- [Session 9 — Déploiement production](documentation/sessions/session_9_deployment/README.md) ✅
 
 ### Guides spécifiques
 

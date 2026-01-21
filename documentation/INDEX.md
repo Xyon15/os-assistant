@@ -15,6 +15,7 @@
 - [Session 6 — Améliorations UX](sessions/session_6_ux/README.md) ✅
 - [Session 7 — Dark Mode](sessions/session_7_darkmode/README.md) ✅
 - [Session 8 — Tests automatisés & CI/CD](sessions/session_8_tests/README.md) ✅
+- [Session 9 — Déploiement production](sessions/session_9_deployment/README.md) ✅
 
 ---
 
@@ -39,6 +40,7 @@
 | 6       | 2026-01-14 | Améliorations UX          | ✅ Terminé |
 | 7       | 2026-01-15 | Dark Mode                 | ✅ Terminé |
 | 8       | 2026-01-17 | Tests automatisés & CI/CD | ✅ Terminé |
+| 9       | 2026-01-21 | Déploiement production    | ✅ Terminé |
 
 ---
 
@@ -138,4 +140,4 @@
 
 ---
 
-_Dernière mise à jour : 2026-01-17_
+_Dernière mise à jour : 2026-01-21_

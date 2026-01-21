@@ -154,49 +154,39 @@
 
 ---
 
-## 🚀 Session 9 : Déploiement production (Plan)
+## ✅ Session 9 : Déploiement production (COMPLET)
 
-### Objectif : Rendre l'application accessible en ligne
+**Statut :** ✅ Déployé en production (backend + frontend)  
+**Date :** 2026-01-21
 
-**Ce que tu vas apprendre :**
+### Résumé des actions réalisées
 
-1. **Déploiement backend** → Render ou Railway (gratuit)
-2. **Déploiement frontend** → GitHub Pages ou Vercel (gratuit)
-3. **Configuration domaines** → Connexion frontend ↔ backend
-4. **Variables d'environnement** → Gestion secrets en production
-5. **HTTPS automatique** → Sécurité et certificats SSL
+- **Backend** déployé sur **Render** : `https://os-assistant-backend.onrender.com` (Start command : `uvicorn backend.main:app --host 0.0.0.0 --port $PORT`)
+- **Frontend** déployé sur **GitHub Pages** : `https://xyon15.github.io/os-assistant/` (contenu publié via la branche `gh-pages` puis consolidé dans `/docs`)
+- **CORS** : autorisation ajoutée pour origines locales et `"null"` pour l'ouverture `file://` (fix CORS pour tests locaux)
+- **Mémoire/DB** : sauvegardes désactivées en production (routes `/message` et `/chat` ne persistent plus) pour déploiement initial sans DB
+- **Python Version** : fichier `.python-version` ajouté (`3.11.0`) pour compatibilité Render
+- **Monitoring** : moniteurs **UptimeRobot** configurés pour `/ping` (backend) et la page frontend
+- **Branch gh-pages** : workflow de publication testé; le projet a ensuite consolidé le frontend dans `/docs` pour GitHub Pages publique
+- **Workflows** : pas de smoke workflow automatisé ajouté (on garde UptimeRobot pour disponibilité)
+- **Sentry** : non configuré (option future si nécessaire)
 
-**Durée estimée :** 2-3h  
-**Difficulté :** Moyenne-Élevée
+### Checklist post-déploiement
 
-### Plan détaillé Session 9
+- [x] Backend Render en ligne (`/ping` répond)
+- [x] Frontend GitHub Pages en ligne
+- [x] UptimeRobot monitors en place
+- [x] CORS adapté pour file:// et Live Server
+- [x] DB désactivée en prod (stateless)
+- [x] Documentation de session ajoutée (docs sessions)
 
-**1. Déploiement backend Render (~1h)**
+---
 
-- Créer compte Render
-- Configurer service Web Python
-- Ajouter variables d'environnement (clé API LLM)
-- Déployer depuis branche GitHub
-- Tester endpoints publics
+**Remarques** : la configuration actuelle privilégie simplicité et sécurité pour le premier déploiement. Pour la production complète ultérieure, on réactivera la DB, ajoutera Sentry et un smoke-test CI.
 
-**2. Déploiement frontend GitHub Pages (~30min)**
+---
 
-- Configurer GitHub Pages
-- Modifier URL API dans app.js (backend Render)
-- Push et vérifier déploiement
-- Tester application en ligne
-
-**3. Configuration domaine personnalisé (~30min - optionnel)**
-
-- Acheter domaine (Namecheap, OVH, Google Domains)
-- Configurer DNS (CNAME, A records)
-- Activer HTTPS automatique
-
-**4. Monitoring et logs (~30min)**
-
-- Activer logs Render
-- Configurer alertes erreurs
-- Tester charge (simulations requêtes)
+\_Dernière mise à jour : 2026-01-21"
 
 ---
 

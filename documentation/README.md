@@ -143,6 +143,20 @@ Cette documentation suit ton apprentissage **session par session**. Chaque sessi
 
 ---
 
+### Session 9 — Déploiement production
+
+**Objectifs :**
+
+- Déployer backend sur Render
+- Déployer frontend sur GitHub Pages
+- Configurer variables d'environnement et HTTPS
+- Mettre en place monitoring (UptimeRobot)
+- Documenter la configuration de production
+
+👉 [Accéder à la Session 9](sessions/session_9_deployment/README.md)
+
+---
+
 ## 🧭 Comment utiliser cette doc
 
 1. **Lis dans l'ordre des sessions** si tu débutes
@@ -153,4 +167,4 @@ Cette documentation suit ton apprentissage **session par session**. Chaque sessi
 
 ---
 
-_Dernière mise à jour : 2026-01-16 (Session 7)_
+_Dernière mise à jour : 2026-01-21 (Session 9)_
