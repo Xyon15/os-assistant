@@ -4,9 +4,8 @@ backend.main : Backend API de l'assistant IA
 Ce fichier crée le serveur web avec FastAPI.
 FastAPI reçoit les requêtes HTTP et retourne des réponses JSON.
 
-Endpoints disponibles :
-- GET /ping : Test de connexion (retourne "pong")
-- POST /message : Recevoir et valider un message utilisateur
+Documentation FastAPI automatique disponible à :
+- /docs (Swagger UI)
 
 """
 # Imports
@@ -69,14 +68,16 @@ class Message(BaseModel):
 class ChatMessage(BaseModel):
     message: str
 
+""" Mémoire des messages (désactivée pour l'instant)
 # Endpoint POST /message : recevoir un message et le valider
 @app.post("/message")
 def recevoir_message(msg: Message):
     # Pydantic vérifie automatiquement que "texte" est présent
     # Si nom_utilisateur est None, on utilise "Anonyme"
-    # sauvegarder_message(msg.texte, msg.nom_utilisateur or "Anonyme") # Mémoire désactivée
+    sauvegarder_message(msg.texte, msg.nom_utilisateur or "Anonyme") 
     return {"recu": True}
 
+    
 # Endpoint GET /messages : récupérer tous les messages sauvegardés
 @app.get("/messages")
 def lire_messages():
@@ -84,6 +85,7 @@ def lire_messages():
     # messages = recuperer_messages()
     # return {"messages": [messages], "total": len(messages)}
     return {"messages": [], "total": 0}
+"""
 
 # Endpoint POST /chat : conversation avec le LLM
 @app.post("/chat")
@@ -95,7 +97,7 @@ def chat(msg: ChatMessage):
     reponse_llm = demander_llm(msg.message)
     
     # Sauvegarder la réponse du LLM avec role="assistant"
-    # sauvegarder_message(reponse_llm, "Assistant", role="assistant")
+    # sauvegarder_message(reponse_llm, "Assistant", role="assistant") # Désactivée pour l'instant
     
     # Retourner la réponse au frontend
     return {"reponse": reponse_llm}
