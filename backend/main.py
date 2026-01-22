@@ -36,8 +36,13 @@ ALLOWED_ORIGINS = [
     "https://xyon15.github.io",  # GitHub Pages production
 ]
 
-# Créer l'application FastAPI avec le gestionnaire de cycle de vie
-app = FastAPI(lifespan=lifespan)
+# Créer l'application FastAPI avec le gestionnaire de cycle de vie et description sur FastAPI
+app = FastAPI(
+    lifespan=lifespan,
+    title= "Backend API - OS Assistant",
+    description= "API backend pour l'assistant IA OS Assistant. Fournit des endpoints pour envoyer des messages et interagir avec le modèle de langage.",
+    # version=,
+)
 
 # Configurer CORS : autoriser origines
 # Permet au navigateur d'envoyer des requêtes depuis file:// ou localhost
