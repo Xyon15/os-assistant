@@ -6,8 +6,13 @@
 
 ![Tests](https://github.com/Xyon15/os-assistant/actions/workflows/tests.yml/badge.svg)
 
-[![Backend](https://img.shields.io/badge/backend-live-brightgreen?logo=fastapi)](https://os-assistant-backend.onrender.com)
-[![Frontend](https://img.shields.io/badge/frontend-GitHub%20Pages-blue?logo=github)](https://xyon15.github.io/os-assistant/)
+<!-- Backend badges: static live + uptime -->
+
+**Backend:** [![Backend live](https://img.shields.io/badge/backend-Render-8A05FF?logo=fastapi)](https://os-assistant-backend.onrender.com/docs) [![Backend uptime](https://img.shields.io/uptimerobot/status/m802190707-d0e3a39848760de34f826234?label=Backend%20uptime&style=flat-square)](https://stats.uptimerobot.com/a4Q7kpTig9)
+
+<!-- Frontend badges: static live + uptime -->
+
+**Frontend:** [![Frontend live](https://img.shields.io/badge/frontend-GitHub%20Pages-blue?logo=github)](https://xyon15.github.io/os-assistant/) [![Frontend uptime](https://img.shields.io/uptimerobot/status/m802190746-183f3a09139cdc8eebe0ab5a?label=Frontend%20uptime&style=flat-square)](https://stats.uptimerobot.com/a4Q7kpTig9)
 
 ## 🎯 Vision
 
