@@ -1,10 +1,8 @@
-<div style= "font-family: Arial, sans-serif; text-align: center; font-size: 30px">OS Assistant</div>
+# OS Assistant
 
 > Assistant personnel IA orienté productivité
 
-<div style="text-align: center;">
-    <a href="README_EN.md">🇬🇧 English Version</a>
-</div>
+**[🇬🇧 English Version](README_EN.md)**
 
 ## Status live des services :
 
@@ -65,12 +63,13 @@ uvicorn backend.main:app --reload
 <br>
 
 <div>
-<h1>Ce projet est publié sur Flavortown :</h1>
+
+## Ce projet est publié sur Flavortown
+
+<img src="https://www.genroam.io/flavourtown/sticker.webp" align="right" width="120" />
+
 Flavortown est une plateforme de partage et de découverte de projets open source. Elle permet aux jeunes développeurs de publier leurs projets, de les documenter et de les partager avec la communauté.
 
-<div style="display:flex; align-items:center; justify-content:space-between; max-width:700px; margin:0 auto;">
-    <p style="margin:0; text-align:left; flex:1;">N'hésitez pas à aller visiter la page du projet!</p>
-    <a href="https://flavortown.hackclub.com"><img src="https://www.genroam.io/flavourtown/sticker.webp" alt="Flavortown Sticker" style="margin-left:20px; width:150px; height:auto; display:block;" /></a>
-</div>
+**N'hésitez pas à aller visiter la page du projet !**
 
-</div>
+[Voir la page Flavortown du projet](https://flavortown.hackclub.com/)
