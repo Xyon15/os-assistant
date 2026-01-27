@@ -14,7 +14,7 @@ from typing import Optional  # Pour déclarer des types optionnels (peut être N
 from fastapi import FastAPI  # Framework web pour créer l'API
 from fastapi.middleware.cors import CORSMiddleware  # Pour autoriser les requêtes depuis le navigateur
 from pydantic import BaseModel  # Pour valider les données reçues
-from backend.memory import initialiser_db, sauvegarder_message, recuperer_messages
+# from backend.memory import initialiser_db, sauvegarder_message, recuperer_messages # Mémoire des messages (désactivée pour l'instant)
 from backend.ai import demander_llm
 
 # Gestionnaire du cycle de vie : actions au démarrage et à l'arrêt

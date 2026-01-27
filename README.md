@@ -20,15 +20,52 @@ Construire un assistant personnel avec :
 - Client web léger (HTML/CSS/JS)
 - Intégration IA (LLM API)
 
+## 🧠 Vision
+
+OS Assistant a pour objectif de devenir un compagnon de bureau intelligent,
+capable d'assister l'utilisateur dans ses tâches quotidiennes tout en restant
+simple, léger et évolutif.
+
+À terme, le projet vise :
+
+- une interface orientée productivité
+- une évolution vers une application desktop
+
+## ✨ Fonctionnalités actuelles
+
+### 🔌 Endpoints (API Backend)
+
+- **GET /ping** ✅  
+  Vérifie que le serveur répond.  
+  **Réponse** : `{"status": "pong"}`
+
+- **POST /chat** 💬  
+  Envoie un message au LLM.  
+  **Payload attendu** : `{"message": "..."}` (validé par Pydantic)  
+  **Réponse** : `{"reponse": "<texte retourné par le LLM>"}`  
+  **Implémentation** : appelle `backend.ai.demander_llm()` (utilise les variables d’environnement `GITHUB_TOKEN` et `MODEL_NAME`)
+
+### 🚀 Services déployés
+
+- **Backend** : déployé sur Render — https://os-assistant-backend.onrender.com
+- **Documentation Swagger** : https://os-assistant-backend.onrender.com/docs
+- **Frontend** : déployé sur github pages — https://xyon15.github.io/os-assistant
+
+### 🧪 Tests, CI et Monitoring
+
+- **CI (GitHub Actions)** : workflow `Tests (tests.yml)`
+  - Job backend : installe dépendances et exécute `pytest tests/test_backend.py`
+  - Job frontend : installe selenium/webdriver et exécute `pytest tests/test_frontend.py` après le backend
+- **Tests automatisés** :
+  - Backend : `test_backend.py` (TestClient FastAPI — vérifie `/ping`, validation `/chat`)
+  - Frontend : `test_frontend.py` (Selenium, tests d’UI en headless CI)
+- **Monitoring / uptime** : badges UptimeRobot affichés dans le README (backend + frontend)
+
 ## 🛠️ Tech Stack
 
 - **Backend :** [![Python 3.10+](https://img.shields.io/badge/Python-3.10+-blue.svg?logo=python)](https://www.python.org/downloads/) [![FastAPI](https://img.shields.io/badge/FastAPI-0.104.1+-green.svg?logo=fastapi)](https://fastapi.tiangolo.com/) [![Uvicorn](https://img.shields.io/badge/Uvicorn-0.24.0+-cyan.svg)](https://www.uvicorn.org/)
 - **Frontend :** [![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)](https://developer.mozilla.org/fr/docs/Web/HTML) [![CSS3](https://img.shields.io/badge/CSS-8A05FF?logo=css&logoColor=white)](https://developer.mozilla.org/fr/docs/Web/CSS) [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/fr/docs/Web/JavaScript)
 - **API IA :** Github models (Temporaire)
-
----
-
-### Documentation de l'api via le serveur render : https://os-assistant-backend.onrender.com/docs
 
 ## 🚀 Démarrage de l'API
 
