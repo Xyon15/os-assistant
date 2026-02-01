@@ -1,10 +1,10 @@
 # OS Assistant
 
-> Assistant personnel IA orienté productivité
+> Productivity-oriented personal AI assistant
 
-**[🇬🇧 English Version](README_EN.md)**
+**[🇫🇷 Version française](README.md)**
 
-## Status live des services :
+## Live Service Status
 
 ![Tests](https://github.com/Xyon15/os-assistant/actions/workflows/tests.yml/badge.svg)
 
@@ -12,64 +12,64 @@
 
 [![Frontend uptime](https://img.shields.io/uptimerobot/status/m802190746-183f3a09139cdc8eebe0ab5a?label=Frontend%20status&style=flat-square&logo=github)](https://stats.uptimerobot.com/a4Q7kpTig9)
 
-## 🎯 Objectifs du projet
+## 🎯 Project Goals
 
-Construire un assistant personnel avec :
+Build a personal assistant with:
 
-- Backend Python (FastAPI)
-- Client web léger (HTML/CSS/JS)
-- Intégration IA (LLM API)
+- Python backend (FastAPI)
+- Lightweight web client (HTML/CSS/JS)
+- AI integration (LLM API)
 
 ## 🧠 Vision
 
-OS Assistant a pour objectif de devenir un compagnon de bureau intelligent,
-capable d'assister l'utilisateur dans ses tâches quotidiennes tout en restant
-simple, léger et évolutif.
+OS Assistant aims to become an intelligent office companion,
+capable of assisting users in their daily tasks while remaining
+simple, lightweight, and scalable.
 
-À terme, le projet vise :
+In the long term, the project targets:
 
-- une interface orientée productivité
-- une évolution vers une application desktop
+- a productivity-oriented interface
+- an evolution towards a desktop application
 
-## ✨ Fonctionnalités actuelles
+## ✨ Current Features
 
-### 🔌 Endpoints (API Backend)
+### 🔌 Endpoints (Backend API)
 
 - **GET /ping** ✅  
-  Vérifie que le serveur répond.  
-  **Réponse** : `{"status": "pong"}`
+  Checks if the server is responding.  
+  **Response**: `{"status": "pong"}`
 
 - **POST /chat** 💬  
-  Envoie un message au LLM.  
-  **Payload attendu** : `{"message": "..."}` (validé par Pydantic)  
-  **Réponse** : `{"reponse": "<texte retourné par le LLM>"}`  
-  **Implémentation** : appelle `backend.ai.demander_llm()` (utilise les variables d’environnement `GITHUB_TOKEN` et `MODEL_NAME`)
+  Sends a message to the LLM.  
+  **Expected payload**: `{"message": "..."}` (validated by Pydantic)  
+  **Response**: `{"reponse": "<text returned by the LLM>"}`  
+  **Implementation**: calls `backend.ai.demander_llm()` (uses environment variables `GITHUB_TOKEN` and `MODEL_NAME`)
 
-### 🚀 Services déployés
+### 🚀 Deployed Services
 
-- **Backend** : déployé sur Render — https://os-assistant-backend.onrender.com
-- **Documentation Swagger** : https://os-assistant-backend.onrender.com/docs
-- **Frontend** : déployé sur github pages — https://xyon15.github.io/os-assistant
+- **Backend**: deployed on Render — https://os-assistant-backend.onrender.com
+- **Swagger Documentation**: https://os-assistant-backend.onrender.com/docs
+- **Frontend**: deployed on GitHub Pages — https://xyon15.github.io/os-assistant
 
-### 🧪 Tests, CI et Monitoring
+### 🧪 Tests, CI and Monitoring
 
-- **CI (GitHub Actions)** : workflow `Tests (tests.yml)`
-  - Job backend : installe dépendances et exécute `pytest tests/test_backend.py`
-  - Job frontend : installe selenium/webdriver et exécute `pytest tests/test_frontend.py` après le backend
-- **Tests automatisés** :
-  - Backend : `test_backend.py` (TestClient FastAPI — vérifie `/ping`, validation `/chat`)
-  - Frontend : `test_frontend.py` (Selenium, tests d’UI en headless CI)
-- **Monitoring / uptime** : badges UptimeRobot affichés dans le README (backend + frontend)
+- **CI (GitHub Actions)**: `Tests (tests.yml)` workflow
+  - Backend job: installs dependencies and runs `pytest tests/test_backend.py`
+  - Frontend job: installs selenium/webdriver and runs `pytest tests/test_frontend.py` after the backend
+- **Automated tests**:
+  - Backend: `test_backend.py` (FastAPI TestClient — checks `/ping`, `/chat` validation)
+  - Frontend: `test_frontend.py` (Selenium, UI tests in headless CI)
+- **Monitoring / uptime**: UptimeRobot badges displayed in the README (backend + frontend)
 
 ## 🛠️ Tech Stack
 
-- **Backend :** [![Python 3.10+](https://img.shields.io/badge/Python-3.10+-blue.svg?logo=python)](https://www.python.org/downloads/) [![FastAPI](https://img.shields.io/badge/FastAPI-0.104.1+-green.svg?logo=fastapi)](https://fastapi.tiangolo.com/) [![Uvicorn](https://img.shields.io/badge/Uvicorn-0.24.0+-cyan.svg)](https://www.uvicorn.org/)
-- **Frontend :** [![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)](https://developer.mozilla.org/fr/docs/Web/HTML) [![CSS3](https://img.shields.io/badge/CSS-8A05FF?logo=css&logoColor=white)](https://developer.mozilla.org/fr/docs/Web/CSS) [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/fr/docs/Web/JavaScript)
-- **API IA :** Github models (Temporaire)
+- **Backend:** [![Python 3.10+](https://img.shields.io/badge/Python-3.10+-blue.svg?logo=python)](https://www.python.org/downloads/) [![FastAPI](https://img.shields.io/badge/FastAPI-0.104.1+-green.svg?logo=fastapi)](https://fastapi.tiangolo.com/) [![Uvicorn](https://img.shields.io/badge/Uvicorn-0.24.0+-cyan.svg)](https://www.uvicorn.org/)
+- **Frontend:** [![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML) [![CSS3](https://img.shields.io/badge/CSS-8A05FF?logo=css&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS) [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- **AI API:** Github models (Temporary)
 
-## 🚀 Démarrage de l'API
+## 🚀 API Quickstart
 
-### Prérequis
+### Prerequisites
 
 - Python 3.10+
 - Git
@@ -77,36 +77,34 @@ simple, léger et évolutif.
 ### Installation
 
 ```powershell
-# Cloner le projet
+# Clone the project
 git clone <repo-url>
 cd os-assistant
 
-# Créer et activer l'environnement virtuel
+# Create and activate the virtual environment
 python -m venv venv
 venv\Scripts\Activate.ps1
 
-# Installer les dépendances
+# Install dependencies
 pip install -r requirements.txt
 
-# Lancer le serveur
+# Start the server
 uvicorn backend.main:app --reload
 ```
 
-### Tester en local
+### Test locally
 
-- API ping test : http://127.0.0.1:8000/ping
-- Documentation de l'API : http://127.0.0.1:8000/docs
+- API ping test: http://127.0.0.1:8000/ping
+- API documentation: http://127.0.0.1:8000/docs
 
 <br>
 
-<div>
-
-## Ce projet est publié sur Flavortown
+## This project is published on Flavortown
 
 <img src="https://www.genroam.io/flavourtown/sticker.webp" align="right" width="120" />
 
-Flavortown est une plateforme de partage et de découverte de projets open source. Elle permet aux jeunes développeurs de publier leurs projets, de les documenter et de les partager avec la communauté.
+Flavortown is a platform for sharing and discovering open source projects. It allows young developers to publish, document, and share their projects with the community.
 
-**N'hésitez pas à aller visiter la page du projet !**
+**Feel free to visit the project page!**
 
-[Voir la page Flavortown du projet](https://flavortown.hackclub.com/)
+[See the Flavortown project page](https://flavortown.hackclub.com/)
