@@ -35,7 +35,7 @@ def test_open_page():
     driver = setup_driver()
     # Construire chemin absolu vers index.html
     current_dir = os.path.dirname(os.path.abspath(__file__))
-    html_path = os.path.join(current_dir, '..', 'frontend', 'index.html')
+    html_path = os.path.join(current_dir, '..', 'docs', 'index.html')
     html_url = f"file:///{os.path.abspath(html_path).replace(os.sep, '/')}"
     driver.get(html_url)
     # Vérifier que le titre contient "Assistant"
@@ -47,7 +47,7 @@ def test_send_message():
     driver = setup_driver()
     # Construire chemin et ouvrir page
     current_dir = os.path.dirname(os.path.abspath(__file__))
-    html_path = os.path.join(current_dir, '..', 'frontend', 'index.html')
+    html_path = os.path.join(current_dir, '..', 'docs', 'index.html')
     html_url = f"file:///{os.path.abspath(html_path).replace(os.sep, '/')}"
     driver.get(html_url)
     
@@ -73,7 +73,7 @@ def test_dark_mode_toggle():
     driver = setup_driver()
     # Construire chemin et ouvrir page
     current_dir = os.path.dirname(os.path.abspath(__file__))
-    html_path = os.path.join(current_dir, '..', 'frontend', 'index.html')
+    html_path = os.path.join(current_dir, '..', 'docs', 'index.html')
     html_url = f"file:///{os.path.abspath(html_path).replace(os.sep, '/')}"
     driver.get(html_url)
     
