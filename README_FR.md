@@ -109,4 +109,4 @@ Flavortown est une plateforme de partage et de découverte de projets open sourc
 
 **N'hésitez pas à aller visiter la page du projet !**
 
-[Voir la page Flavortown du projet](https://flavortown.hackclub.com/)
+[Voir la page Flavortown du projet](https://flavortown.hackclub.com/projects/11493)
