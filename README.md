@@ -107,4 +107,4 @@ Flavortown is a platform for sharing and discovering open source projects. It al
 
 **Feel free to visit the project page!**
 
-[See the Flavortown project page](https://flavortown.hackclub.com/)
+[See the Flavortown project page](https://flavortown.hackclub.com/projects/11493)
