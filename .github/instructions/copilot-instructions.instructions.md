@@ -4,7 +4,7 @@ applyTo: "**"
 
 # 🎭 Instructions Copilot — Workspace `assistant-ia`
 
-> **But :** t'aider à apprendre et à implémenter un assistant personnel IA _offline-first_ (Client Web → Backend FastAPI → LLM API → SQLite).
+> **But :** t'aider à apprendre et à implémenter un assistant personnel IA (Client Web → Backend FastAPI → LLM API → SQLite).
 >
 > **Important :** l'utilisateur est débutant en Python (connaissances très basiques : variables, conditions, boucles, fonctions, listes, dictionnaires). Tu dois toujours adapter tes réponses à ce niveau et expliquer simplement.
 
@@ -35,68 +35,50 @@ applyTo: "**"
 
 ---
 
-## 🧾 Documentation & organisation
+## 🧾 Documentation & suivi sessions
 
-**Important :** L'utilisateur aime une documentation EXTRÊMEMENT organisée. Appliquer ces règles strictes pour **toutes** les modifications :
+**Nouveau workflow simplifié** :
 
-### Règles obligatoires de documentation
+### Règles de suivi des sessions
 
-- **TOUJOURS** créer/modifier docs dans `docs/` (jamais à la racine, sauf README.md racine qui doit être mis à jour selon la checklist ci‑dessous).
-- Après **chaque** session / tâche : mettre à jour **docs/INDEX.md**, **docs/README.md**, le dossier `docs/sessions/session_N_*` et **README.md** racine (4 sections : Sessions documentées, Guides spécifiques, Changelog, Status final).
-- **Créer obligatoirement** le dossier `scripts/` dans la session et y **copier les versions finales** des scripts (.py, .js).
-- `CURRENT_STATE.md` doit **TOUJOURS** être dans `docs/chat_transitions/chat_N_session_X/` et **JAMAIS** à la racine docs/.
-- **Ne jamais dire "Terminé"** tant que la checklist suivante n'est pas entièrement cochée.
+- **Commit Git obligatoire** à chaque session avec format : `type(scope): description [SessionX]`
+- **Ligne de résumé automatique** ajoutée dans `sessions-observations-archive.md` à chaque session
+- **Rapport complet** uniquement sur demande explicite ou à des milestones importantes
+- **Plus de dossier docs/** obligatoire (sauf si demandé)
+- **Suivre numéro session + intitulé** (ex: Session 9 - Déploiement)
 
-### Checklist avant de déclarer une session "Terminé"
+### Format ligne de résumé (auto)
+
+À ajouter dans `sessions-observations-archive.md` à chaque fin de session :
 
 ```
-□ docs/INDEX.md mis à jour
-□ docs/README.md mis à jour
-□ README.md racine mis à jour (4 sections)
-□ CURRENT_STATE.md dans chat_transitions/
-□ docs/session_N/ mis à jour
-□ scripts/ dans la session contient les fichiers finaux
-□ Tests (pytest) passés si applicables
-□ Instructions Copilot mises à jour (.github/instructions/)
-□ Archive observations mises à jour (sessions-observations-archive.md)
-□ Commit Git créé avec message Conventional Commits
+**Session X (AAAA-MM-JJ) — Intitulé** : Résumé 1 ligne des réalisations principales + concepts maîtrisés.
 ```
 
-### Règles de mise à jour des instructions Copilot
+### Rapport complet (sur demande)
 
-**À la fin de CHAQUE session, TOUJOURS :**
+Quand l'utilisateur demande "faire la doc" ou "rapport complet", inclure :
 
-1. **Archiver la session précédente** :
-   - Copier les observations de la Session N-1 depuis `copilot-instructions.instructions.md`
-   - Les ajouter dans `sessions-observations-archive.md` (ordre chronologique)
-2. **Ajouter observations Session actuelle** :
-   - Remplacer les observations dans `copilot-instructions.instructions.md`
-   - Garder **UNIQUEMENT la session la plus récente** dans le fichier principal
-3. **Format des observations** (obligatoire) :
-   - Réussites majeures de la session
-   - Concepts maîtrisés
-   - Évolution notable depuis Session précédente
-   - Points forts confirmés
-   - Patterns d'apprentissage validés
-   - Nouveaux patterns identifiés (si applicable)
-   - Analogies efficaces (liste)
-   - Recommandations pour prochaines sessions
-
-**Objectif** : Maintenir le fichier principal ~200 lignes (économie tokens) tout en conservant l'historique complet dans l'archive.
+- Réussites majeures
+- Concepts maîtrisés
+- Évolution notable
+- Nouveaux patterns identifiés
+- Analogies efficaces
+- Recommandations prochaines sessions
 
 ---
 
 ## ✅ Git / Commits / PR
 
 - **Conventional Commits** obligatoires : `feat:`, `fix:`, `docs:`, `test:`, `refactor:`, `chore:`.
-- Message de commit : impératif, descriptif, mentionner docs modifiées.
-- **TOUJOURS inclure** le numéro de chat et session dans le message de commit pour traçabilité.
+- Message de commit : impératif, descriptif.
+- **TOUJOURS inclure** le numéro de session dans le message de commit pour traçabilité.
 - **Préférence utilisateur :** utiliser commandes Git classiques dans PowerShell (`git add .`, `git commit -m`) plutôt que outils MCP GitKraken.
 
 **Format recommandé :**
 
 ```
-type(scope): description [ChatN/SessionX]
+type(scope): description [SessionX]
 
 Corps du message avec détails
 ```
@@ -178,12 +160,11 @@ Corps du message avec détails
 
 ---
 
-## 📚 Observations Sessions 0-7 (Historique)
+## 📚 Historique complet (Sessions 0-8)
 
-> **Note :** Pour économiser des tokens, l'historique complet des Sessions 0-7 a été déplacé vers :
-> `.github/instructions/sessions-observations-archive.md`
+> **Archive complète** disponible dans `.github/instructions/sessions-observations-archive.md`
 >
-> Consulter ce fichier si besoin de contexte sur l'évolution de l'utilisateur.
+> Contient l'historique détaillé de toutes les sessions précédentes.
 
 ---
 
@@ -193,9 +174,10 @@ Corps du message avec détails
 2. Explique la **logique** avant le code.
 3. Fournis des **snippets courts et commentés** (≤60 lignes) uniquement quand nécessaire.
 4. Donne toujours la **checklist de tests** et les commandes exactes.
-5. Mets à jour / demande la mise à jour de la **documentation** (docs/).
-6. **Laisse l'utilisateur coder** ce qu'il sait faire (il deviendra vigilant et t'arrêtera si tu codes trop pour lui).
+5. **Commit Git à chaque session** avec format `[SessionX]` (suivre numéro + intitulé).
+6. **Ligne résumé auto** dans `sessions-observations-archive.md` à chaque fin de session.
+7. **Laisse l'utilisateur coder** ce qu'il sait faire (il deviendra vigilant et t'arrêtera si tu codes trop pour lui).
 
 ---
 
-_Dernière mise à jour : 2026-01-17 (Session 8 complétée)_
+_Dernière mise à jour : 2026-02-03 (Workflow simplifié - Session 9 terminée)_

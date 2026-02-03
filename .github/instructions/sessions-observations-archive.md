@@ -1,12 +1,40 @@
-# 📚 Archive des observations Sessions 0-7
+# 📚 Archive des observations & résumés sessions
 
-> **Note :** Ce fichier contient l'historique complet des observations d'apprentissage de l'utilisateur durant les Sessions 0 à 7.
+> **Note :** Ce fichier contient l'historique complet de toutes les sessions (résumés + rapports détaillés).
 >
-> Pour les observations actuelles, consulter : `copilot-instructions.instructions.md`
+> Pour les instructions actuelles, consulter : `copilot-instructions.instructions.md`
 
 ---
 
-## 🎯 Observations après Session 0 (2026-01-08)
+## 📝 Résumés sessions (chronologique)
+
+**Session 0 (2026-01-08) — Découverte projet** : Premier contact, compréhension architecture (client Web → backend FastAPI → LLM API → SQLite). Très motivé, comprend bien avec analogies.
+
+**Session 1 (2026-01-08) — Validation requêtes** : Implémentation Pydantic pour validation. Écrit code lui-même avec guidage. Analogie "aéroport/sécurité" très efficace.
+
+**Session 2 (2026-01-08) — Base de données** : Ajout SQLite pour persistance messages. Écrit 90% du code seul. Maîtrise tuples/listes et requêtes SQL.
+
+**Session 3 (2026-01-09) — API LLM** : Intégration GitHub Models GPT-4o. Écrit 100% du code. Gestion erreurs try/except + réessais. Comprend `.env` et sécurité.
+
+**Session 4 (2026-01-09) — Interface web** : Création HTML/JS complet. Maîtrise `fetch()`, DOM, événements. Résolution problèmes CORS et Live Server.
+
+**Session 5 (2026-01-13) — Styling CSS** : Implémentation bulles chat modernes avec Flexbox. Écrit 90% CSS seul (~120 lignes). Animations + délais naturels.
+
+**Session 6 (2026-01-14) — UX avancée** : Auto-scroll, gestion erreurs `.catch()`, bouton Clear, désactivation pendant traitement. Autonomie maximale confirmée.
+
+**Session 7 (2026-01-16) — Dark mode** : Variables CSS + toggle + localStorage. Exige autonomie ("je veux faire moi-même !"). Rappelle checklist spontanément.
+
+**Session 8 (2026-01-17) — Tests & CI/CD** : pytest backend + Selenium frontend + GitHub Actions. Débogue problèmes complexes (pywin32, Chrome headless). 7/7 tests passent en CI/CD.
+
+---
+
+## 📖 Rapports détaillés (sur demande)
+
+---
+
+## 📖 Rapports détaillés (sur demande)
+
+### 🎯 Session 0 (2026-01-08) — Découverte projet
 
 **Points forts identifiés :**
 
@@ -39,7 +67,7 @@
 
 ---
 
-## 🎯 Observations après Session 1 (2026-01-08)
+### 🎯 Session 1 (2026-01-08) — Validation requêtes
 
 **Réussites de la session :**
 
@@ -69,7 +97,7 @@
 
 ---
 
-## 🎯 Observations après Session 2 (2026-01-08)
+### 🎯 Session 2 (2026-01-08) — Base de données
 
 **Réussites majeures de la session :**
 
@@ -117,7 +145,7 @@
 
 ---
 
-## 🎯 Observations après Session 3 (2026-01-09)
+### 🎯 Session 3 (2026-01-09) — API LLM
 
 **Réussites majeures de la session :**
 
@@ -180,7 +208,7 @@
 
 ---
 
-## 🎯 Observations après Session 4 (2026-01-09)
+### 🎯 Session 4 (2026-01-09) — Interface web
 
 **Réussites majeures de la session :**
 
@@ -237,7 +265,7 @@
 
 ---
 
-## 🎯 Observations après Session 5 (2026-01-13)
+### 🎯 Session 5 (2026-01-13) — Styling CSS
 
 **Réussites majeures de la session :**
 
@@ -300,7 +328,7 @@
 
 ---
 
-## 🎯 Observations après Session 6 (2026-01-14)
+### 🎯 Session 6 (2026-01-14) — UX avancée
 
 **Réussites majeures de la session :**
 
@@ -361,7 +389,7 @@
 
 ---
 
-## 🎯 Observations Session 7 (2026-01-16)
+### 🎯 Session 7 (2026-01-16) — Dark mode
 
 ### Réussites majeures de la session
 
