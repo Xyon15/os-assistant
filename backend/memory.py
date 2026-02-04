@@ -111,8 +111,18 @@ def recuperer_stats():
     stats = curseur.fetchone()
     curseur.close()
     connexion.close()
+    
+    # Si aucun log, retourner des valeurs par défaut
+    if not stats or stats[0] is None:
+        return {
+            "temps_moyen_total": 0,
+            "temps_moyen_llm": 0,
+            "total_requetes_logees": 0,
+            "total_erreurs": 0
+        }
+    
     return {
-        "temps_moyen_total": round(stats[0], 2) if stats[0] else 0,
+        "temps_moyen_total": round(stats[0], 2),
         "temps_moyen_llm": round(stats[1], 2) if stats[1] else 0,
         "total_requetes_logees": stats[2],
         "total_erreurs": stats[3]
