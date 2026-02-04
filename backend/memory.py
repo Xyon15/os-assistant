@@ -13,7 +13,7 @@ Fonctions disponibles :
 
 # Imports
 import psycopg2
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 import os
 from dotenv import load_dotenv
 
@@ -88,7 +88,9 @@ def incrementer_metriques():
 def logger_requete(endpoint, duree_totale, duree_llm=None, status="success", erreur_details=None):
     connexion = get_connexion()
     curseur = connexion.cursor()
-    timestamp = datetime.now().isoformat()
+    # Timestamp en UTC+1 (Europe centrale)
+    tz_utc_plus_1 = timezone(timedelta(hours=1))
+    timestamp = datetime.now(tz_utc_plus_1).isoformat()
     curseur.execute("""
         INSERT INTO logs (timestamp, endpoint, duree_totale, duree_llm, status, erreur_details)
         VALUES (%s, %s, %s, %s, %s, %s)
