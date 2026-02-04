@@ -12,6 +12,8 @@
 
 [![Frontend uptime](https://img.shields.io/uptimerobot/status/m802190746-183f3a09139cdc8eebe0ab5a?label=Frontend%20status&style=flat-square&logo=github)](https://stats.uptimerobot.com/a4Q7kpTig9)
 
+[![DB uptime](https://img.shields.io/uptimerobot/status/m802287025-46bedf5420248ab2dbb6e18f?label=Database%20status&style=flat-square&logo=supabase)](https://stats.uptimerobot.com/a4Q7kpTig9)
+
 ## 🎯 Project Goals
 
 Build a personal assistant with:
@@ -45,11 +47,24 @@ In the long term, the project targets:
   **Response**: `{"reponse": "<text returned by the LLM>"}`  
   **Implementation**: calls `backend.ai.demander_llm()` (uses environment variables `GITHUB_TOKEN` and `MODEL_NAME`)
 
+- **GET /health** 💚  
+  Health check with uptime.  
+  **Response**: `{"status": "healthy", "uptime": 123.45}`
+
+- **GET /metrics** 📊  
+  Application metrics (total requests, uptime readable).  
+  **Response**: `{"total_requetes": 5, "total_historique": 42, "uptime_seconds": 3665.12, "uptime_lisible": "1h 1m 5s"}`
+
+- **GET /stats** 📈  
+  Database statistics (avg response time, error count).  
+  **Response**: `{"temps_moyen_total": 2.12, "temps_moyen_llm": 1.71, "total_requetes_logees": 42, "total_erreurs": 0}`
+
 ### 🚀 Deployed Services
 
 - **Backend**: deployed on Render — https://os-assistant-backend.onrender.com
 - **Swagger Documentation**: https://os-assistant-backend.onrender.com/docs
 - **Frontend**: deployed on GitHub Pages — https://xyon15.github.io/os-assistant
+- **Database**: Supabase (PostgreSQL) — https://supabase.com/
 
 ### 🧪 Tests, CI and Monitoring
 
@@ -59,13 +74,30 @@ In the long term, the project targets:
 - **Automated tests**:
   - Backend: `test_backend.py` (FastAPI TestClient — checks `/ping`, `/chat` validation)
   - Frontend: `test_frontend.py` (Selenium, UI tests in headless CI)
-- **Monitoring / uptime**: UptimeRobot badges displayed in the README (backend + frontend)
+- **UptimeRobot Monitoring**:
+  - Keeps backend (Render) + database (Supabase) active 24/7
+  - Status badges displayed in README (backend + frontend + database)
+
+### 📊 Database & Persistence
+
+- **PostgreSQL (Supabase)**: Cloud database
+- **Persistent logging**: Metrics and request logs stored permanently in cloud
+- **Statistics tracking**: Average response times (total vs LLM), error rates, request counts
 
 ## 🛠️ Tech Stack
 
 - **Backend:** [![Python 3.10+](https://img.shields.io/badge/Python-3.10+-blue.svg?logo=python)](https://www.python.org/downloads/) [![FastAPI](https://img.shields.io/badge/FastAPI-0.104.1+-green.svg?logo=fastapi)](https://fastapi.tiangolo.com/) [![Uvicorn](https://img.shields.io/badge/Uvicorn-0.24.0+-cyan.svg)](https://www.uvicorn.org/)
 - **Frontend:** [![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML) [![CSS3](https://img.shields.io/badge/CSS-8A05FF?logo=css&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS) [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- **Database:** [![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?logo=supabase&logoColor=white)](https://supabase.com/)
 - **AI API:** Github models (Temporary)
+
+## 🔐 Environment Variables
+
+Required variables in `.env`:
+
+- `GITHUB_TOKEN` : GitHub Models API token
+- `MODEL_NAME` : LLM model (e.g., gpt-4o)
+- `DATABASE_URL` : PostgreSQL connection string (Supabase Session Pooler)
 
 ## 🚀 API Quickstart
 
@@ -95,7 +127,27 @@ uvicorn backend.main:app --reload
 ### Test locally
 
 - API ping test: http://127.0.0.1:8000/ping
+- Metrics: http://127.0.0.1:8000/metrics
+- Statistics: http://127.0.0.1:8000/stats
 - API documentation: http://127.0.0.1:8000/docs
+
+## 🚀 Deployment
+
+### Backend (Render)
+
+1. Connect your GitHub repository to Render
+2. Add environment variables:
+   - `GITHUB_TOKEN`: Your GitHub Models API token
+   - `MODEL_NAME`: LLM model name (e.g., `gpt-4o`)
+   - `DATABASE_URL`: Supabase PostgreSQL connection string
+3. Deploy from `main` branch
+
+### Database (Supabase)
+
+1. Create a new project with PostgreSQL 17
+2. Go to **Settings → Database**
+3. Copy **Connection string** in **Session mode** (IPv4 compatible)
+4. Format: `postgresql://postgres.PROJECT_ID:PASSWORD@aws-1-eu-central-1.pooler.supabase.com:5432/postgres`
 
 <br>
 
