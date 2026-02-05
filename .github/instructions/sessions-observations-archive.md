@@ -26,6 +26,10 @@
 
 **Session 8 (2026-01-17) — Tests & CI/CD** : pytest backend + Selenium frontend + GitHub Actions. Débogue problèmes complexes (pywin32, Chrome headless). 7/7 tests passent en CI/CD.
 
+**Session 9 (2026-02-03) — Déploiement production** : Déploiement Render (backend) + GitHub Pages (frontend). Gestion domaine personnalisé. Configuration environnement production (variables, CORS). Tag v1.0.0-stable créé.
+
+**Session 10 (2026-02-04/05) — Monitoring & PostgreSQL** : Système monitoring complet (logs, /health, /metrics, /stats). Migration SQLite → PostgreSQL (Supabase Session Pooler IPv4). Tests mocks pour CI/CD. Bug fixes (stats vides, timezone UTC+1, requirements.txt workflow). Tag v1.1.0 à créer.
+
 ---
 
 ## 📖 Rapports détaillés (sur demande)
