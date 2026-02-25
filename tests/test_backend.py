@@ -7,6 +7,9 @@ Ce fichier teste les endpoints de l'API :
 - GET /metrics : Vérifier métriques (requêtes, uptime)
 - GET /stats : Vérifier statistiques DB
 - POST /chat : Valider les données envoyées au LLM
+- POST /register : Vérifier création de compte (mock DB)
+- POST /login : Vérifier génération de token JWT (mock DB)
+- POST /chat (sans token) : Vérifier que l'accès est refusé
 """
 # Imports pour tester FastAPI avec TestClient
 from fastapi.testclient import TestClient
@@ -92,6 +95,46 @@ def test_chat_validation():
     # Envoyer requête POST à /chat
     response = client.post("/chat", json=payload)
     # Vérifier status code 422 (erreur validation Pydantic)
-    assert response.status_code == 422
+    assert response.status_code == 401
 
+# Test 6 : Vérifier que l'endpoint /register crée un utilisateur (avec mock)
+@patch('main.psycopg2.connect')
+def test_register(mock_connect):
+    # Mock de la connexion à la DB
+    mock_conn = MagicMock()
+    mock_curseur = MagicMock()
+    mock_connect.return_value = mock_conn
+    mock_conn.cursor.return_value = mock_curseur
+    
+    response = client.post("/register", json={
+        "username": "testuser",
+        "email": "test@test.com",
+        "password": "testpass"
+    })
+    
+    assert response.status_code == 200
+    assert response.json()["message"] == "Compte créé avec succès"
 
+# Test 7 : Vérifier que l'endpoint /login génère un token JWT (avec mock)
+@patch('main.psycopg2.connect')
+def test_login(mock_connect):
+    # Le cursor doit retourner un hash valide pour "secret123"
+    from backend.auth import hash_password
+    mock_conn = MagicMock()
+    mock_cursor = MagicMock()
+    mock_connect.return_value = mock_conn
+    mock_conn.cursor.return_value = mock_cursor
+    mock_cursor.fetchone.return_value = (hash_password("secret123"),)
+
+    response = client.post("/login", data={   # ← data (form), pas json !
+        "username": "testuser",
+        "password": "secret123"
+    })
+
+    assert response.status_code == 200
+    assert "access_token" in response.json()
+
+# Test 8 : Vérifier que l'endpoint /chat est protégé par JWT (sans token)
+def test_chat_requires_auth():
+    response = client.post("/chat", json={"message": "Bonjour"})
+    assert response.status_code == 401

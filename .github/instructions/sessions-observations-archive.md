@@ -30,9 +30,7 @@
 
 **Session 10 (2026-02-04/05) — Monitoring & PostgreSQL** : Système monitoring complet (logs, /health, /metrics, /stats). Migration SQLite → PostgreSQL (Supabase Session Pooler IPv4). Tests mocks pour CI/CD. Bug fixes (stats vides, timezone UTC+1, requirements.txt workflow). Tag v1.1.0 à créer.
 
----
-
-## 📖 Rapports détaillés (sur demande)
+**Session 11 (2026-02-25) — Authentification JWT** : Table users PostgreSQL, module auth.py (bcrypt hash, JWT create/verify), endpoints /register et /login, protection /chat via Depends(get_current_user), migration timestamps UTC, réorganisation imports. Concepts maîtrisés : hashing bcrypt, tokens JWT, OAuth2PasswordBearer, Depends FastAPI.
 
 ---
 
@@ -454,4 +452,59 @@
 
 ---
 
-_Dernière mise à jour : 2026-01-17 (Archive complétée avec Session 7)_
+---
+
+### 🎯 Session 11 (2026-02-25) — Authentification JWT
+
+**Réussites majeures de la session :**
+
+- ✅ A **écrit 100% du code auth.py** lui-même (hash, verify, create_access_token, get_current_user)
+- ✅ A **compris et corrigé** ses propres bugs (timedelta non importé, payload.copy(), finally mal placé)
+- ✅ A **exigé son autonomie** : "je peux coder tout seul??? tu es juste là pour m'aider pas faire le travail à ma place"
+- ✅ A **implémenté /register et /login** avec logging complet et gestion connexions PostgreSQL
+- ✅ A **compris OAuth2PasswordRequestForm** et la différence form data vs JSON
+- ✅ A **passé 8/8 tests pytest** dont 3 nouveaux tests auth avec mocks
+
+**Concepts maîtrisés :**
+
+- ✅ **bcrypt** : hashing irréversible, sel aléatoire, 4096 itérations
+- ✅ **JWT** : header.payload.signature, expiration, décodage
+- ✅ **OAuth2PasswordBearer** : extraction token depuis header HTTP
+- ✅ **Depends FastAPI** : injection de dépendances pour middleware
+- ✅ **finally** : toujours exécuté (bon placement des close())
+- ✅ **Paramètres de fonction** : différence variable locale vs paramètre
+- ✅ **Timestamps UTC** : ISO 8601 avec `+00:00`
+
+**Bugs corrigés par l'utilisateur lui-même :**
+
+- ✅ `from passlib import CryptContext` → `from passlib.context import CryptContext`
+- ✅ `os.getenv()` avec 3 arguments → 3 lignes séparées
+- ✅ `timedelta` non importé
+- ✅ `payload = data` → `payload = data.copy()`
+- ✅ `logger.info()` dans `finally` au lieu du `try`
+- ✅ `def get_current_user(token)` → `Depends(oauth2_scheme)` manquant
+
+**Niveau technique :**
+
+- **Autonomie** : 85-90% — code la quasi-totalité seul, demande aide sur points spécifiques
+- **Debugging** : Excellent — identifie et corrige les erreurs avec peu d'indices
+- **Compréhension** : Très bonne — pose les bonnes questions ("où est stocké le hash ?", "d'où vient password ?")
+
+**Analogies efficaces :**
+
+- **bcrypt** : "Smoothie" (irréversible), "Coffre-fort"
+- **JWT** : "Badge d'accès d'entreprise" avec photo, nom, date d'expiration
+- **Middleware** : "Agent de sécurité qui vérifie le badge à chaque porte"
+- **Paramètre de fonction** : "Boîte vide qui attend une valeur"
+- **finally** : S'exécute toujours (comme fermer la porte en sortant)
+
+**Recommandations Session 12 :**
+
+- **Frontend** : Formulaires login/register + envoi token JWT dans headers `/chat`
+- **localStorage** : Stocker le token côté navigateur
+- **fetch() avec Authorization header** : `Bearer <token>`
+- **Gestion expiration** : Redirection vers login si 401
+
+---
+
+_Dernière mise à jour : 2026-02-25 (Session 11 — Authentification JWT)_

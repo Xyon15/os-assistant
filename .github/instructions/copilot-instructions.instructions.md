@@ -94,46 +94,28 @@ Corps du message avec détails
 
 ---
 
-## 🎯 État actuel du projet (Session 10 terminée)
+## 🎯 État actuel du projet (Session 11 terminée)
 
 **Niveau technique** : Intermédiaire avancé  
-**Autonomie** : Très élevée (code 80-90% des features lui-même)  
-**Prochaine session** : Session 11 - Authentification utilisateurs (JWT, login/logout)
+**Autonomie** : Très élevée (code 85-90% des features lui-même)  
+**Prochaine session** : Session 12 - Frontend authentification (formulaires login/register + JWT)
 
 **Réalisations récentes** :
 
-- ✅ **Tests automatisés** : pytest + Selenium + GitHub Actions (7/7 tests CI/CD)
+- ✅ **Authentification JWT** : Table users PostgreSQL, bcrypt hash, JWT create/verify, /register, /login
+- ✅ **Protection /chat** : Middleware get_current_user via Depends(get_current_user)
+- ✅ **Tests automatisés** : 8/8 tests pytest dont 3 nouveaux tests auth avec mocks
+- ✅ **Migration UTC** : Timestamps ISO 8601 avec `+00:00`
 - ✅ **Déploiement production** : Render (backend) + GitHub Pages (frontend) avec domaine personnalisé
-- ✅ **Monitoring & PostgreSQL** : Logs persistants, /health, /metrics, /stats + migration Supabase
-- ✅ **Mocks CI/CD** : unittest.mock pour tests sans DATABASE_URL
 
 **Patterns validés** :
 
 - Mini-questions 3 points, valeurs exactes + laisser coder, analogies concrètes
 - L'utilisateur **exige autonomie** et **rappelle checklist** spontanément
+- Excellent debugging (corrige ses propres bugs avec peu d'indices)
 
-> **Archive complète** : Voir `.github/instructions/sessions-observations-archive.md` pour historique détaillé Sessions 0-10
-
----
-
-## 📚 Historique complet
-
-> **Archive complète** disponible dans `.github/instructions/sessions-observations-archive.md`
->
-> Contient l'historique détaillé de toutes les sessions précédentes.
+> **Archive complète** : Voir `.github/instructions/sessions-observations-archive.md` pour historique détaillé Sessions 0-11
 
 ---
 
-## ✅ Rappel final (à chaque interaction avec Copilot)
-
-1. Écris en **français**.
-2. Explique la **logique** avant le code.
-3. Fournis des **snippets courts et commentés** (≤60 lignes) uniquement quand nécessaire.
-4. Donne toujours la **checklist de tests** et les commandes exactes.
-5. **Commit Git à chaque session** avec format `[SessionX]` (suivre numéro + intitulé).
-6. **Ligne résumé auto** dans `sessions-observations-archive.md` à chaque fin de session.
-7. **Laisse l'utilisateur coder** ce qu'il sait faire (il deviendra vigilant et t'arrêtera si tu codes trop pour lui).
-
----
-
-_Dernière mise à jour : 2026-02-05 (Session 10 terminée - Fichier allégé pour optimiser tokens)_
+_Dernière mise à jour : 2026-02-25 (Session 11 terminée - Authentification JWT)_
