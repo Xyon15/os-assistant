@@ -2,20 +2,15 @@
 memory.py : Module qui gère les métriques de l'assistant IA grâce à une db PostgreSQL
 
 Ce module permet de sauvegarder et récupérer les métriques et logs dans une base de données cloud.
-La base de données PostgreSQL (Supabase) persiste même en production (contrairement à SQLite sur Render).
-
-Fonctions disponibles : 
-- initialiser_db() : Démarrer la base de données
-- charger_metriques_historiques() : Charger les métriques historiques depuis la db
-- incrementer_metriques() : Incrémenter le compteur de métriques dans la db
 
 """
 
 # Imports
 import psycopg2
-from datetime import datetime, timezone, timedelta
+from datetime import datetime, timezone
 import os
 from dotenv import load_dotenv
+
 
 # Charger les variables d'environnement depuis .env
 load_dotenv()
@@ -88,9 +83,8 @@ def incrementer_metriques():
 def logger_requete(endpoint, duree_totale, duree_llm=None, status="success", erreur_details=None):
     connexion = get_connexion()
     curseur = connexion.cursor()
-    # Timestamp en UTC+1 (Europe centrale)
-    tz_utc_plus_1 = timezone(timedelta(hours=1))
-    timestamp = datetime.now(tz_utc_plus_1).isoformat()
+    # Timestamp en UTC
+    timestamp = datetime.now(timezone.utc).isoformat()
     curseur.execute("""
         INSERT INTO logs (timestamp, endpoint, duree_totale, duree_llm, status, erreur_details)
         VALUES (%s, %s, %s, %s, %s, %s)

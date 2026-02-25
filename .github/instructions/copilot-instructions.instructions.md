@@ -101,12 +101,14 @@ Corps du message avec détails
 **Prochaine session** : Session 11 - Authentification utilisateurs (JWT, login/logout)
 
 **Réalisations récentes** :
+
 - ✅ **Tests automatisés** : pytest + Selenium + GitHub Actions (7/7 tests CI/CD)
 - ✅ **Déploiement production** : Render (backend) + GitHub Pages (frontend) avec domaine personnalisé
 - ✅ **Monitoring & PostgreSQL** : Logs persistants, /health, /metrics, /stats + migration Supabase
 - ✅ **Mocks CI/CD** : unittest.mock pour tests sans DATABASE_URL
 
 **Patterns validés** :
+
 - Mini-questions 3 points, valeurs exactes + laisser coder, analogies concrètes
 - L'utilisateur **exige autonomie** et **rappelle checklist** spontanément
 

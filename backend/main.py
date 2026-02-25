@@ -8,18 +8,31 @@ Documentation FastAPI automatique disponible à :
 - /docs (Swagger UI)
 
 """
-# Imports
+## Imports
+
+# Bibliothèque standard Python
+import os
+import time
+import logging
 from contextlib import asynccontextmanager  # Pour gérer le cycle de vie de l'app
 from typing import Optional  # Pour déclarer des types optionnels (peut être None)
-from fastapi import FastAPI  # Framework web pour créer l'API
+
+# FastAPI & Pydantic
+from fastapi import FastAPI, Request, HTTPException, Depends
 from fastapi.middleware.cors import CORSMiddleware  # Pour autoriser les requêtes depuis le navigateur
-from pydantic import BaseModel  # Pour valider les données reçues
-from backend.memory import initialiser_db, charger_metriques_historiques, incrementer_metriques, logger_requete, recuperer_stats # Mémoire des messages et des métriques
-from backend.ai import demander_llm
-import logging
-import time
-from fastapi import Request, HTTPException
 from fastapi.responses import JSONResponse
+from fastapi.security import OAuth2PasswordRequestForm
+from pydantic import BaseModel  # Pour valider les données reçues
+
+# Librairies tierces
+import psycopg2 # Pour interagir avec la base de données PostgreSQL
+
+# Modules locaux
+from backend.memory import initialiser_db, charger_metriques_historiques, incrementer_metriques, logger_requete, recuperer_stats  # Mémoire des messages et des métriques
+from backend.ai import demander_llm
+from backend.auth import hash_password, verify_password, create_access_token, get_current_user
+
+##
 
 # Configuration du logger 
 logging.basicConfig(
@@ -37,6 +50,7 @@ METRIQUES = {
     "total_historique": 0, # Valeur temporaire, sera chargée au démarrage
     "demarrage": time.time()
 }
+
 # Gestionnaire du cycle de vie : actions au démarrage et à l'arrêt
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -60,9 +74,9 @@ ALLOWED_ORIGINS = [
 # Créer l'application FastAPI avec le gestionnaire de cycle de vie et description sur FastAPI
 app = FastAPI(
     lifespan=lifespan,
-    title= "Backend API - OS Assistant",
-    description= "API backend pour l'assistant IA OS Assistant. Fournit des endpoints pour envoyer des messages et interagir avec le modèle de langage.",
-    version="1.1.0",
+    title= "Backend API - Workly",
+    description= "API backend pour l'assistant IA Workly. Fournit des endpoints pour envoyer des messages et interagir avec le modèle de langage.",
+    version="1.2.0",
 )
 
 # Configurer CORS : autoriser origines
@@ -87,13 +101,34 @@ def gestionnaire_erreurs_global(request: Request, exc: Exception):
         content={"erreur": True, "message": "Une erreur interne est survenue. Veuillez réessayer plus tard."},
     )
 
-## Endpoints de monitoring et de health check ##
+## Modèle Pydantic : définir la structure d'un message valide ##
+# texte = obligatoire (str), nom_utilisateur = facultatif (str ou None)
+class Message(BaseModel):
+    texte: str
+    nom_utilisateur: Optional[str] = None
+
+# Modèle Pydantic pour le chat avec le LLM
+class ChatMessage(BaseModel):
+    message: str
+
+class UserRegister(BaseModel):
+    username : str
+    email : str
+    password : str
+
+class UserLogin(BaseModel):
+    username : str
+    password : str
+
+
+########################## Endpoints de monitoring et de health check ##########################
 
 # Endpoint GET /ping : vérifier que le serveur fonctionne
 @app.get("/ping")
 def get_ping():
     return {"status": "pong"}
 
+# Endpoint GET /health : vérifier que le serveur est opérationnel
 @app.get("/health")
 def health_check():
     """
@@ -102,6 +137,7 @@ def health_check():
     """
     return {"status": "healthy", "uptime": round(time.time() - METRIQUES["demarrage"], 2)}
 
+# Endpoint GET /metrics : récupérer les métriques d'utilisation
 @app.get("/metrics")
 def get_metrics():
     """
@@ -128,21 +164,12 @@ def get_stats():
     stats = recuperer_stats()
     return stats
 
-## Modèle Pydantic : définir la structure d'un message valide ##
-# texte = obligatoire (str), nom_utilisateur = facultatif (str ou None)
-class Message(BaseModel):
-    texte: str
-    nom_utilisateur: Optional[str] = None
 
-# Modèle Pydantic pour le chat avec le LLM
-class ChatMessage(BaseModel):
-    message: str
+########################## Endpoints d'échange de messages ##########################
 
-
-## Endpoints d'échange de messages ##
 # Endpoint POST /chat : conversation avec le LLM
 @app.post("/chat")
-def chat(msg: ChatMessage):
+def chat(msg: ChatMessage, current_user: str = Depends(get_current_user)):
     # Log de la requête reçue
     debut = time.time()
     logger.info(f"Requete recuee pour /chat")
@@ -168,3 +195,57 @@ def chat(msg: ChatMessage):
 
         logger_requete("/chat", duree, None, "error", str(e))  # Logger l'erreur dans la db
         return {"reponse": "Désolé, une erreur est survenue.", "erreur": True,}  # Retourner un message d'erreur au frontend
+
+########################## Endpoints d'authentification ##########################
+
+# Endpoint POST /register : créer un nouveau compte utilisateur
+@app.post("/register")
+def register(user: UserRegister):
+    logger.info(f"Tentative de création de compte : {user.username}")
+
+    conn = psycopg2.connect(os.getenv("DATABASE_URL"))
+    cursor = conn.cursor()
+
+    hashed = hash_password(user.password) # Hasher le mot de passe avant de le stocker dans la db
+
+    try:
+        cursor.execute("INSERT INTO users (username, email, hashed_password) VALUES (%s, %s, %s)", (user.username, user.email, hashed)) # Insérer le nouvel utilisateur dans la db
+        conn.commit() # Valider la transaction
+        logger.info(f"Compte cree pour : {user.username}")
+    except Exception as e:
+        logger.warning(f"Erreur lors de l'insertion de l'utilisateur : {e}")
+        return {"message": "Erreur lors de la création du compte."}
+    finally:
+
+        cursor.close()
+        conn.close()
+    return {"message": "Compte créé avec succès"}
+
+# Endpoint POST /login : authentifier un utilisateur et retourner un token JWT
+@app.post("/login")
+def login(form: OAuth2PasswordRequestForm = Depends()):
+    logger.info(f"Tentative de connexion : {form.username}")
+
+    conn = psycopg2.connect(os.getenv("DATABASE_URL"))
+    cursor = conn.cursor()
+
+    try:
+        cursor.execute("SELECT hashed_password FROM users WHERE username = %s", (form.username,)) # Récupérer le hash du mot de passe pour l'utilisateur donné
+        result = cursor.fetchone() # Récupérer le résultat (None si utilisateur non trouvé, sinon un tuple avec le hash)
+        
+        if not result:
+            logger.warning(f"Utilisateur introuvable : {form.username}")
+            raise HTTPException(status_code=401, detail="Utilisateur introuvable")
+        
+        if not verify_password(form.password, result[0]):
+            logger.warning(f"Login avec mot de passe incorrect pour : {form.username}")
+            raise HTTPException(status_code=401, detail="Mot de passe incorrect")
+        
+        token = create_access_token({"sub": form.username}) # Créer un token JWT avec le nom d'utilisateur comme sujet (sub)
+        logger.info(f"Login reussi pour : {form.username}")
+        
+        return {"access_token": token, "token_type": "bearer"}
+    
+    finally:
+        cursor.close()
+        conn.close()
