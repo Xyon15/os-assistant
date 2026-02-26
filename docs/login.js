@@ -97,7 +97,20 @@ formRegister.addEventListener("submit", async function(event) {
             tabLogin.click();  // Bascule sur l'onglet login automatiquement
         } else {
             authMessage.style.color = "red";
-            authMessage.textContent = "❌ " + (donnees.detail || "Erreur lors de l'inscription.");
+            // Pydantic renvoie detail comme tableau [{msg: "..."}], on extrait le message
+            let errMsg = "Erreur lors de l'inscription.";
+            if (typeof donnees.detail === "string") {
+                errMsg = donnees.detail;
+            } else if (Array.isArray(donnees.detail) && donnees.detail.length > 0) {
+                // Pydantic renvoie des messages en anglais → on traduit les plus courants
+                const msg = donnees.detail[0].msg || "";
+                if (msg.includes("not a valid email")) {
+                    errMsg = "Adresse email invalide. Vérifie le format (ex: nom@exemple.com).";
+                } else {
+                    errMsg = msg;
+                }
+            }
+            authMessage.textContent = "❌ " + errMsg;
         }
     } catch (erreur) {
         authMessage.style.color = "red";

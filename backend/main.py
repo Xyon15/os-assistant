@@ -22,7 +22,7 @@ from fastapi import FastAPI, Request, HTTPException, Depends
 from fastapi.middleware.cors import CORSMiddleware  # Pour autoriser les requêtes depuis le navigateur
 from fastapi.responses import JSONResponse
 from fastapi.security import OAuth2PasswordRequestForm
-from pydantic import BaseModel  # Pour valider les données reçues
+from pydantic import BaseModel, EmailStr  # Pour valider les données reçues
 
 # Librairies tierces
 import psycopg2 # Pour interagir avec la base de données PostgreSQL
@@ -113,7 +113,7 @@ class ChatMessage(BaseModel):
 
 class UserRegister(BaseModel):
     username : str
-    email : str  # Obligatoire : utilisé pour la connexion
+    email : EmailStr  # Validation format email (ex: testnimp@a sera rejeté)
     password : str
 
 class UserLogin(BaseModel):
