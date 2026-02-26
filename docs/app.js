@@ -12,11 +12,45 @@
 
 // === CONFIGURATION BACKEND ===
 // Détecte automatiquement si on est en local ou en production
-const BACKEND_URL = window.location.hostname === "xyon15.github.io" // Fonctione que pour github pages (à changer si on veut changer d'hébergeur)
+const BACKEND_URL = window.location.hostname === "xyon15.github.io" // Fonctione
+//  que pour github pages (à changer si on veut changer d'hébergeur)
     ? "https://os-assistant-backend.onrender.com"  // Production
     : "http://localhost:8000";  // Local dev
 
 console.log("Backend utilisé:", BACKEND_URL);
+
+// === AUTHENTIFICATION : vérifier si l'utilisateur est connecté ===
+const token = localStorage.getItem("token");
+if (!token) {
+    window.location.href = "login/";
+}
+
+// === VÉRIFICATION TOKEN : appel /me au démarrage pour détecter l'expiration ===
+// Si le token est expiré, le backend renvoie 401 → redirection login
+fetch(BACKEND_URL + "/me", {
+    headers: { "Authorization": "Bearer " + token }
+}).then(function(reponse) {
+    if (reponse.status === 401) {
+        localStorage.removeItem("token");
+        localStorage.removeItem("username");
+        window.location.href = "login/";
+    }
+});
+
+// === UX : afficher le username connecté ===
+const username = localStorage.getItem("username");
+const usernameDisplay = document.getElementById("username-display");
+if (usernameDisplay && username) {
+    usernameDisplay.textContent = username;  // Juste le nom, sans emoji
+}
+
+// === BOUTON LOGOUT ===
+const logoutBtn = document.getElementById("logoutBtn");
+logoutBtn.addEventListener("click", function() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("username");
+    window.location.href = "login/";
+});
 
 // === FONCTIONS ===
 // === 1. RÉCUPÉRATION DES ÉLÉMENTS HTML ===
@@ -75,11 +109,24 @@ function envoyerMessage() {
         // --- Envoyer requête POST au backend ---
         fetch(BACKEND_URL + "/chat", {
             method: "POST",
-            headers: {"Content-Type": "application/json"},
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + localStorage.getItem("token")  // Ajouter token pour auth
+            },
             body: JSON.stringify({message: texte})
         })
-        .then(reponse => reponse.json())
+        .then(reponse => {
+            if (reponse.status === 401) {
+                // Token expiré ou invalide → déconnexion forcée
+                localStorage.removeItem("token");
+                localStorage.removeItem("username");
+                window.location.href = "login/";
+                return;
+            }
+            return reponse.json();
+        })
         .then(donnees => {
+            if (!donnees) return;  // Cas redirection 401
             // Enlever le message de chargement
             const messageChargement = document.getElementById("chargement");
             if (messageChargement) {

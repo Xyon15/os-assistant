@@ -2,7 +2,7 @@
 Tests automatisés pour le frontend avec Selenium
 
 Ce fichier teste l'interface utilisateur :
-- Ouverture de la page HTML
+- Ouverture de la page HTML (avec faux token JWT)
 - Envoi de message et affichage réponse
 - Toggle dark mode et persistance
 """
@@ -30,14 +30,28 @@ def setup_driver():
     driver = webdriver.Chrome(service=service, options=options)
     return driver
 
-# Test 1 : Vérifier que la page HTML s'ouvre correctement
-def test_open_page():
-    driver = setup_driver()
-    # Construire chemin absolu vers index.html
+# Fonction pour ouvrir index.html avec un faux token JWT dans localStorage
+# Sans token, app.js redirige vers login/ → on injecte un faux token d'abord
+def open_page_with_token(driver):
     current_dir = os.path.dirname(os.path.abspath(__file__))
+    # 1. Ouvrir login/index.html pour avoir accès au localStorage du domaine file://
+    login_path = os.path.join(current_dir, '..', 'docs', 'login', 'index.html')
+    login_url = f"file:///{os.path.abspath(login_path).replace(os.sep, '/')}"
+    driver.get(login_url)
+    # 2. Injecter un faux token et username dans localStorage
+    driver.execute_script('localStorage.setItem("token", "fake-test-token");')
+    driver.execute_script('localStorage.setItem("username", "testuser");')
+    # 3. Naviguer vers index.html (app.js trouvera le token, pas de redirection)
     html_path = os.path.join(current_dir, '..', 'docs', 'index.html')
     html_url = f"file:///{os.path.abspath(html_path).replace(os.sep, '/')}"
     driver.get(html_url)
+    return html_url
+
+# Test 1 : Vérifier que la page HTML s'ouvre correctement
+def test_open_page():
+    driver = setup_driver()
+    # Ouvrir index.html avec faux token (sinon redirection vers login/)
+    open_page_with_token(driver)
     # Vérifier que le titre contient "Assistant"
     assert "Assistant" in driver.title
     driver.quit()
@@ -45,11 +59,8 @@ def test_open_page():
 # Test 2 : Vérifier l'envoi de message et l'affichage de la réponse
 def test_send_message():
     driver = setup_driver()
-    # Construire chemin et ouvrir page
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    html_path = os.path.join(current_dir, '..', 'docs', 'index.html')
-    html_url = f"file:///{os.path.abspath(html_path).replace(os.sep, '/')}"
-    driver.get(html_url)
+    # Ouvrir index.html avec faux token
+    open_page_with_token(driver)
     
     # Trouver input et écrire message
     message_input = driver.find_element(By.CSS_SELECTOR, "#messageInput")
@@ -71,11 +82,8 @@ def test_send_message():
 # Test 3 : Vérifier le toggle du dark mode
 def test_dark_mode_toggle():
     driver = setup_driver()
-    # Construire chemin et ouvrir page
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    html_path = os.path.join(current_dir, '..', 'docs', 'index.html')
-    html_url = f"file:///{os.path.abspath(html_path).replace(os.sep, '/')}"
-    driver.get(html_url)
+    # Ouvrir index.html avec faux token
+    open_page_with_token(driver)
     
     # Trouver le slider du switch dark mode et cliquer
     dark_slider = driver.find_element(By.CSS_SELECTOR, ".slider")

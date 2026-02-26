@@ -42,10 +42,25 @@ In the long term, the project targets:
   **Response**: `{"status": "pong"}`
 
 - **POST /chat** 💬  
-  Sends a message to the LLM.  
+  Sends a message to the LLM. **Requires authentication (Bearer token).**  
   **Expected payload**: `{"message": "..."}` (validated by Pydantic)  
   **Response**: `{"reponse": "<text returned by the LLM>"}`  
   **Implementation**: calls `backend.ai.demander_llm()` (uses environment variables `GITHUB_TOKEN` and `MODEL_NAME`)
+
+- **POST /register** 📝  
+  Creates a new user account.  
+  **Expected payload**: `{"username": "...", "email": "...", "password": "..."}` (unique username & email)  
+  **Response**: `{"message": "Compte créé avec succès"}`
+
+- **POST /login** 🔑  
+  Authenticates a user and returns a JWT token.  
+  **Expected payload**: OAuth2 form (`username` + `password`)  
+  **Response**: `{"access_token": "...", "token_type": "bearer", "username": "..."}`
+
+- **GET /me** 👤  
+  Verifies the JWT token is still valid.  
+  **Requires**: `Authorization: Bearer <token>` header  
+  **Response**: `{"username": "..."}` or `401` if expired
 
 - **GET /health** 💚  
   Health check with uptime.  
@@ -78,7 +93,14 @@ In the long term, the project targets:
   - Keeps backend (Render) + database (Supabase) active 24/7
   - Status badges displayed in README (backend + frontend + database)
 
-### 📊 Database & Persistence
+### 🔐 Authentication
+
+- **JWT authentication**: Register/login flow with bcrypt password hashing
+- **Protected routes**: `/chat` requires a valid Bearer token
+- **Token verification**: `/me` endpoint validates token on page load, auto-redirect to login if expired
+- **Duplicate detection**: Username and email uniqueness enforced (PostgreSQL constraints)
+
+### Database & Persistence
 
 - **PostgreSQL (Supabase)**: Cloud database
 - **Persistent logging**: Metrics and request logs stored permanently in cloud
@@ -98,6 +120,8 @@ Required variables in `.env`:
 - `GITHUB_TOKEN` : GitHub Models API token
 - `MODEL_NAME` : LLM model (e.g., gpt-4o)
 - `DATABASE_URL` : PostgreSQL connection string (Supabase Session Pooler)
+- `SECRET_KEY` : JWT signing secret key
+- `ACCESS_TOKEN_EXPIRE_MINUTES` : Token expiration in minutes (default: 30)
 
 ## 🚀 API Quickstart
 

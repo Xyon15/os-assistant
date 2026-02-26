@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Connexion — Workly</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div id="auth-container">
+        <h1>Workly</h1>
+
+        <!-- Onglets pour switcher entre Login et Register -->
+        <div id="auth-tabs">
+            <button id="tab-login" class="tab-btn active">Se connecter</button>
+            <button id="tab-register" class="tab-btn">S'inscrire</button>
+        </div>
+
+        <!-- Formulaire Login -->
+        <form id="form-login">
+            <input type="text" id="login-username" placeholder="Nom d'utilisateur" required>
+            <input type="password" id="login-password" placeholder="Mot de passe" required>
+            <button type="submit">Se connecter</button>
+        </form>
+
+        <!-- Formulaire Register (caché par défaut) -->
+        <form id="form-register" class="hidden">
+            <input type="text" id="register-username" placeholder="Nom d'utilisateur " required>
+            <input type="email" id="register-email" placeholder="Adresse email" required>
+            <input type="password" id="register-password" placeholder="Mot de passe" required>
+            <button type="submit">Créer mon compte</button>
+        </form>
+
+        <!-- Zone d'affichage des erreurs/succès -->
+        <p id="auth-message"></p>
+    </div>
+
+    <script src="../login.js"></script>
+</body>
+</html>

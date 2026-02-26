@@ -113,7 +113,7 @@ class ChatMessage(BaseModel):
 
 class UserRegister(BaseModel):
     username : str
-    email : str
+    email : str  # Obligatoire : utilisé pour la connexion
     password : str
 
 class UserLogin(BaseModel):
@@ -127,6 +127,12 @@ class UserLogin(BaseModel):
 @app.get("/ping")
 def get_ping():
     return {"status": "pong"}
+
+# Endpoint GET /me : vérifier que le token JWT est encore valide
+@app.get("/me")
+def get_me(username: str = Depends(get_current_user)):
+    # get_current_user lève automatiquement 401 si le token est expiré ou invalide
+    return {"username": username}
 
 # Endpoint GET /health : vérifier que le serveur est opérationnel
 @app.get("/health")
@@ -206,20 +212,29 @@ def register(user: UserRegister):
     conn = psycopg2.connect(os.getenv("DATABASE_URL"))
     cursor = conn.cursor()
 
-    hashed = hash_password(user.password) # Hasher le mot de passe avant de le stocker dans la db
+    hashed = hash_password(user.password)
 
     try:
-        cursor.execute("INSERT INTO users (username, email, hashed_password) VALUES (%s, %s, %s)", (user.username, user.email, hashed)) # Insérer le nouvel utilisateur dans la db
-        conn.commit() # Valider la transaction
+        cursor.execute("INSERT INTO users (username, email, hashed_password) VALUES (%s, %s, %s)", (user.username, user.email, hashed))
+        conn.commit()
         logger.info(f"Compte cree pour : {user.username}")
     except Exception as e:
-        logger.warning(f"Erreur lors de l'insertion de l'utilisateur : {e}")
-        return {"message": "Erreur lors de la création du compte."}
+        conn.rollback()  # Annuler la transaction en cas d'erreur
+        erreur = str(e)
+        logger.warning(f"Erreur lors de l'insertion : {erreur}")
+        # Erreur de contrainte UNIQUE PostgreSQL : e.pgcode == "23505"
+        pgcode = getattr(e, "pgcode", "")  # Récupérer le code d'erreur PostgreSQL (ou "" si absent)
+        if pgcode == "23505":
+            if "username" in erreur:
+                raise HTTPException(status_code=400, detail="Ce nom d'utilisateur est déjà pris.")
+            elif "email" in erreur:
+                raise HTTPException(status_code=400, detail="Cette adresse email est déjà utilisée.")
+        raise HTTPException(status_code=400, detail="Erreur lors de la création du compte.")
     finally:
-
         cursor.close()
         conn.close()
     return {"message": "Compte créé avec succès"}
+
 
 # Endpoint POST /login : authentifier un utilisateur et retourner un token JWT
 @app.post("/login")
@@ -230,21 +245,22 @@ def login(form: OAuth2PasswordRequestForm = Depends()):
     cursor = conn.cursor()
 
     try:
-        cursor.execute("SELECT hashed_password FROM users WHERE username = %s", (form.username,)) # Récupérer le hash du mot de passe pour l'utilisateur donné
-        result = cursor.fetchone() # Récupérer le résultat (None si utilisateur non trouvé, sinon un tuple avec le hash)
+        # Login par username
+        cursor.execute("SELECT hashed_password FROM users WHERE username = %s", (form.username,))
+        result = cursor.fetchone() # result = (hashed_password,) ou None
         
         if not result:
             logger.warning(f"Utilisateur introuvable : {form.username}")
-            raise HTTPException(status_code=401, detail="Utilisateur introuvable")
+            raise HTTPException(status_code=401, detail="Identifiants incorrects")
         
         if not verify_password(form.password, result[0]):
-            logger.warning(f"Login avec mot de passe incorrect pour : {form.username}")
-            raise HTTPException(status_code=401, detail="Mot de passe incorrect")
+            logger.warning(f"Mot de passe incorrect pour : {form.username}")
+            raise HTTPException(status_code=401, detail="Identifiants incorrects")
         
-        token = create_access_token({"sub": form.username}) # Créer un token JWT avec le nom d'utilisateur comme sujet (sub)
+        token = create_access_token({"sub": form.username}) # JWT avec le username
         logger.info(f"Login reussi pour : {form.username}")
         
-        return {"access_token": token, "token_type": "bearer"}
+        return {"access_token": token, "token_type": "bearer", "username": form.username}
     
     finally:
         cursor.close()

@@ -9,6 +9,9 @@
  * ========================================
  */
 
+/* Police moderne Inter depuis Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 /* ========================================
    VARIABLES CSS (Mode clair + Mode sombre)
    ======================================== */
@@ -16,39 +19,47 @@
 /* Mode clair (par défaut) */
 :root {
   --couleur-fond: #f5f5f5;
+  --couleur-sidebar: #ffffff;
   --couleur-texte: #333333;
-  --couleur-header: #2c3e50;
-  --couleur-titre: #ffffff;  /* Blanc pour titre sur header sombre */
-  --couleur-bordure: #ddd;  /* Bordure gris clair */
-  --couleur-user: #007bff;
+  --couleur-header: #18181b;
+  --couleur-titre: #ffffff;
+  --couleur-bordure: #e4e4e7;
+  --couleur-user: #8A05FF;
   --couleur-user-texte: #ffffff;
-  --couleur-assistant: #e0e0e0;
-  --couleur-assistant-texte: #000000;
+  --couleur-assistant: #f0f0f0;
+  --couleur-assistant-texte: #18181b;
   --couleur-input: #ffffff;
-  --couleur-input-texte: #333333;  /* Texte input noir */
-  --couleur-bouton: #007bff;
-  --couleur-bouton-hover: #0056b3;
-  --couleur-clear: #dc3545;
-  --couleur-clear-hover: #c82333;
+  --couleur-input-texte: #18181b;
+  --couleur-bouton: #8A05FF;
+  --couleur-bouton-hover: #6d04cc;
+  --couleur-clear: #ef4444;
+  --couleur-clear-hover: #dc2626;
+  --accent: #8A05FF;
+  --accent-hover: #6d04cc;
+  --accent-light: #f3e8ff;
 }
 
 /* Mode sombre */
 .dark-mode {
-  --couleur-fond: #1a1a1a;
-  --couleur-texte: #e0e0e0;
-  --couleur-header: #0d1117;
-  --couleur-titre: #e0e0e0;  /* Gris clair pour titre en mode sombre */
-  --couleur-bordure: #4a4a4a;  /* Bordure gris foncé */
-  --couleur-user: #1f6feb;
+  --couleur-fond: #0f0f12;
+  --couleur-sidebar: #18181b;
+  --couleur-texte: #e4e4e7;
+  --couleur-header: #09090b;
+  --couleur-titre: #fafafa;
+  --couleur-bordure: #27272a;
+  --couleur-user: #a855f7;
   --couleur-user-texte: #ffffff;
-  --couleur-assistant: #2d333b;
-  --couleur-assistant-texte: #e0e0e0;
-  --couleur-input: #0d1117;  /* Fond plus foncé pour meilleur contraste */
-  --couleur-input-texte: #e0e0e0;  /* Texte gris clair */
-  --couleur-bouton: #1f6feb;
-  --couleur-bouton-hover: #1a5cd8;
-  --couleur-clear: #da3633;
-  --couleur-clear-hover: #b52a27;
+  --couleur-assistant: #1c1c22;
+  --couleur-assistant-texte: #e4e4e7;
+  --couleur-input: #09090b;
+  --couleur-input-texte: #e4e4e7;
+  --couleur-bouton: #a855f7;
+  --couleur-bouton-hover: #9333ea;
+  --couleur-clear: #f87171;
+  --couleur-clear-hover: #ef4444;
+  --accent: #a855f7;
+  --accent-hover: #9333ea;
+  --accent-light: #1e0a2e;
 }
 
 
@@ -113,54 +124,159 @@ input:checked + .slider {
 }
 
 
-/* === BLOC 1 : LAYOUT GLOBAL === */
-/* Configure la page en Flexbox vertical */
+/* Configure la page en layout sidebar + chat */
 body {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', Arial, sans-serif;
     height: 100vh;
+    overflow: hidden;
+    background-color: var(--couleur-fond);
+    color: var(--couleur-texte);
+}
+
+/* Layout principal : flex row pleine hauteur */
+#app-layout {
+    display: flex;
+    height: 100vh;
+}
+
+/* ========================================
+   SIDEBAR
+   ======================================== */
+
+#sidebar {
+    width: 240px;
+    flex-shrink: 0;
+    background-color: var(--couleur-sidebar);
+    border-right: 1px solid var(--couleur-bordure);
     display: flex;
     flex-direction: column;
-    background-color: var(--couleur-fond);
+    padding: 20px 16px;
+    gap: 4px;
 }
 
-/* Barre de titre en haut (fond bleu foncé, texte centré blanc) */
-#headerBar {
+/* Logo */
+.sidebar-logo {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 20px 20px;
-    background-color: var(--couleur-header);
+    gap: 10px;
+    padding: 8px 10px;
+    margin-bottom: 4px;
 }
 
-/*
-#headerBar::before {  Espace vide à gauche pour centrer le titre
-    content: "";
-    width: 180px;  — Même largeur que le bouton Clear
-}
-*/
-
-#headerBar h1 {
-    color: var(--couleur-titre);
-    margin: 0;
-    flex: 1;
-    text-align: center;
+.logo-icon {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    border-radius: 6px;
 }
 
-#clearBtn {
-    padding: 10px 20px;
-    background-color: var(--couleur-clear);
-    color: white;
-    border: none;
+.logo-text {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--couleur-texte);
+    letter-spacing: -0.3px;
+}
+
+/* Séparateur fin */
+.sidebar-divider {
+    height: 1px;
+    background-color: var(--couleur-bordure);
+    margin: 8px 0;
+}
+
+/* Utilisateur connecté */
+.sidebar-user {
+    padding: 8px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.sidebar-user-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    color: var(--couleur-texte);
+    opacity: 0.4;
+}
+
+#username-display {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--couleur-texte);
+    opacity: 0.85;
+}
+
+/* Ligne thème : label + switch alignés */
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 10px;
     border-radius: 8px;
-    font-size: 14px;
-    cursor: pointer;
-    font-weight: bold;
 }
 
-#clearBtn:hover {
-    background-color: var(--couleur-clear-hover);
+.sidebar-item-label {
+    font-size: 0.875rem;
+    color: var(--couleur-texte);
+    font-weight: 500;
+    opacity: 0.7;
+}
+
+/* Pousse les boutons vers le bas */
+.sidebar-spacer {
+    flex: 1;
+}
+
+/* Boutons sidebar */
+.sidebar-btn {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 0.875rem;
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    text-align: left;
+    transition: background 0.2s, color 0.2s;
+    margin-bottom: 4px;
+}
+
+.sidebar-btn-secondary {
+    background-color: transparent;
+    color: var(--couleur-texte);
+    opacity: 0.7;
+}
+
+.sidebar-btn-secondary:hover {
+    background-color: var(--couleur-assistant);
+    opacity: 1;
+}
+
+.sidebar-btn-danger {
+    background-color: transparent;
+    color: #f87171;
+}
+
+.sidebar-btn-danger:hover {
+    background-color: rgba(239, 68, 68, 0.08);
+    color: #ef4444;
+}
+
+/* ========================================
+   ZONE CHAT
+   ======================================== */
+
+#chat-zone {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background-color: var(--couleur-fond);
 }
 
 /* Zone de conversation : prend tout l'espace disponible, scroll si trop de messages */
@@ -280,3 +396,204 @@ body {
     text-align: center;
     font-weight: bold;
 }
+
+/* ========================================
+   AUTH — PAGE LOGIN/REGISTER
+   ======================================== */
+
+/* Fond dégradé doux pour la page login */
+body:has(#auth-container) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    background: linear-gradient(135deg, #faf5ff 0%, #f0e6ff 50%, #ede9fe 100%);
+}
+
+body.dark-mode:has(#auth-container) {
+    background: linear-gradient(135deg, #09090b 0%, #13071f 50%, #0f0f12 100%);
+}
+
+/* Carte login centrée */
+#auth-container {
+    width: 100%;
+    max-width: 420px;
+    padding: 40px 36px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 8px 40px rgba(138, 5, 255, 0.10), 0 2px 8px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    animation: fadeIn 0.4s ease;
+}
+
+#auth-container h1 {
+    text-align: center;
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0;
+    color: #18181b;
+    letter-spacing: -0.5px;
+}
+
+/* Sous-titre discret sous le h1 */
+#auth-container h1::after {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 3px;
+    background: #8A05FF;
+    border-radius: 2px;
+    margin: 8px auto 0;
+}
+
+/* Onglets Login / Register */
+#auth-tabs {
+    display: flex;
+    gap: 4px;
+    background-color: #f4f4f5;
+    padding: 4px;
+    border-radius: 10px;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 9px;
+    border: none;
+    background: transparent;
+    color: #71717a;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    font-family: 'Inter', Arial, sans-serif;
+}
+
+.tab-btn.active {
+    background-color: #ffffff;
+    color: #8A05FF;
+    font-weight: 600;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.10);
+}
+
+/* Formulaires */
+#form-login,
+#form-register {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#form-login input,
+#form-register input {
+    padding: 12px 14px;
+    border: 1.5px solid #e4e4e7;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-family: 'Inter', Arial, sans-serif;
+    outline: none;
+    background-color: #fafafa;
+    color: #18181b;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#form-login input:focus,
+#form-register input:focus {
+    border-color: #8A05FF;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(138, 5, 255, 0.10);
+}
+
+#form-login button,
+#form-register button {
+    padding: 13px;
+    background-color: #8A05FF;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    font-family: 'Inter', Arial, sans-serif;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(138, 5, 255, 0.25);
+    margin-top: 4px;
+}
+
+#form-login button:hover,
+#form-register button:hover {
+    background-color: #6d04cc;
+    box-shadow: 0 4px 14px rgba(138, 5, 255, 0.35);
+    transform: translateY(-1px);
+}
+
+#form-login button:active,
+#form-register button:active {
+    transform: translateY(0);
+}
+
+/* Message erreur/succès */
+#auth-message {
+    text-align: center;
+    font-size: 0.875rem;
+    font-weight: 500;
+    min-height: 20px;
+    padding: 2px 0;
+}
+
+/* Classe utilitaire pour cacher un élément */
+/* !important nécessaire car les sélecteurs ID (#form-register) ont une priorité plus haute */
+.hidden {
+    display: none !important;
+}
+
+/* Dark mode pour la page login */
+body.dark-mode #auth-container {
+    background-color: #18181b;
+    box-shadow: 0 8px 40px rgba(138, 5, 255, 0.15), 0 2px 8px rgba(0,0,0,0.4);
+}
+
+body.dark-mode #auth-container h1 {
+    color: #fafafa;
+}
+
+body.dark-mode #auth-tabs {
+    background-color: #09090b;
+}
+
+body.dark-mode .tab-btn {
+    color: #71717a;
+}
+
+body.dark-mode .tab-btn.active {
+    background-color: #27272a;
+    color: #c084fc;
+}
+
+body.dark-mode #form-login input,
+body.dark-mode #form-register input {
+    background-color: #09090b;
+    border-color: #27272a;
+    color: #fafafa;
+}
+
+body.dark-mode #form-login input:focus,
+body.dark-mode #form-register input:focus {
+    border-color: #a855f7;
+    box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.15);
+}
+
+body.dark-mode #form-login button,
+body.dark-mode #form-register button {
+    background-color: #a855f7;
+    box-shadow: 0 2px 8px rgba(168, 85, 247, 0.30);
+}
+
+body.dark-mode #form-login button:hover,
+body.dark-mode #form-register button:hover {
+    background-color: #9333ea;
+}
+
+/* Ancien bloc header supprimé — username/logout maintenant dans la sidebar */

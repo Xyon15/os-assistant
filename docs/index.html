@@ -2,34 +2,72 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Assistant IA</title>
-    <!-- Lien vers le fichier CSS pour le design -->
+    <title>Workly — Assistant IA</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 </head>
 <body>
-        <!-- Barre de titre en haut avec bouton Clear -->
-    <header id="headerBar">
-         <!-- Switch Dark Mode -->
-        <div class="dark-mode-toggle"></div>
-        <label class="switch">
-            <input type="checkbox" id="dark-mode-switch">
-            <span class="slider"></span>
-        </label>
+
+    <!-- Layout principal : sidebar gauche + zone chat droite -->
+    <div id="app-layout">
+
+        <!-- SIDEBAR GAUCHE -->
+        <aside id="sidebar">
+
+            <!-- Logo / Nom de l'appli -->
+            <div class="sidebar-logo">
+                <img src="images/logo.png" alt="Workly logo" class="logo-icon">
+                <span class="logo-text">Workly</span>
+            </div>
+
+            <div class="sidebar-divider"></div>
+
+            <!-- Utilisateur connecté -->
+            <div class="sidebar-user">
+                <span class="sidebar-user-label">Connecté en tant que</span>
+                <span id="username-display"></span>
+            </div>
+
+            <div class="sidebar-divider"></div>
+
+            <!-- Switch Dark Mode -->
+            <div class="sidebar-item">
+                <span class="sidebar-item-label">Thème</span>
+                <label class="switch">
+                    <input type="checkbox" id="dark-mode-switch">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <!-- Spacer : pousse les boutons vers le bas -->
+            <div class="sidebar-spacer"></div>
+
+            <!-- Effacer conversation -->
+            <button id="clearBtn" class="sidebar-btn sidebar-btn-secondary">
+                🗑️ Effacer la conversation
+            </button>
+
+            <!-- Logout -->
+            <button id="logoutBtn" class="sidebar-btn sidebar-btn-danger">
+                🚪 Déconnexion
+            </button>
+
+        </aside>
+
+        <!-- ZONE CHAT -->
+        <div id="chat-zone">
+            <!-- Zone de conversation -->
+            <div id="conversation"></div>
+
+            <!-- Zone input + bouton -->
+            <div id="inputZone">
+                <input id="messageInput" type="text" placeholder="Envoyer un message...">
+                <button id="envoyerBtn">Envoyer</button>
+            </div>
         </div>
-        <h1>Assistant IA</h1>
-        <button id="clearBtn">🗑️ Effacer conversation</button>
-    </header>
-    
-    <!-- Zone de conversation : affiche les messages user/assistant -->
-    <div id="conversation"></div>
-    
-    <!-- Zone input + bouton en bas (Flexbox horizontal) -->
-    <div id="inputZone">
-        <input id="messageInput" type="text" placeholder="Tapez votre message ici...">
-        <button id="envoyerBtn">Envoyer</button>
+
     </div>
 
-    <!-- Charge le JavaScript pour la logique de chat -->
     <script src="app.js"></script>
 </body>
 </html>

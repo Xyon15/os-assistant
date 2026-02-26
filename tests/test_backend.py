@@ -10,6 +10,8 @@ Ce fichier teste les endpoints de l'API :
 - POST /register : Vérifier création de compte (mock DB)
 - POST /login : Vérifier génération de token JWT (mock DB)
 - POST /chat (sans token) : Vérifier que l'accès est refusé
+- GET /me : Vérifier que le token est valide (retourne username)
+- GET /me (sans token) : Vérifier que l'accès est refusé
 """
 # Imports pour tester FastAPI avec TestClient
 from fastapi.testclient import TestClient
@@ -137,4 +139,33 @@ def test_login(mock_connect):
 # Test 8 : Vérifier que l'endpoint /chat est protégé par JWT (sans token)
 def test_chat_requires_auth():
     response = client.post("/chat", json={"message": "Bonjour"})
+    assert response.status_code == 401
+
+# Test 9 : Vérifier que GET /me retourne le username avec un token valide
+@patch('main.psycopg2.connect')
+def test_me_with_valid_token(mock_connect):
+    # D'abord obtenir un vrai token via /login
+    from backend.auth import hash_password
+    mock_conn = MagicMock()
+    mock_cursor = MagicMock()
+    mock_connect.return_value = mock_conn
+    mock_conn.cursor.return_value = mock_cursor
+    mock_cursor.fetchone.return_value = (hash_password("secret123"),)
+
+    login_response = client.post("/login", data={
+        "username": "testuser",
+        "password": "secret123"
+    })
+    token = login_response.json()["access_token"]
+
+    # Appeler GET /me avec ce token
+    response = client.get("/me", headers={
+        "Authorization": f"Bearer {token}"
+    })
+    assert response.status_code == 200
+    assert response.json()["username"] == "testuser"
+
+# Test 10 : Vérifier que GET /me est protégé (sans token → 401)
+def test_me_requires_auth():
+    response = client.get("/me")
     assert response.status_code == 401

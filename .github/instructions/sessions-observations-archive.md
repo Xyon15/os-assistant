@@ -32,6 +32,8 @@
 
 **Session 11 (2026-02-25) — Authentification JWT** : Table users PostgreSQL, module auth.py (bcrypt hash, JWT create/verify), endpoints /register et /login, protection /chat via Depends(get_current_user), migration timestamps UTC, réorganisation imports. Concepts maîtrisés : hashing bcrypt, tokens JWT, OAuth2PasswordBearer, Depends FastAPI.
 
+**Session 12 (2026-02-26) — Frontend authentification JWT + refonte UI** : Login/register fonctionnels (username/email/password), JWT localStorage + Authorization Bearer, GET /me vérification expiration token au démarrage, détection doublons username/email via e.pgcode psycopg2, refonte UI complète sidebar + accent violet #8A05FF + font Inter, URLs propres sans .html (login/index.html). Concepts maîtrisés : FormData OAuth2, localStorage, spécificité CSS, layout sidebar Flexbox.
+
 ---
 
 ## 📖 Rapports détaillés (sur demande)

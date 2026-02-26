@@ -42,10 +42,25 @@ simple, léger et évolutif.
   **Réponse** : `{"status": "pong"}`
 
 - **POST /chat** 💬  
-  Envoie un message au LLM.  
+  Envoie un message au LLM. **Nécessite une authentification (Bearer token).**  
   **Payload attendu** : `{"message": "..."}` (validé par Pydantic)  
   **Réponse** : `{"reponse": "<texte retourné par le LLM>"}`  
-  **Implémentation** : appelle `backend.ai.demander_llm()` (utilise les variables d’environnement `GITHUB_TOKEN` et `MODEL_NAME`)
+  **Implémentation** : appelle `backend.ai.demander_llm()` (utilise les variables d'environnement `GITHUB_TOKEN` et `MODEL_NAME`)
+
+- **POST /register** 📝  
+  Crée un nouveau compte utilisateur.  
+  **Payload attendu** : `{"username": "...", "email": "...", "password": "..."}` (username & email uniques)  
+  **Réponse** : `{"message": "Compte créé avec succès"}`
+
+- **POST /login** 🔑  
+  Authentifie un utilisateur et retourne un token JWT.  
+  **Payload attendu** : formulaire OAuth2 (`username` + `password`)  
+  **Réponse** : `{"access_token": "...", "token_type": "bearer", "username": "..."}`
+
+- **GET /me** 👤  
+  Vérifie que le token JWT est encore valide.  
+  **Nécessite** : header `Authorization: Bearer <token>`  
+  **Réponse** : `{"username": "..."}` ou `401` si expiré
 - **GET /health** 💚  
   Vérification de santé avec uptime.  
   **Réponse** : `{"status": "healthy", "uptime": 123.45}`
@@ -77,6 +92,13 @@ simple, léger et évolutif.
   - Maintient le backend (Render) + base de données (Supabase) actifs 24/7
   - Badges de statut affichés dans le README (backend + frontend + base de données)
 
+### 🔐 Authentification
+
+- **Authentification JWT** : Flux register/login avec hachage bcrypt des mots de passe
+- **Routes protégées** : `/chat` nécessite un Bearer token valide
+- **Vérification du token** : endpoint `/me` valide le token au chargement, redirection auto vers login si expiré
+- **Détection des doublons** : Unicité du username et email (contraintes PostgreSQL)
+
 ### 📊 Base de données & Persistance
 
 - **PostgreSQL (Supabase)** : Base de données cloud
@@ -97,6 +119,8 @@ Variables requises dans `.env` :
 - `GITHUB_TOKEN` : Token API GitHub Models
 - `MODEL_NAME` : Modèle LLM (ex: gpt-4o)
 - `DATABASE_URL` : Chaîne de connexion PostgreSQL (Supabase Session Pooler)
+- `SECRET_KEY` : Clé secrète de signature JWT
+- `ACCESS_TOKEN_EXPIRE_MINUTES` : Expiration du token en minutes (défaut : 30)
 
 ## 🚀 Démarrage de l'API
 
