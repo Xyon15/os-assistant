@@ -1,10 +1,27 @@
-# OS Assistant
+<div align="center">
+  <img src="docs/images/logo.png" alt="Workly Logo" width="100" />
+  <h1>Workly</h1>
+  <p><em>Assistant personnel IA orienté productivité</em></p>
+  <img src="docs/images/demo.gif" alt="Workly Demo" width="680" />
+</div>
+<br/>
+<div align="center">
 
-> Assistant personnel IA orienté productivité
+[![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
+[![Uvicorn](https://img.shields.io/badge/Uvicorn-4051B5?style=for-the-badge&logo=gunicorn&logoColor=white)](https://www.uvicorn.org/)
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/docs/Web/HTML)
+[![CSS3](https://img.shields.io/badge/CSS3-8A05FF?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/docs/Web/CSS)
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/docs/Web/JavaScript)
+[![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com/)
+[![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)](https://jwt.io/)
+[![GitHub Models](https://img.shields.io/badge/GitHub%20Models-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/marketplace/models)
 
-**[🇬🇧 English Version](README_EN.md)**
+</div>
 
-## Status live des services :
+**[🇬🇧 English version](README.md)**
+
+## Status live des services
 
 ![Tests](https://github.com/Xyon15/os-assistant/actions/workflows/tests.yml/badge.svg)
 
@@ -24,7 +41,7 @@ Construire un assistant personnel avec :
 
 ## 🧠 Vision
 
-OS Assistant a pour objectif de devenir un compagnon de bureau intelligent,
+Workly a pour objectif de devenir un compagnon de bureau intelligent,
 capable d'assister l'utilisateur dans ses tâches quotidiennes tout en restant
 simple, léger et évolutif.
 
@@ -105,12 +122,20 @@ simple, léger et évolutif.
 - **Logs persistants** : Métriques et logs de requêtes stockés en permanence dans le cloud
 - **Suivi des statistiques** : Temps de réponse moyens (total vs LLM), taux d'erreurs, nombre de requêtes
 
-## 🛠️ Tech Stack
+## 📸 Screenshots
 
-- **Backend :** [![Python 3.10+](https://img.shields.io/badge/Python-3.10+-blue.svg?logo=python)](https://www.python.org/downloads/) [![FastAPI](https://img.shields.io/badge/FastAPI-0.104.1+-green.svg?logo=fastapi)](https://fastapi.tiangolo.com/) [![Uvicorn](https://img.shields.io/badge/Uvicorn-0.24.0+-cyan.svg)](https://www.uvicorn.org/)
-- **Frontend :** [![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)](https://developer.mozilla.org/fr/docs/Web/HTML) [![CSS3](https://img.shields.io/badge/CSS-8A05FF?logo=css&logoColor=white)](https://developer.mozilla.org/fr/docs/Web/CSS) [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/fr/docs/Web/JavaScript)
-- **Base de données :** [![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?logo=supabase&logoColor=white)](https://supabase.com/)
-- **API IA :** Github models (Temporaire)
+<table align="center">
+  <tr>
+    <td align="center"><strong>Connexion</strong></td>
+    <td align="center"><strong>Chat</strong></td>
+  </tr>
+  <tr>
+    <td><img src="docs/images/screenshot-login.png" alt="Page de connexion" width="480"/></td>
+    <td><img src="docs/images/screenshot-chat.png" alt="Interface de chat" width="480"/></td>
+  </tr>
+</table>
+
+<br/>
 
 ## 🔐 Variables d'environnement
 
@@ -173,8 +198,6 @@ uvicorn backend.main:app --reload
 4. Format : `postgresql://postgres.PROJECT_ID:PASSWORD@aws-1-eu-central-1.pooler.supabase.com:5432/postgres`
 
 <br>
-
-<div>
 
 ## Ce projet est publié sur Flavortown
 

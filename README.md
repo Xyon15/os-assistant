@@ -1,6 +1,23 @@
-# OS Assistant
+<div align="center">
+  <img src="docs/images/logo.png" alt="Workly Logo" width="100" />
+  <h1>Workly</h1>
+  <p><em>Productivity-oriented personal AI assistant</em></p>
+  <img src="docs/images/demo.gif" alt="Workly Demo" width="680" />
+</div>
+<br/>
+<div align="center">
 
-> Productivity-oriented personal AI assistant
+[![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
+[![Uvicorn](https://img.shields.io/badge/Uvicorn-4051B5?style=for-the-badge&logo=gunicorn&logoColor=white)](https://www.uvicorn.org/)
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/docs/Web/HTML)
+[![CSS3](https://img.shields.io/badge/CSS3-8A05FF?style=for-the-badge&logo=css&logoColor=white)](https://developer.mozilla.org/docs/Web/CSS)
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/docs/Web/JavaScript)
+[![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com/)
+[![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)](https://jwt.io/)
+[![GitHub Models](https://img.shields.io/badge/GitHub%20Models-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/marketplace/models)
+
+</div>
 
 **[🇫🇷 Version française](README.md)**
 
@@ -24,7 +41,7 @@ Build a personal assistant with:
 
 ## 🧠 Vision
 
-OS Assistant aims to become an intelligent office companion,
+Workly aims to become an intelligent office companion,
 capable of assisting users in their daily tasks while remaining
 simple, lightweight, and scalable.
 
@@ -106,12 +123,20 @@ In the long term, the project targets:
 - **Persistent logging**: Metrics and request logs stored permanently in cloud
 - **Statistics tracking**: Average response times (total vs LLM), error rates, request counts
 
-## 🛠️ Tech Stack
+## 📸 Screenshots
 
-- **Backend:** [![Python 3.10+](https://img.shields.io/badge/Python-3.10+-blue.svg?logo=python)](https://www.python.org/downloads/) [![FastAPI](https://img.shields.io/badge/FastAPI-0.104.1+-green.svg?logo=fastapi)](https://fastapi.tiangolo.com/) [![Uvicorn](https://img.shields.io/badge/Uvicorn-0.24.0+-cyan.svg)](https://www.uvicorn.org/)
-- **Frontend:** [![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML) [![CSS3](https://img.shields.io/badge/CSS-8A05FF?logo=css&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS) [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-- **Database:** [![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?logo=supabase&logoColor=white)](https://supabase.com/)
-- **AI API:** Github models (Temporary)
+<table align="center">
+  <tr>
+    <td align="center"><strong>Login</strong></td>
+    <td align="center"><strong>Chat</strong></td>
+  </tr>
+  <tr>
+    <td><img src="docs/images/screenshot-login.png" alt="Login page" width="480"/></td>
+    <td><img src="docs/images/screenshot-chat.png" alt="Chat interface" width="480"/></td>
+  </tr>
+</table>
+
+<br/>
 
 ## 🔐 Environment Variables
 
