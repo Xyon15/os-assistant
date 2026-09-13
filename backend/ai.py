@@ -47,7 +47,7 @@ def demander_llm(prompt: str) -> tuple[str, float]:
     
     # Préparer les données JSON (body de la requête)
     # Récupérer le modèle depuis .env
-    model_name = os.getenv("OPENROUTER_MODEL", "thinkingmachines/inkling-small:free")
+    model_name = os.getenv("OPENROUTER_MODEL", "openrouter/free")
     
     # Préparer les données JSON (body de la requête)
     donnees = {
@@ -74,7 +74,13 @@ def demander_llm(prompt: str) -> tuple[str, float]:
                 logger.info(f"Reponse recue de l'API LLM en {duree:.2f}s")
                 return texte_llm, duree
             else:
-                logger.warning(f"Tentative {tentative} échouée : status {reponse.status_code}")
+                try:
+                    details = reponse.json().get("error", {}).get("message", "Réponse sans détail")
+                except ValueError:
+                    details = "Réponse non JSON"
+                logger.warning(
+                    f"Tentative {tentative} échouée : status {reponse.status_code} - {details}"
+                )
         
         except Exception as e:
             logger.error(f"Tentative {tentative} erreur : {e}")
