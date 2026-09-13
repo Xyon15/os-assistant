@@ -62,7 +62,7 @@ simple, léger et évolutif.
   Envoie un message au LLM. **Nécessite une authentification (Bearer token).**  
   **Payload attendu** : `{"message": "..."}` (validé par Pydantic)  
   **Réponse** : `{"reponse": "<texte retourné par le LLM>"}`  
-  **Implémentation** : appelle `backend.ai.demander_llm()` (utilise les variables d'environnement `GITHUB_TOKEN` et `MODEL_NAME`)
+  **Implémentation** : appelle `backend.ai.demander_llm()` via OpenRouter (utilise `OPENROUTER_API_KEY` et, facultativement, `OPENROUTER_MODEL`)
 
 - **POST /register** 📝  
   Crée un nouveau compte utilisateur.  

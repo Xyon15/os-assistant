@@ -1,8 +1,8 @@
 """
-Module pour interagir avec le LLM via l'API GitHub Models.
+Module pour interagir avec le LLM via l'API OpenRouter.
 
 Fonctions disponibles :
-- demander_llm(prompt: str) -> str : Appelle GPT-4o et retourne la réponse
+- demander_llm(prompt: str) -> tuple[str, float] : Appelle le modèle configuré et retourne la réponse
 
 """
 
@@ -21,7 +21,7 @@ logger = logging.getLogger(__name__)
 
 def demander_llm(prompt: str) -> tuple[str, float]:
     """
-    Appelle l'API GitHub Models (GPT-4o) pour obtenir une réponse.
+    Appelle OpenRouter pour obtenir une réponse avec raisonnement activé.
     Réessaie 3 fois en cas d'erreur.
     
     Args:
@@ -31,15 +31,15 @@ def demander_llm(prompt: str) -> tuple[str, float]:
         La réponse du LLM ou un message d'erreur poli
     """
     
-    # Récupérer le token depuis .env
-    token = os.getenv("GITHUB_TOKEN")
+    # Récupérer la clé OpenRouter depuis .env
+    token = os.getenv("OPENROUTER_API_KEY")
     
     # Vérifier que le token existe
     if not token:
-        return "Erreur : token GitHub manquant dans .env", 0.0
+        return "Erreur : OPENROUTER_API_KEY manquante dans .env", 0.0
     
     # Préparer l'URL et les headers
-    url = "https://models.inference.ai.azure.com/chat/completions"
+    url = "https://openrouter.ai/api/v1/chat/completions"
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {token}"
@@ -47,18 +47,15 @@ def demander_llm(prompt: str) -> tuple[str, float]:
     
     # Préparer les données JSON (body de la requête)
     # Récupérer le modèle depuis .env
-    model_name = os.getenv("MODEL_NAME")
-    
-    # Vérifier que le modèle existe
-    if not model_name:
-        return "Erreur : MODEL_NAME manquant dans .env", 0.0
+    model_name = os.getenv("OPENROUTER_MODEL", "thinkingmachines/inkling-small:free")
     
     # Préparer les données JSON (body de la requête)
     donnees = {
         "model": model_name,
         "messages": [
             {"role": "user", "content": prompt}
-        ]
+        ],
+        "reasoning": {"enabled": True}
     }
     logger.info(f"Appel a l'API LLM")
     debut = time.time()
